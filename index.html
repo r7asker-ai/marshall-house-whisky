@@ -54,7 +54,10 @@ ul.list{list-style:none;margin:0;padding:0}
 .side{grid-row:1/3;grid-column:2;text-align:right;align-self:center}
 .tier{font:600 13px var(--sans);letter-spacing:.08em;color:var(--brass)}
 .tier i{font-style:normal;opacity:.25}
-.stars{color:var(--brass);font-size:13px;letter-spacing:1px;white-space:nowrap}
+.stars{display:inline-flex;align-items:center;white-space:nowrap;line-height:1}
+.stars .sr{position:relative;display:inline-block;width:74px;height:13px}
+.stars .sr svg{display:block}
+.stars .sf{position:absolute;left:0;top:0;height:13px;overflow:hidden}
 .stars small{color:var(--slate);font:500 12px var(--sans);letter-spacing:0;margin-left:4px}
 .nr{font-size:12px;color:#7a868b;font-style:italic}
 .tag{display:inline-block;font:600 10px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--green);border:1px solid var(--green);padding:4px 6px;margin-right:6px;vertical-align:1px}
@@ -1418,7 +1421,10 @@ const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(mine))}catch(e){};ba
 const F={tier:new Set(),region:new Set(),style:new Set()};
 const tierTxt=n=>'£'.repeat(n);
 const tierHtml=n=>n?'£'.repeat(n)+'<i>'+'£'.repeat(5-n)+'</i>':'';
-function stars(r){if(r==null)return '<span class="nr">Not rated</span>';const h=Math.round(r*2)/2;let s='';for(let i=1;i<=5;i++)s+=h>=i?'★':(h>=i-.5?'⯪':'☆');return `<span class="stars" aria-label="${r} out of 5">${s}<small>${r.toFixed(1)}</small></span>`}
+const STAR='M7 .6l1.9 4.1 4.5.5-3.4 3 1 4.4L7 10.3 3 12.6l1-4.4-3.4-3 4.5-.5z';
+const ROW=c=>`<svg viewBox="0 0 74 13" width="74" height="13" aria-hidden="true" focusable="false">${[0,1,2,3,4].map(i=>`<path transform="translate(${i*15} 0)" d="${STAR}" fill="${c}"/>`).join('')}</svg>`;
+const ROW_E=ROW('#D8C3A5'),ROW_F=ROW('#8F6F3E');
+function stars(r){if(r==null)return '<span class="nr">Not rated</span>';const h=Math.round(r*2)/2;const w=(Math.floor(h)*15+(h%1?7:0)).toFixed(1);return `<span class="stars" role="img" aria-label="${r.toFixed(1)} out of 5"><span class="sr">${ROW_E}<span class="sf" style="width:${w}px">${ROW_F}</span></span><small>${r.toFixed(1)}</small></span>`}
 function chips(id,key,vals,lab){const el=$(id);el.innerHTML=vals.map(v=>`<button class="chip" aria-pressed="false" data-v="${esc(v)}">${esc(lab?lab(v):v)}</button>`).join('');
  el.onclick=e=>{const b=e.target.closest('.chip');if(!b)return;const v=key==='tier'?+b.dataset.v:b.dataset.v;F[key].has(v)?F[key].delete(v):F[key].add(v);b.setAttribute('aria-pressed',F[key].has(v));render()}}
 chips('#f-tier','tier',[5,4,3,2,1],tierTxt);chips('#f-region','region',D.regions);chips('#f-style','style',D.styles);
