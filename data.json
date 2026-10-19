@@ -11,7 +11,6 @@
    "notes": "",
    "rating": 4.3,
    "region": "Speyside",
-   "style": "Sherried",
    "distillery": "The Macallan",
    "owner": "Edrington",
    "founded": "1824",
@@ -21,6 +20,10 @@
    "palate": "Rich raisin, dark toffee, oak",
    "finish": "Long, spicy, sherried",
    "about": "Part of Macallan's 1824 Series, which graded whisky by natural colour rather than age. Ruby was the darkest of the range, matured entirely in sherry-seasoned casks. It has since been discontinued and is now quite hard to find.",
+   "styles": [
+    "Rich"
+   ],
+   "caskType": "Sherry",
    "img": "img/macallan-ruby.webp"
   },
   {
@@ -34,12 +37,15 @@
    "notes": "Douglas Laing Old Malt Cask; cask 224, 1 of 211; distilled Jan 1990, bottled Jun 2003",
    "rating": null,
    "region": "Lowland",
-   "style": "Single cask",
    "distillery": "Rosebank",
    "bottler": "Douglas Laing (Old Malt Cask)",
    "founded": "1840",
    "status": "Closed 1993, revived 2023",
    "about": "Rosebank, at Falkirk, was the classic Lowland distillery: triple-distilled and famously light and floral. It fell silent in 1993, which made bottlings like this one much sought after. This single cask yielded just 211 bottles, distilled in January 1990 and bottled in June 2003. The distillery was rebuilt and began distilling again in 2023.",
+   "styles": [
+    "Light & fruity"
+   ],
+   "caskType": "Unknown",
    "img": "img/rosebank-13-old-malt-cask.webp"
   },
   {
@@ -53,13 +59,16 @@
    "notes": "Millburn (closed distillery); distilled Oct 1983, bottled Jun 1996",
    "rating": 4.5,
    "region": "Highland",
-   "style": "Cask strength",
    "distillery": "Millburn",
    "bottler": "The Scotch Malt Whisky Society",
    "founded": "c. 1807",
    "status": "Closed 1985",
    "size": "70cl",
    "about": "Millburn was one of three Inverness distilleries, all lost in the closures of the 1980s; its buildings later became a restaurant. In the Society's code, 87 stands for Millburn and this was its third cask, distilled in October 1983 and bottled in June 1996. Bottles from closed distilleries like this rarely come up now.",
+   "styles": [
+    "Cask strength"
+   ],
+   "caskType": "Unknown",
    "img": "img/smws-87-3-millburn.webp"
   },
   {
@@ -73,7 +82,6 @@
    "notes": "100th Moray Open, 2005",
    "rating": null,
    "region": "Speyside",
-   "style": "",
    "distillery": "The Macallan",
    "owner": "Edrington",
    "bottler": "The Macallan (commemorative bottling)",
@@ -81,6 +89,8 @@
    "status": "Operating",
    "size": "70cl",
    "about": "Bottled by Macallan to commemorate the 100th Moray Open in July 2005, the amateur golf tournament held at Moray Golf Club in Lossiemouth. The label carries a portrait of Old Tom Morris, the great Victorian golfer who laid out the club's Old Course.",
+   "styles": [],
+   "caskType": "Unknown",
    "img": "img/moray-glen-14.webp"
   },
   {
@@ -94,7 +104,6 @@
    "notes": "",
    "rating": 4.3,
    "region": "Speyside",
-   "style": "Sherried",
    "distillery": "Glenfarclas",
    "owner": "J. & G. Grant (family-owned)",
    "founded": "1836",
@@ -104,6 +113,10 @@
    "palate": "Fruit cake, toffee, warm spice",
    "finish": "Long, nutty, gently oaky",
    "about": "Glenfarclas has been owned and run by the Grant family since 1865, one of very few Speyside distilleries still independent. Its direct-fired stills and sherry casks give a rich, traditional style.",
+   "styles": [
+    "Rich"
+   ],
+   "caskType": "Sherry",
    "img": "img/glenfarclas.webp"
   },
   {
@@ -117,12 +130,16 @@
    "notes": "",
    "rating": 4.2,
    "region": "Blend",
-   "style": "Rich & smooth",
    "owner": "Diageo",
    "nose": "Honey, dried fruit, gentle smoke",
    "palate": "Hazelnut, honey, sherry, orange",
    "finish": "Long and smoky",
    "about": "Johnnie Walker's flagship blend, built from rare reserves. The firm traces its roots to John Walker's grocery in Kilmarnock in 1820.",
+   "styles": [
+    "Smooth blend",
+    "Gently smoky"
+   ],
+   "caskType": "Mixed or Multiple",
    "img": "img/johnnie-walker-blue-label.webp"
   },
   {
@@ -136,7 +153,6 @@
    "notes": "",
    "rating": 4.5,
    "region": "Highland",
-   "style": "Sherried",
    "distillery": "The GlenDronach",
    "owner": "Brown-Forman",
    "founded": "1826",
@@ -146,6 +162,10 @@
    "palate": "Dark fruit, sherry, chestnut",
    "finish": "Long, rich, walnut",
    "about": "GlenDronach is known for its deeply sherried Highland malts. 'Parliament' is named for the colony of rooks – a parliament – that nests in the trees above the distillery.",
+   "styles": [
+    "Rich"
+   ],
+   "caskType": "Sherry",
    "img": "img/glendronach-parliament.webp"
   },
   {
@@ -159,12 +179,13 @@
    "notes": "Single cask, Boisdale 25th Anniversary, 1 of 300; distilled 20/10/1989, bottled 2015",
    "rating": null,
    "region": "Islay",
-   "style": "Single cask",
    "distillery": "Bunnahabhain",
    "bottler": "Berry Bros & Rudd for Boisdale",
    "founded": "1881",
    "status": "Operating",
    "about": "Bunnahabhain is the gentle, mostly unpeated face of Islay. This single cask, distilled on 20 October 1989 and bottled in 2015, was chosen to mark the 25th anniversary of Boisdale, the London restaurant and whisky bar group. Only 300 bottles were filled.",
+   "styles": [],
+   "caskType": "Unknown",
    "img": "img/bunnahabhain-25-boisdale.webp"
   },
   {
@@ -178,12 +199,15 @@
    "notes": "",
    "rating": 4.2,
    "region": "Highland",
-   "style": "Lightly peated",
    "distillery": "Ardmore",
    "bottler": "Copper Monument (independent bottling)",
    "founded": "1898",
    "status": "Operating",
    "about": "Ardmore in Aberdeenshire is one of the few Highland distilleries known for peated spirit. This is an independent single-cask bottling of 2010 spirit at seven years old.",
+   "styles": [
+    "Lightly peated"
+   ],
+   "caskType": "Bourbon",
    "img": "img/copper-monument-ardmore-2010.webp"
   },
   {
@@ -197,7 +221,6 @@
    "notes": "",
    "rating": 4.3,
    "region": "Highland",
-   "style": "Sherried",
    "distillery": "Tomatin",
    "owner": "Tomatin Distillery Co. (Japanese-owned)",
    "founded": "1897",
@@ -206,6 +229,10 @@
    "palate": "Rich sherry, chocolate, spice",
    "finish": "Long and warming",
    "about": "Tomatin, south of Inverness, was once the largest malt distillery in Scotland. Its 18 year old is finished in oloroso sherry butts.",
+   "styles": [
+    "Rich"
+   ],
+   "caskType": "Sherry",
    "img": "img/tomatin.webp"
   },
   {
@@ -219,12 +246,15 @@
    "notes": "Natural Cask Strength, decanter",
    "rating": null,
    "region": "Highland",
-   "style": "Cask strength",
    "distillery": "Edradour",
    "owner": "Signatory Vintage",
    "founded": "1825",
    "status": "Operating",
    "about": "Edradour, near Pitlochry, was long known as one of the smallest traditional distilleries in Scotland. It has been owned by independent bottler Signatory since 2002, and its Natural Cask Strength releases come in this distinctive decanter.",
+   "styles": [
+    "Cask strength"
+   ],
+   "caskType": "Unknown",
    "img": "img/edradour-cask-strength.webp"
   },
   {
@@ -238,12 +268,16 @@
    "notes": "",
    "rating": 4.2,
    "region": "Islands",
-   "style": "Honey & smoke",
    "distillery": "Highland Park",
    "owner": "Edrington",
    "founded": "1798",
    "status": "Operating",
    "about": "A limited release marking 30 years of Ian Rankin's Inspector Rebus novels, a whisky lover's detective. Highland Park, in Kirkwall on Orkney, uses aromatic Orkney peat in its malt.",
+   "styles": [
+    "Gently smoky",
+    "Honeyed"
+   ],
+   "caskType": "Unknown",
    "img": "img/highland-park-rebus-30.webp"
   },
   {
@@ -257,7 +291,6 @@
    "notes": "",
    "rating": 4.2,
    "region": "Speyside",
-   "style": "Cask strength",
    "distillery": "Glenfarclas",
    "owner": "J. & G. Grant (family-owned)",
    "founded": "1836",
@@ -267,6 +300,11 @@
    "palate": "Powerful fruit cake, spice, toffee",
    "finish": "Long and warming",
    "about": "First released in 1968, the 105 was one of the earliest cask-strength single malts. The name comes from its strength: 105° British proof, or 60% ABV.",
+   "styles": [
+    "Rich",
+    "Cask strength"
+   ],
+   "caskType": "Sherry",
    "img": "img/glenfarclas-105.webp"
   },
   {
@@ -280,13 +318,14 @@
    "notes": "",
    "rating": null,
    "region": "Highland",
-   "style": "",
    "distillery": "Macduff",
    "owner": "Bacardi (John Dewar & Sons)",
    "founded": "1960",
    "status": "Operating",
    "size": "1 litre",
    "about": "Glen Deveron is the name under which Macduff distillery's single malt is bottled. The 16 year old belongs to its Royal Burgh Collection.",
+   "styles": [],
+   "caskType": "Unknown",
    "img": "img/glen-deveron-burgh-of-macduff.webp"
   },
   {
@@ -300,13 +339,14 @@
    "notes": "",
    "rating": null,
    "region": "Highland",
-   "style": "",
    "distillery": "Macduff",
    "owner": "Bacardi (John Dewar & Sons)",
    "founded": "1960",
    "status": "Operating",
    "size": "1 litre",
    "about": "Glen Deveron is the name under which Macduff distillery's single malt is bottled. The 16 year old belongs to its Royal Burgh Collection.",
+   "styles": [],
+   "caskType": "Unknown",
    "img": "img/glen-deveron-boxed.webp"
   },
   {
@@ -320,13 +360,14 @@
    "notes": "Lang Brothers bottling",
    "rating": null,
    "region": "Highland",
-   "style": "",
    "distillery": "Glengoyne",
    "bottler": "Lang Brothers (distillery bottling)",
    "founded": "1833",
    "status": "Operating",
    "size": "70cl",
    "about": "An older bottling from the Lang Brothers era, before Ian Macleod bought the distillery in 2003. Glengoyne sits right on the Highland Line and uses unpeated, air-dried barley.",
+   "styles": [],
+   "caskType": "Unknown",
    "img": "img/glengoyne-17-lang-brothers.webp"
   },
   {
@@ -340,7 +381,6 @@
    "notes": "",
    "rating": 3.8,
    "region": "Speyside",
-   "style": "Light & fruity",
    "distillery": "The Macallan",
    "owner": "Edrington",
    "founded": "1824",
@@ -349,6 +389,10 @@
    "palate": "Smooth, dried fruit, gentle oak spice",
    "finish": "Medium, sweet and spicy",
    "about": "The Fine Oak range, introduced in 2004, added bourbon casks to Macallan's sherry-oak recipe for a lighter style. It was replaced in 2018 by the Triple Cask range.",
+   "styles": [
+    "Light & fruity"
+   ],
+   "caskType": "Mixed or Multiple",
    "img": "img/macallan-fine-oak.webp"
   },
   {
@@ -362,12 +406,16 @@
    "notes": "",
    "rating": 4.3,
    "region": "Highland",
-   "style": "Peated",
    "distillery": "Ardnamurchan",
    "owner": "Adelphi",
    "founded": "2014",
    "status": "Operating",
    "about": "Ardnamurchan, on the remote west-coast peninsula of the same name, is run by independent bottler Adelphi and powered by local renewable energy. The AD/ code gives the month and year of bottling – February 2022 here.",
+   "styles": [
+    "Peated",
+    "Cask strength"
+   ],
+   "caskType": "Mixed or Multiple",
    "img": "img/ardnamurchan-ad-02-22-cask-strength.webp"
   },
   {
@@ -381,13 +429,16 @@
    "notes": "Unblended All Malt, older 75cl bottling",
    "rating": 4.3,
    "region": "Speyside",
-   "style": "Light & fruity",
    "distillery": "The Glenlivet",
    "owner": "Pernod Ricard",
    "founded": "1824",
    "status": "Operating",
    "size": "75cl",
    "about": "An older 75cl bottling from before the move to 70cl. 'Unblended All Malt' was how single malts were often described before the term became standard.",
+   "styles": [
+    "Light & fruity"
+   ],
+   "caskType": "Unknown",
    "img": "img/glenlivet-12-all-malt.webp"
   },
   {
@@ -401,7 +452,6 @@
    "notes": "",
    "rating": 4.4,
    "region": "Campbeltown",
-   "style": "Lightly peated",
    "distillery": "Springbank",
    "owner": "J. & A. Mitchell (family-owned)",
    "founded": "1828",
@@ -410,6 +460,11 @@
    "palate": "Malty, citrus, light peat",
    "finish": "Long, salty, gently smoky",
    "about": "Springbank is one of Scotland's oldest family-owned distilleries and floor-malts all its own barley. Its spirit is distilled two and a half times, and it is a cult favourite.",
+   "styles": [
+    "Lightly peated",
+    "Coastal"
+   ],
+   "caskType": "Mixed or Multiple",
    "img": "img/springbank.webp"
   },
   {
@@ -423,7 +478,6 @@
    "notes": "",
    "rating": 4.2,
    "region": "Campbeltown",
-   "style": "Light & fruity",
    "distillery": "Springbank",
    "owner": "J. & A. Mitchell (family-owned)",
    "founded": "1828",
@@ -432,6 +486,10 @@
    "palate": "Creamy malt, orange, light fruit",
    "finish": "Medium, gently spicy",
    "about": "Hazelburn is Springbank's unpeated, triple-distilled malt, named after a lost Campbeltown distillery. It is the gentlest of the distillery's three styles.",
+   "styles": [
+    "Light & fruity"
+   ],
+   "caskType": "Bourbon",
    "img": "img/hazelburn.webp"
   },
   {
@@ -445,7 +503,6 @@
    "notes": "",
    "rating": 4.1,
    "region": "Speyside",
-   "style": "Rich & meaty",
    "distillery": "Craigellachie",
    "owner": "Bacardi (John Dewar & Sons)",
    "founded": "1891",
@@ -454,6 +511,10 @@
    "palate": "Waxy, meaty, toasted cereal",
    "finish": "Medium, nutty and dry",
    "about": "Craigellachie still uses worm-tub condensers, which give a famously weighty, almost meaty spirit. The 13 year old leads its core range.",
+   "styles": [
+    "Rich"
+   ],
+   "caskType": "Unknown",
    "img": "img/craigellachie-old-fashioned.webp"
   },
   {
@@ -467,7 +528,6 @@
    "notes": "",
    "rating": 4.2,
    "region": "Speyside",
-   "style": "Sherried",
    "distillery": "Aberlour",
    "owner": "Pernod Ricard",
    "founded": "1879",
@@ -477,6 +537,10 @@
    "palate": "Dried fruit, chocolate, nutmeg",
    "finish": "Long and spicy",
    "about": "Casg Annamh is Gaelic for 'rare cask'. Each small batch marries whisky from different cask types.",
+   "styles": [
+    "Rich"
+   ],
+   "caskType": "Mixed or Multiple",
    "img": "img/aberlour-casg-annamh.webp"
   },
   {
@@ -490,7 +554,6 @@
    "notes": "",
    "rating": null,
    "region": "Speyside",
-   "style": "Light & fruity",
    "distillery": "Aultmore",
    "owner": "Bacardi (John Dewar & Sons)",
    "founded": "1896",
@@ -499,6 +562,10 @@
    "palate": "Clean, fruity, gentle spice",
    "finish": "Short and crisp",
    "about": "Aultmore takes its water from the Foggie Moss, a peat-covered area of the hills near Keith. For many years almost all of its whisky went into blends.",
+   "styles": [
+    "Light & fruity"
+   ],
+   "caskType": "Unknown",
    "img": "img/aultmore-foggie-moss.webp"
   },
   {
@@ -512,7 +579,6 @@
    "notes": "",
    "rating": 4.3,
    "region": "Highland",
-   "style": "Wine cask",
    "distillery": "Deanston",
    "owner": "CVH Spirits (Distell)",
    "founded": "1965",
@@ -521,6 +587,10 @@
    "palate": "Plum, cherry, malt",
    "finish": "Medium, fruity, lightly spiced",
    "about": "Deanston sits on the River Teith in a converted 18th-century cotton mill and runs on its own hydro-electric power. This 10 year old is finished in Bordeaux red wine casks.",
+   "styles": [
+    "Light & fruity"
+   ],
+   "caskType": "Wine",
    "img": "img/deanston.webp"
   },
   {
@@ -534,7 +604,6 @@
    "notes": "",
    "rating": 4.0,
    "region": "Speyside",
-   "style": "Beer cask",
    "distillery": "Glenfiddich",
    "owner": "William Grant & Sons",
    "founded": "1887",
@@ -543,6 +612,10 @@
    "palate": "Citrus, pear, light spice",
    "finish": "Fresh and gently hoppy",
    "about": "The first of Glenfiddich's Experimental Series, made with a local craft brewer who seasoned the casks with IPA before they were filled with whisky.",
+   "styles": [
+    "Light & fruity"
+   ],
+   "caskType": "Beer",
    "img": "img/glenfiddich-ipa-experiment.webp"
   },
   {
@@ -556,7 +629,6 @@
    "notes": "",
    "rating": null,
    "region": "Speyside",
-   "style": "Lightly peated",
    "distillery": "Allt-á-Bhainne",
    "owner": "Pernod Ricard",
    "founded": "1975",
@@ -565,6 +637,10 @@
    "palate": "Sweet malt, soft peat",
    "finish": "Short, gently smoky",
    "about": "The name means 'burn of milk' in Gaelic. A modern Speyside distillery built mainly for blending, it released this lightly peated single malt under its own name.",
+   "styles": [
+    "Lightly peated"
+   ],
+   "caskType": "Unknown",
    "img": "img/allt-bhainne.webp"
   },
   {
@@ -578,13 +654,16 @@
    "notes": "",
    "rating": 4.2,
    "region": "Sweden",
-   "style": "Wine cask",
    "distillery": "Mackmyra",
    "founded": "1999",
    "nose": "Red berries, raisin, oak",
    "palate": "Dark fruit, spice, chocolate",
    "finish": "Medium, dry and fruity",
    "about": "Mackmyra was Sweden's first single-malt distillery. Skördetid ('harvest time') was finished in casks that had held Amarone from the Veneto.",
+   "styles": [
+    "Rich"
+   ],
+   "caskType": "Wine",
    "img": "img/mackmyra-sk-rdetid.webp"
   },
   {
@@ -598,7 +677,6 @@
    "notes": "",
    "rating": 3.7,
    "region": "Japan",
-   "style": "Light grain",
    "distillery": "Chita",
    "owner": "Suntory",
    "founded": "1972",
@@ -607,6 +685,10 @@
    "palate": "Mild, sweet, a hint of mint",
    "finish": "Clean and light",
    "about": "A single grain whisky from Suntory's Chita grain distillery on Ise Bay, near Nagoya. It is light and clean, and much of Chita's grain whisky goes into Suntory's blends.",
+   "styles": [
+    "Smooth"
+   ],
+   "caskType": "Mixed or Multiple",
    "img": "img/the-chita.webp"
   },
   {
@@ -620,12 +702,15 @@
    "notes": "",
    "rating": 3.9,
    "region": "Blend",
-   "style": "Rich & smooth",
    "owner": "Diageo",
    "nose": "Honey, vanilla, tropical fruit",
    "palate": "Creamy, honeyed, light smoke",
    "finish": "Medium and sweet",
    "about": "A smooth Johnnie Walker blend built around Clynelish single malt from the Highlands.",
+   "styles": [
+    "Smooth blend"
+   ],
+   "caskType": "Unknown",
    "img": "img/johnnie-walker-gold-label-reserve.webp"
   },
   {
@@ -639,7 +724,6 @@
    "notes": "",
    "rating": 4.1,
    "region": "Highland",
-   "style": "Honeyed",
    "distillery": "Dalwhinnie",
    "owner": "Diageo",
    "founded": "1897",
@@ -648,6 +732,10 @@
    "palate": "Honey, malt, a little smoke",
    "finish": "Long and gently sweet",
    "about": "One of the highest and coldest distilleries in Scotland, on the Drumochter Pass. It is one of Diageo's original Classic Malts.",
+   "styles": [
+    "Honeyed"
+   ],
+   "caskType": "Unknown",
    "img": "img/dalwhinnie.webp"
   },
   {
@@ -661,12 +749,13 @@
    "notes": "",
    "rating": null,
    "region": "Speyside",
-   "style": "",
    "distillery": "Dufftown",
    "owner": "Diageo",
    "founded": "1896",
    "status": "Operating",
    "about": "An older bottling from Dufftown distillery, using the once-common 'Glenlivet' suffix that many Speyside distilleries borrowed.",
+   "styles": [],
+   "caskType": "Unknown",
    "img": "img/dufftown-glenlivet-pure-malt.webp"
   },
   {
@@ -680,12 +769,13 @@
    "notes": "Special Edition",
    "rating": 4.3,
    "region": "Highland",
-   "style": "",
    "distillery": "Loch Lomond",
    "owner": "Loch Lomond Group",
    "founded": "1964",
    "status": "Operating",
    "about": "Loch Lomond is the official spirit of The Open golf championship, and a special edition is released for each year's championship. The distillery is known for its unusual straight-necked stills.",
+   "styles": [],
+   "caskType": "Unknown",
    "img": "img/loch-lomond-the-open.webp"
   },
   {
@@ -699,7 +789,6 @@
    "notes": "",
    "rating": 4.0,
    "region": "Highland",
-   "style": "Light & fruity",
    "distillery": "Glengoyne",
    "owner": "Ian Macleod Distillers",
    "founded": "1833",
@@ -708,6 +797,10 @@
    "palate": "Malty, butterscotch, apple",
    "finish": "Medium, soft",
    "about": "Glengoyne makes unpeated whisky from air-dried barley and runs its stills famously slowly. The distillery sits right on the Highland Line north of Glasgow.",
+   "styles": [
+    "Light & fruity"
+   ],
+   "caskType": "Mixed or Multiple",
    "img": "img/glengoyne.webp"
   },
   {
@@ -721,8 +814,11 @@
    "notes": "",
    "rating": null,
    "region": "Blend",
-   "style": "",
    "about": "A classic Scotch blend from the house of Crawford's, originally a Leith whisky firm.",
+   "styles": [
+    "Smooth blend"
+   ],
+   "caskType": "Unknown",
    "img": "img/crawford-s-three-star-blended.webp"
   },
   {
@@ -736,7 +832,6 @@
    "notes": "",
    "rating": 3.8,
    "region": "Speyside",
-   "style": "Light & fruity",
    "distillery": "Glenfiddich",
    "owner": "William Grant & Sons",
    "founded": "1887",
@@ -745,6 +840,10 @@
    "palate": "Butterscotch, cream, malt",
    "finish": "Long, smooth, mellow",
    "about": "Founded by William Grant and his family in Dufftown, Glenfiddich helped bring single malt to the world in the 1960s. It remains family-owned.",
+   "styles": [
+    "Light & fruity"
+   ],
+   "caskType": "Mixed or Multiple",
    "img": "img/glenfiddich.webp"
   },
   {
@@ -758,12 +857,15 @@
    "notes": "",
    "rating": 4.1,
    "region": "Highland",
-   "style": "Light & fruity",
    "distillery": "Glenmorangie",
    "owner": "LVMH",
    "founded": "1843",
    "status": "Operating",
    "about": "A 12 year old released to mark the millennium. Glenmorangie, at Tain, has the tallest stills in Scotland.",
+   "styles": [
+    "Light & fruity"
+   ],
+   "caskType": "Bourbon",
    "img": "img/glenmorangie-millennium-malt.webp"
   },
   {
@@ -777,7 +879,6 @@
    "notes": "",
    "rating": 4.0,
    "region": "Speyside",
-   "style": "Light & fruity",
    "distillery": "Dufftown",
    "owner": "Diageo",
    "founded": "1896",
@@ -786,6 +887,10 @@
    "palate": "Malty, toffee, light fruit",
    "finish": "Medium and nutty",
    "about": "The Singleton is Diageo's name for the single malts of Dufftown, Glendullan and Glen Ord. This one comes from Dufftown in the heart of Speyside.",
+   "styles": [
+    "Light & fruity"
+   ],
+   "caskType": "Unknown",
    "img": "img/singleton-of-dufftown.webp"
   },
   {
@@ -799,12 +904,15 @@
    "notes": "",
    "rating": 4.2,
    "region": "Blended malt",
-   "style": "Gently smoky",
    "owner": "Diageo",
    "nose": "Fresh grass, pine, orchard fruit",
    "palate": "Woody, spicy, light smoke",
    "finish": "Long and smoky",
    "about": "A blended malt built around Talisker, Linkwood, Cragganmore and Caol Ila. It was withdrawn in 2012 and brought back by popular demand in 2016.",
+   "styles": [
+    "Gently smoky"
+   ],
+   "caskType": "Unknown",
    "img": "img/johnnie-walker-green-label.webp"
   },
   {
@@ -818,12 +926,13 @@
    "notes": "Douglas Laing blended malt",
    "rating": 4.1,
    "region": "Blended malt",
-   "style": "",
    "bottler": "Douglas Laing",
    "nose": "Honey, heather, citrus",
    "palate": "Sweet barley, spice, vanilla",
    "finish": "Medium and warming",
    "about": "A Highland blended malt named after the 'wee, sleekit, cow'rin, tim'rous beastie' of Burns's poem To a Mouse. It is part of Douglas Laing's Remarkable Regional Malts.",
+   "styles": [],
+   "caskType": "Unknown",
    "img": "img/timorous-beastie.webp"
   },
   {
@@ -837,7 +946,6 @@
    "notes": "",
    "rating": null,
    "region": "Lowland",
-   "style": "Lightly peated",
    "distillery": "Ailsa Bay",
    "owner": "William Grant & Sons",
    "founded": "2007",
@@ -846,6 +954,10 @@
    "palate": "Gentle peat, honey, spice",
    "finish": "Medium, smoky",
    "about": "Aerstone comes from Ailsa Bay distillery on the Ayrshire coast. Land Cask is the smoky one, matured inland; its sister Sea Cask is matured near the sea.",
+   "styles": [
+    "Lightly peated"
+   ],
+   "caskType": "Unknown",
    "img": "img/aerstone-land-cask.webp"
   },
   {
@@ -859,7 +971,6 @@
    "notes": "",
    "rating": 4.0,
    "region": "Highland",
-   "style": "Light & fruity",
    "distillery": "Glenmorangie",
    "owner": "LVMH",
    "founded": "1843",
@@ -868,6 +979,10 @@
    "palate": "Vanilla, honey, orange",
    "finish": "Clean and soft",
    "about": "The Original is Glenmorangie's signature 10 year old. Its very tall stills give a light, elegant spirit.",
+   "styles": [
+    "Light & fruity"
+   ],
+   "caskType": "Bourbon",
    "img": "img/glenmorangie.webp"
   },
   {
@@ -881,8 +996,9 @@
    "notes": "",
    "rating": 4.1,
    "region": "Blended malt",
-   "style": "",
    "about": "A blended malt with a golfing theme: the 'feathery' was the leather golf ball stuffed with feathers used before the 1850s.",
+   "styles": [],
+   "caskType": "Unknown",
    "img": "img/the-feathery-blended-malt.webp"
   },
   {
@@ -896,7 +1012,6 @@
    "notes": "",
    "rating": null,
    "region": "Speyside",
-   "style": "Light & fruity",
    "distillery": "Tomintoul",
    "owner": "Angus Dundee",
    "founded": "1965",
@@ -905,6 +1020,10 @@
    "palate": "Sweet, nutty, vanilla",
    "finish": "Soft, medium length",
    "about": "Tomintoul calls itself 'the gentle dram'. It is made at one of Speyside's highest distilleries, in the hills near the village of the same name.",
+   "styles": [
+    "Light & fruity"
+   ],
+   "caskType": "Unknown",
    "img": "img/tomintoul.webp"
   },
   {
@@ -918,7 +1037,6 @@
    "notes": "",
    "rating": 4.3,
    "region": "Wales",
-   "style": "Wine cask",
    "distillery": "Penderyn",
    "founded": "2000",
    "status": "Operating",
@@ -926,6 +1044,10 @@
    "palate": "Rich fruit, toffee, spice",
    "finish": "Crisp and fruity",
    "about": "Penderyn, at the foot of the Brecon Beacons, revived Welsh whisky in 2000 with its Faraday copper still. Madeira-finished malt is its signature style.",
+   "styles": [
+    "Light & fruity"
+   ],
+   "caskType": "Wine",
    "img": "img/penderyn-madeira.webp"
   },
   {
@@ -939,7 +1061,6 @@
    "notes": "",
    "rating": 3.8,
    "region": "Lowland",
-   "style": "Coastal",
    "distillery": "Ailsa Bay",
    "owner": "William Grant & Sons",
    "founded": "2007",
@@ -948,6 +1069,10 @@
    "palate": "Toffee, sweet spice",
    "finish": "Smooth and light",
    "about": "Sea Cask is matured in warehouses on the Ayrshire coast for a smooth, gently coastal style. Its sister Land Cask is the smoky one.",
+   "styles": [
+    "Coastal"
+   ],
+   "caskType": "Unknown",
    "img": "img/aerstone-sea-cask.webp"
   },
   {
@@ -961,7 +1086,6 @@
    "notes": "",
    "rating": 4.2,
    "region": "Speyside",
-   "style": "Lightly peated",
    "distillery": "Benromach",
    "owner": "Gordon & MacPhail",
    "founded": "1898",
@@ -970,6 +1094,10 @@
    "palate": "Malt, spice, gentle peat",
    "finish": "Long, smoky, creamy",
    "about": "Benromach in Forres was revived by Gordon & MacPhail in 1998. It aims for the gently peated Speyside style of the 1950s.",
+   "styles": [
+    "Lightly peated"
+   ],
+   "caskType": "Mixed or Multiple",
    "img": "img/benromach.webp"
   },
   {
@@ -983,7 +1111,6 @@
    "notes": "",
    "rating": null,
    "region": "Speyside",
-   "style": "Light & fruity",
    "distillery": "The Glenlivet",
    "owner": "Pernod Ricard",
    "founded": "1824",
@@ -992,6 +1119,10 @@
    "palate": "Sweet orange, vanilla",
    "finish": "Soft and creamy",
    "about": "A tribute to founder George Smith, who took out one of the first licences under the 1823 Excise Act.",
+   "styles": [
+    "Light & fruity"
+   ],
+   "caskType": "Bourbon",
    "img": "img/glenlivet-founder-s-reserve.webp"
   },
   {
@@ -1005,7 +1136,6 @@
    "notes": "",
    "rating": 4.2,
    "region": "Ireland",
-   "style": "Rum cask",
    "distillery": "Teeling (Dublin)",
    "owner": "Teeling Whiskey Company",
    "founded": "2015",
@@ -1014,6 +1144,10 @@
    "palate": "Woody, dried fruit, toffee",
    "finish": "Long and spicy",
    "about": "Teeling opened Dublin's first new distillery in over a century in 2015. The Small Batch is finished in ex-rum casks and bottled without chill filtration.",
+   "styles": [
+    "Smooth"
+   ],
+   "caskType": "Rum",
    "img": "img/teeling-small-batch.webp"
   },
   {
@@ -1027,7 +1161,6 @@
    "notes": "",
    "rating": 4.1,
    "region": "Speyside",
-   "style": "Wine cask",
    "distillery": "Tamnavulin",
    "owner": "Whyte & Mackay",
    "founded": "1966",
@@ -1036,6 +1169,10 @@
    "palate": "Toffee, plum, oak",
    "finish": "Medium and fruity",
    "about": "Tamnavulin ('mill on the hill') stands beside the River Livet. The Red Wine Cask Edition has been released in several versions with different wine finishes.",
+   "styles": [
+    "Rich"
+   ],
+   "caskType": "Wine",
    "img": "img/tamnavulin-red-wine-cask-edition.webp"
   },
   {
@@ -1049,7 +1186,6 @@
    "notes": "",
    "rating": 4.2,
    "region": "Islay",
-   "style": "Peated",
    "distillery": "Laphroaig",
    "owner": "Suntory Global Spirits",
    "founded": "1815",
@@ -1058,6 +1194,11 @@
    "palate": "Smoky, salty, hint of sweetness",
    "finish": "Long and peaty",
    "about": "Laphroaig still malts some of its own barley over Islay peat. The 10 year old is the benchmark for big, medicinal Islay smoke and holds a royal warrant.",
+   "styles": [
+    "Peated",
+    "Coastal"
+   ],
+   "caskType": "Bourbon",
    "img": "img/laphroaig.webp"
   },
   {
@@ -1071,8 +1212,11 @@
    "notes": "",
    "rating": null,
    "region": "Grain",
-   "style": "Light grain",
    "about": "A single grain Scotch, lighter and sweeter than most malts.",
+   "styles": [
+    "Smooth"
+   ],
+   "caskType": "Unknown",
    "img": "img/808-single-grain.webp"
   },
   {
@@ -1086,9 +1230,12 @@
    "notes": "",
    "rating": 4.0,
    "region": "Blend",
-   "style": "",
    "size": "75cl",
    "about": "A 12 year old blend bottled for the House of Commons, bearing the portcullis emblem of Parliament.",
+   "styles": [
+    "Smooth blend"
+   ],
+   "caskType": "Unknown",
    "img": "img/house-of-commons-no-1.webp"
   },
   {
@@ -1102,7 +1249,6 @@
    "notes": "",
    "rating": 4.1,
    "region": "Speyside",
-   "style": "Smoky, rum cask",
    "distillery": "Glenfiddich",
    "owner": "William Grant & Sons",
    "founded": "1887",
@@ -1111,6 +1257,10 @@
    "palate": "Sweet, smoky, toffee",
    "finish": "Lingering smoke",
    "about": "Number four in Glenfiddich's Experimental Series. It marries peated malt with unpeated malt and finishes it in rum casks for a sweet, smoky dram.",
+   "styles": [
+    "Gently smoky"
+   ],
+   "caskType": "Rum",
    "img": "img/glenfiddich-fire-cane.webp"
   },
   {
@@ -1124,8 +1274,11 @@
    "notes": "",
    "rating": null,
    "region": "Blend",
-   "style": "",
    "about": "A blend from John Crabbie & Co. of Leith, the firm better known for its ginger wine.",
+   "styles": [
+    "Smooth blend"
+   ],
+   "caskType": "Unknown",
    "img": "img/crabbie-s-highland.webp"
   },
   {
@@ -1139,9 +1292,12 @@
    "notes": "Bill McLaren's Famous XV World Rugby Select",
    "rating": null,
    "region": "Blend",
-   "style": "",
    "owner": "Edrington",
    "about": "A Famous Grouse 15 year old released in tribute to Bill McLaren, the much-loved 'voice of rugby'. It celebrated his all-time Famous XV.",
+   "styles": [
+    "Smooth blend"
+   ],
+   "caskType": "Unknown",
    "img": "img/famous-grouse-famous-xv.webp"
   },
   {
@@ -1155,8 +1311,11 @@
    "notes": "",
    "rating": null,
    "region": "Islay",
-   "style": "Peated",
    "about": "An Islay single malt bottled for Lidl; the distillery is not named.",
+   "styles": [
+    "Peated"
+   ],
+   "caskType": "Unknown",
    "img": "img/ben-bracken-islay.webp"
   },
   {
@@ -1170,8 +1329,9 @@
    "notes": "",
    "rating": null,
    "region": "Speyside",
-   "style": "",
    "about": "A Speyside single malt bottled for Aldi; the distillery is not named.",
+   "styles": [],
+   "caskType": "Unknown",
    "img": "img/glen-marnoch-speyside.webp"
   },
   {
@@ -1185,11 +1345,14 @@
    "notes": "Distilled 1995",
    "rating": null,
    "region": "Highland",
-   "style": "Peated",
    "distillery": "Ardmore",
    "founded": "1898",
    "status": "Operating",
    "about": "Ardmore in Aberdeenshire is one of the few Highland distilleries known for peated spirit; Traditional is its signature style. This bottle was distilled in 1995.",
+   "styles": [
+    "Peated"
+   ],
+   "caskType": "Bourbon",
    "img": "img/ardmore-traditional-peated.webp"
   },
   {
@@ -1203,9 +1366,10 @@
    "notes": "",
    "rating": null,
    "region": "Highland",
-   "style": "",
    "bottler": "Robertsons of Pitlochry",
-   "about": "A 12 year old Highland whisky bottled by Robertsons of Pitlochry, a long-established whisky merchant in the Perthshire town."
+   "about": "A 12 year old Highland whisky bottled by Robertsons of Pitlochry, a long-established whisky merchant in the Perthshire town.",
+   "styles": [],
+   "caskType": "Unknown"
   },
   {
    "id": 61,
@@ -1218,9 +1382,12 @@
    "notes": "",
    "rating": 3.0,
    "region": "Japan",
-   "style": "",
    "owner": "Suntory",
    "about": "Torys is one of Suntory's oldest everyday brands, launched in 1946 and long associated with Japan's highball bars.",
+   "styles": [
+    "Smooth blend"
+   ],
+   "caskType": "Unknown",
    "img": "img/tory-s-extra-suntory.webp"
   },
   {
@@ -1234,10 +1401,11 @@
    "notes": "",
    "rating": null,
    "region": "Blended malt",
-   "style": "",
    "bottler": "Isle of Arran Distillers",
    "size": "70cl",
    "about": "An early bottling from Isle of Arran Distillers, the company founded by Harold Currie that opened the island's first legal distillery in over 150 years at Lochranza in 1995. Glen Rosa, named after the glen above Brodick, was the firm's own-label range, released as a blend and this pure malt before Arran's own single malt came of age. It is seldom seen now.",
+   "styles": [],
+   "caskType": "Unknown",
    "img": "img/glen-rosa-pure-malt.webp"
   },
   {
@@ -1251,9 +1419,10 @@
    "notes": "RIAS bottling",
    "rating": null,
    "region": "Scotland",
-   "style": "",
    "bottler": "Royal Incorporation of Architects in Scotland",
    "about": "A 12 year old malt bottled for the Royal Incorporation of Architects in Scotland to mark a Festival of Architecture.",
+   "styles": [],
+   "caskType": "Unknown",
    "img": "img/festival-of-architecture-malt.webp"
   },
   {
@@ -1267,7 +1436,6 @@
    "notes": "",
    "rating": null,
    "region": "Islands",
-   "style": "",
    "distillery": "Tobermory",
    "owner": "CVH Spirits (Distell)",
    "founded": "1798",
@@ -1276,6 +1444,8 @@
    "palate": "Malty, honey, sea salt",
    "finish": "Medium and dry",
    "about": "The only distillery on Mull, in the island's brightly painted harbour town. Its unpeated whisky is bottled as Tobermory; the peated spirit becomes Ledaig.",
+   "styles": [],
+   "caskType": "Unknown",
    "img": "img/tobermory.webp"
   },
   {
@@ -1289,8 +1459,9 @@
    "notes": "",
    "rating": null,
    "region": "Speyside",
-   "style": "",
    "about": "A Speyside single malt bottled for Lidl; the distillery is not named.",
+   "styles": [],
+   "caskType": "Unknown",
    "img": "img/ben-bracken-speyside.webp"
   },
   {
@@ -1304,12 +1475,13 @@
    "notes": "",
    "rating": 4.1,
    "region": "Highland",
-   "style": "",
    "distillery": "Loch Lomond",
    "owner": "Loch Lomond Group",
    "founded": "1964",
    "status": "Operating",
    "about": "Loch Lomond, at Alexandria, makes a wide range of styles using both traditional and unusual straight-necked stills.",
+   "styles": [],
+   "caskType": "Unknown",
    "img": "img/loch-lomond.webp"
   },
   {
@@ -1323,8 +1495,9 @@
    "notes": "",
    "rating": null,
    "region": "Blended malt",
-   "style": "",
-   "about": "A 21 year old blended malt."
+   "about": "A 21 year old blended malt.",
+   "styles": [],
+   "caskType": "Unknown"
   }
  ],
  "regions": [
@@ -1344,22 +1517,23 @@
   "Sweden"
  ],
  "styles": [
-  "Beer cask",
-  "Cask strength",
-  "Coastal",
+  "Peated",
+  "Lightly peated",
   "Gently smoky",
-  "Honey & smoke",
+  "Coastal",
+  "Rich",
   "Honeyed",
   "Light & fruity",
-  "Light grain",
-  "Lightly peated",
-  "Peated",
-  "Rich & meaty",
-  "Rich & smooth",
-  "Rum cask",
-  "Sherried",
-  "Single cask",
-  "Smoky, rum cask",
-  "Wine cask"
+  "Smooth",
+  "Smooth blend",
+  "Cask strength"
+ ],
+ "casks": [
+  "Bourbon",
+  "Sherry",
+  "Wine",
+  "Rum",
+  "Beer",
+  "Mixed or Multiple"
  ]
 }
