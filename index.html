@@ -92,6 +92,11 @@ dd{margin:0;font-size:15px}
 .bar .label{color:var(--sand)}
 .bar .sel{flex:1;font:italic 500 17px/1.25 var(--serif);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .bar button{background:transparent;color:var(--mist);border:1px solid var(--sand);font:600 11px var(--sans);letter-spacing:.14em;text-transform:uppercase;padding:9px 12px;cursor:pointer}
+.choice-pic{display:flex;justify-content:center;align-items:center;height:min(52vh,420px);margin:14px 0 10px;background:#fff;border-top:1px solid var(--brass);border-bottom:1px solid var(--brass)}
+.choice-pic img{max-height:94%;max-width:100%;display:block}
+.choice-name{text-align:center;margin:14px 0 4px!important}
+.choice-act{text-align:center;margin:6px 0 4px}
+.link{background:none;border:0;padding:8px;font:500 12px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--green);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
 .mine{list-style:none;padding:0;margin:14px 0 20px}
 .mine li{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid rgba(143,111,62,.4);font:600 19px var(--serif)}
 .mine li button{background:none;border:0;color:var(--green);font:500 12px var(--sans);text-decoration:underline;cursor:pointer}
@@ -1416,7 +1421,7 @@ const D={
 const $=s=>document.querySelector(s);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const KEY='mh-whisky-choice';
-let mine=[];try{mine=JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){}
+let mine=[];try{mine=JSON.parse(localStorage.getItem(KEY)||'[]').slice(-1)}catch(e){}
 const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(mine))}catch(e){};bar();render()};
 const F={tier:new Set(),region:new Set(),style:new Set()};
 const tierTxt=n=>'£'.repeat(n);
@@ -1447,13 +1452,14 @@ function detail(id){const b=D.bottles.find(x=>x.id===id);const has=mine.includes
  <dl class="grid">${rows.map(r=>`<dt>${r[0]}</dt><dd>${esc(r[1])}</dd>`).join('')}</dl>
  ${t.length?`<div class="taste"><h3>Tasting notes</h3>${t.map(r=>`<p><b>${r[0]}</b>${esc(r[1])}</p>`).join('')}</div>`:''}
  ${b.about?`<div class="about"><h3>About</h3><p>${esc(b.about)}</p></div>`:''}
- <button class="btn${has?' ghost':''}" id="pick" data-id="${id}">${has?'Remove from my choice':'I’ll have this'}</button>`)}
-function list(){open(`<div class="label">My choice</div><h2>Show this to your host</h2>${mine.length?`<ul class="mine">${mine.map(id=>{const b=D.bottles.find(x=>x.id===id);return b?`<li>${esc(b.name)}<button data-rm="${id}">Remove</button></li>`:''}).join('')}</ul><button class="btn ghost" id="clear">Clear all</button>`:'<p class="intro">Nothing chosen yet. Tap a bottle to have a look.</p>'}`)}
-function bar(){mine=mine.filter(id=>D.bottles.some(b=>b.id===id));$('#sel').textContent=mine.length?mine.map(id=>D.bottles.find(b=>b.id===id).name).join(' · '):'Nothing chosen yet'}
+ <button class="btn${has?' ghost':''}" id="pick" data-id="${id}">${has?'Remove as my choice':(mine.length?'Choose this instead':'I’ll have this')}</button>`)}
+function list(){const b=mine.length&&D.bottles.find(x=>x.id===mine[0]);
+ open(b?`<div class="label" style="text-align:center;padding-top:22px">My choice</div><div class="choice-pic"><img src="${b.img||'img/placeholder.svg'}" alt="${esc(b.name)}" decoding="async" onerror="this.onerror=null;this.src='img/placeholder.svg'"></div><h2 class="choice-name">${esc(b.name)}</h2><p class="choice-act"><button class="link" id="clear">Clear choice</button></p>`
+ :'<div class="label" style="text-align:center;padding-top:22px">My choice</div><p class="intro">Nothing chosen yet. Tap a bottle to have a look.</p>')}
+function bar(){mine=mine.filter(id=>D.bottles.some(b=>b.id===id));$('#sel').textContent=mine.length?D.bottles.find(b=>b.id===mine[0]).name:'Nothing chosen yet'}
 $('#list').onclick=e=>{const li=e.target.closest('.item');if(li)detail(+li.dataset.id)};
 $('#sheet').onclick=e=>{if(e.target.id==='sheet'||e.target.closest('.close'))return shut();
- const p=e.target.closest('#pick');if(p){const id=+p.dataset.id;mine.includes(id)?mine=mine.filter(x=>x!==id):mine.push(id);save();shut();return}
- const rm=e.target.closest('[data-rm]');if(rm){mine=mine.filter(x=>x!==+rm.dataset.rm);save();list();return}
+ const p=e.target.closest('#pick');if(p){const id=+p.dataset.id;mine=mine.includes(id)?[]:[id];save();shut();return}
  if(e.target.id==='clear'){mine=[];save();list()}};
 $('#bar').onclick=list;
 document.addEventListener('keydown',e=>{if(e.key==='Escape')shut()});
