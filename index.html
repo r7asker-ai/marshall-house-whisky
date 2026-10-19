@@ -1061,7 +1061,7 @@ function wpos(t,q){const l=t.toLowerCase();if(l.startsWith(q))return 0;const re=
 function ac(){const raw=qi.value,q=raw.toLowerCase().trim();sel=-1;
  if(!q){hits=[];sg.classList.remove('open');qi.setAttribute('aria-expanded','false');gh.innerHTML='';return}
  hits=AC.map(o=>({...o,p:wpos(o.t,q)})).filter(o=>o.p>=0&&o.t.toLowerCase()!==q).sort((a,b)=>(a.k==='Bottle'?0:1)-(b.k==='Bottle'?0:1)||(a.p>0)-(b.p>0)).slice(0,8);
- sg.innerHTML=hits.map((o,i)=>`<li role="option" data-i="${i}">${esc(o.t.slice(0,o.p))}<mark>${esc(o.t.slice(o.p,o.p+q.length))}</mark>${esc(o.t.slice(o.p+q.length))}<span class="k">${o.k}</span></li>`).join('');
+ sg.innerHTML=hits.map((o,i)=>`<li role="option" data-i="${i}"><span>${esc(o.t.slice(0,o.p))}<mark>${esc(o.t.slice(o.p,o.p+q.length))}</mark>${esc(o.t.slice(o.p+q.length))}</span><span class="k">${o.k}</span></li>`).join('');
  sg.classList.toggle('open',hits.length>0);qi.setAttribute('aria-expanded',hits.length>0);ghost()}
 function ghost(){const raw=qi.value,top=hits.find(o=>o.p===0);gh.innerHTML=top&&raw&&top.t.toLowerCase().startsWith(raw.toLowerCase())?esc(raw)+'<b>'+esc(top.t.slice(raw.length))+'</b>':''}
 function pick(t){qi.value=t;hits=[];sg.classList.remove('open');qi.setAttribute('aria-expanded','false');gh.innerHTML='';render()}
