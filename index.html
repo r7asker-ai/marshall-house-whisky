@@ -1524,14 +1524,14 @@ function detail(id){const b=D.bottles.find(x=>x.id===id);const has=mine.includes
  <dl class="grid">${rows.map(r=>`<dt>${r[0]}</dt><dd>${esc(r[1])}</dd>`).join('')}</dl>
  ${t.length?`<div class="taste"><h3>Tasting notes</h3>${t.map(r=>`<p><b>${r[0]}</b>${esc(r[1])}</p>`).join('')}</div>`:''}
  ${b.about?`<div class="about"><h3>About</h3><p>${esc(b.about)}</p></div>`:''}
- <button class="btn${has?' ghost':''}" id="pick" data-id="${id}">${has?'Remove as my choice':(mine.length?'Choose this instead':'I’ll have this')}</button>`)}
+ ${has?'<p class="label" style="text-align:center;color:var(--green);margin:4px 0 10px">Your choice</p>':''}<button class="btn" id="pick" data-id="${id}">I’ll have this</button>`)}
 function list(){const b=mine.length&&D.bottles.find(x=>x.id===mine[0]);
  open(b?`<div class="label" style="text-align:center;padding-top:22px">My choice</div><div class="choice-pic"><img src="${b.img||'img/placeholder.svg'}" alt="${esc(b.name)}" decoding="async" onerror="this.onerror=null;this.src='img/placeholder.svg'"></div><h2 class="choice-name">${esc(b.name)}</h2><p class="choice-act"><button class="link" id="clear">Clear choice</button></p>`
  :'<div class="label" style="text-align:center;padding-top:22px">My choice</div><p class="intro">Nothing chosen yet. Tap a bottle to have a look.</p>')}
 function bar(){mine=mine.filter(id=>D.bottles.some(b=>b.id===id));$('#sel').textContent=mine.length?D.bottles.find(b=>b.id===mine[0]).name:'Nothing chosen yet'}
 $('#list').onclick=e=>{const li=e.target.closest('.item');if(li)detail(+li.dataset.id)};
 $('#sheet').onclick=e=>{if(e.target.id==='sheet'||e.target.closest('.close'))return shut();
- const p=e.target.closest('#pick');if(p){const id=+p.dataset.id;mine=mine.includes(id)?[]:[id];save();shut();return}
+ const p=e.target.closest('#pick');if(p){const id=+p.dataset.id;mine=[id];save();list();return}
  if(e.target.id==='clear'){mine=[];save();list()}};
 $('#bar').onclick=list;
 document.addEventListener('keydown',e=>{if(e.key==='Escape')shut()});
