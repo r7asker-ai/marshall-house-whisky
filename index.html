@@ -1,0 +1,984 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Marshall House · Whisky</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#F2F5EF">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--green:#5B7A5A;--brass:#8F6F3E;--slate:#2F3E46;--sand:#D8C3A5;--mist:#F2F5EF;--thistle:#9A4C9A;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Inter',system-ui,sans-serif}
+*{box-sizing:border-box;border-radius:0!important}
+html,body{margin:0;background:var(--mist);color:var(--slate);font:400 15px/1.5 var(--sans);-webkit-text-size-adjust:100%}
+body{padding-bottom:calc(84px + env(safe-area-inset-bottom))}
+a{color:var(--green)}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+header{text-align:center;padding:36px 20px 18px}
+header img{width:min(78vw,340px);height:auto;display:block;margin:0 auto}
+.rule{height:1px;background:var(--brass);border:0;margin:0}
+.rule.short{width:56px;margin:16px auto}
+.label{font:600 11px/1.2 var(--sans);letter-spacing:.18em;text-transform:uppercase}
+header .label{color:var(--brass)}
+.intro{font:italic 500 19px/1.4 var(--serif);text-align:center;margin:6px auto 22px;max-width:30em}
+.controls{position:sticky;top:0;z-index:5;background:var(--mist);padding:12px 0 10px;border-bottom:1px solid var(--brass)}
+.search{width:100%;padding:11px 12px;font:400 16px var(--sans);color:var(--slate);background:#fff;border:1px solid var(--sand);outline:none}
+.search:focus{border-color:var(--green)}
+.row{display:flex;gap:8px;align-items:center;margin-top:10px}
+.chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;flex:1}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;font:500 12px/1 var(--sans);letter-spacing:.06em;padding:8px 11px;background:transparent;color:var(--green);border:1px solid var(--green);cursor:pointer;white-space:nowrap}
+.chip[aria-pressed=true]{background:var(--green);color:#fff}
+.grp{flex:none;width:52px;color:var(--brass);font-size:10px}
+select{font:500 12px var(--sans);color:var(--slate);background:#fff;border:1px solid var(--sand);padding:7px 8px}
+.count{font-size:12px;color:#5d6a70;margin-left:auto}
+ul.list{list-style:none;margin:0;padding:0}
+.item{display:grid;grid-template-columns:1fr auto;gap:4px 14px;padding:16px 2px;border-bottom:1px solid rgba(143,111,62,.35);cursor:pointer}
+.item:active{background:#fff}
+.name{font:600 20px/1.2 var(--serif)}
+.meta{grid-column:1;font-size:12.5px;color:#56646b}
+.side{grid-row:1/3;grid-column:2;text-align:right;align-self:center}
+.tier{font:600 13px var(--sans);letter-spacing:.08em;color:var(--brass)}
+.tier i{font-style:normal;opacity:.25}
+.stars{color:var(--brass);font-size:13px;letter-spacing:1px;white-space:nowrap}
+.stars small{color:var(--slate);font:500 12px var(--sans);letter-spacing:0;margin-left:4px}
+.nr{font-size:12px;color:#7a868b;font-style:italic}
+.tag{display:inline-block;font:600 10px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--green);border:1px solid var(--green);padding:4px 6px;margin-right:6px;vertical-align:1px}
+.mine-dot{color:var(--thistle);font-size:10px;margin-left:6px}
+.empty{text-align:center;padding:40px 0;font:italic 500 18px var(--serif)}
+/* detail */
+.sheet{position:fixed;inset:0;background:rgba(47,62,70,.55);display:none;align-items:flex-end;justify-content:center;z-index:20}
+.sheet.open{display:flex}
+.card{background:var(--mist);width:100%;max-width:560px;padding:26px 24px calc(24px + env(safe-area-inset-bottom));border-top:3px solid var(--brass);max-height:88vh;overflow:auto;position:relative}
+.card h2{font:600 28px/1.15 var(--serif);margin:8px 0 6px}
+.card .label{color:var(--brass)}
+dl{display:grid;grid-template-columns:auto 1fr;gap:10px 18px;margin:20px 0;padding:16px 0;border-top:1px solid var(--brass);border-bottom:1px solid var(--brass)}
+dt{font:600 10.5px/1.6 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:#5d6a70}
+dd{margin:0;font-size:15px}
+.btn{display:block;width:100%;padding:15px;font:600 12px var(--sans);letter-spacing:.18em;text-transform:uppercase;background:var(--green);color:#fff;border:1px solid var(--green);cursor:pointer}
+.btn.ghost{background:transparent;color:var(--green)}
+.close{position:absolute;top:10px;right:12px;background:none;border:0;font:500 28px/1 var(--serif);color:var(--slate);cursor:pointer;padding:6px}
+/* my choice */
+.bar{position:fixed;left:0;right:0;bottom:0;background:var(--slate);color:var(--mist);z-index:10;border-top:2px solid var(--brass);padding:12px 20px calc(12px + env(safe-area-inset-bottom))}
+.bar .wrap{display:flex;align-items:center;gap:12px;padding:0}
+.bar .label{color:var(--sand)}
+.bar .sel{flex:1;font:italic 500 17px/1.25 var(--serif);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bar button{background:transparent;color:var(--mist);border:1px solid var(--sand);font:600 11px var(--sans);letter-spacing:.14em;text-transform:uppercase;padding:9px 12px;cursor:pointer}
+.mine{list-style:none;padding:0;margin:14px 0 20px}
+.mine li{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid rgba(143,111,62,.4);font:600 19px var(--serif)}
+.mine li button{background:none;border:0;color:var(--green);font:500 12px var(--sans);text-decoration:underline;cursor:pointer}
+footer{text-align:center;padding:34px 20px 20px;font-size:12px;color:#5d6a70}
+footer .label{color:var(--brass);font-size:10px}
+</style>
+</head>
+<body>
+<header>
+  <img src="wordmark.svg" alt="Marshall House" width="340" height="40">
+  <hr class="rule short">
+  <div class="label">The Whisky List</div>
+</header>
+<p class="intro wrap">A dram for every mood. Have a browse, pick what appeals, and show us your choice.</p>
+<div class="controls"><div class="wrap">
+  <input class="search" id="q" type="search" placeholder="Search bottles, regions, styles…" aria-label="Search">
+  <div class="row"><span class="label grp">Tier</span><div class="chips" id="f-tier"></div></div>
+  <div class="row"><span class="label grp">Region</span><div class="chips" id="f-region"></div></div>
+  <div class="row"><span class="label grp">Style</span><div class="chips" id="f-style"></div></div>
+  <div class="row"><span class="label grp">Sort</span>
+    <select id="sort" aria-label="Sort"><option value="tier">Tier (high to low)</option><option value="rating">Rating</option><option value="name">Name (A–Z)</option><option value="age">Age (oldest first)</option></select>
+    <span class="count" id="count"></span></div>
+</div></div>
+<main class="wrap"><ul class="list" id="list"></ul></main>
+<footer><hr class="rule short"><div class="label">Please drink responsibly</div><p>Tiers are a rough guide to rarity. Ratings are community scores out of five.</p></footer>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true"><div class="card" id="card"></div></div>
+<div class="bar" id="bar"><div class="wrap"><div style="flex:1;min-width:0"><div class="label">My choice</div><div class="sel" id="sel">Nothing chosen yet</div></div><button id="show">View</button></div></div>
+
+<script>
+const D={
+ "bottles": [
+  {
+   "id": 1,
+   "name": "Macallan Ruby",
+   "age": "No age statement",
+   "ageN": null,
+   "cask": "Sherry",
+   "abv": "",
+   "tierN": 5,
+   "rating": 4.3,
+   "region": "Speyside",
+   "style": "Sherried"
+  },
+  {
+   "id": 2,
+   "name": "Rosebank, Old Malt Cask (Douglas Laing), cask 224, 1 of 211, dist Jan 1990, btl Jun 2003",
+   "age": "13 years",
+   "ageN": 13,
+   "cask": "Single cask",
+   "abv": "50%",
+   "tierN": 5,
+   "rating": null,
+   "region": "Lowland",
+   "style": "Single cask"
+  },
+  {
+   "id": 3,
+   "name": "SMWS 87.3 (Millburn, closed), dist Oct 83, btl Jun 96",
+   "age": "12 years",
+   "ageN": 12,
+   "cask": "",
+   "abv": "57.8%",
+   "tierN": 5,
+   "rating": 4.5,
+   "region": "Highland",
+   "style": "Cask strength"
+  },
+  {
+   "id": 4,
+   "name": "Moray Glen, 100th Moray Open 2005",
+   "age": "14 years",
+   "ageN": 14,
+   "cask": "",
+   "abv": "",
+   "tierN": 5,
+   "rating": null,
+   "region": "Speyside",
+   "style": ""
+  },
+  {
+   "id": 5,
+   "name": "Glenfarclas",
+   "age": "21 years",
+   "ageN": 21,
+   "cask": "",
+   "abv": "43%",
+   "tierN": 4,
+   "rating": 4.3,
+   "region": "Speyside",
+   "style": "Sherried"
+  },
+  {
+   "id": 6,
+   "name": "Johnnie Walker Blue Label",
+   "age": "No age statement",
+   "ageN": null,
+   "cask": "",
+   "abv": "",
+   "tierN": 4,
+   "rating": 4.2,
+   "region": "Blend",
+   "style": "Rich & smooth"
+  },
+  {
+   "id": 7,
+   "name": "GlenDronach Parliament",
+   "age": "21 years",
+   "ageN": 21,
+   "cask": "",
+   "abv": "",
+   "tierN": 4,
+   "rating": 4.5,
+   "region": "Highland",
+   "style": "Sherried"
+  },
+  {
+   "id": 8,
+   "name": "Bunnahabhain single cask, Boisdale 25th Anniversary (1 of 300), dist 20/10/1989, btl 2015",
+   "age": "25 years",
+   "ageN": 25,
+   "cask": "Single cask",
+   "abv": "",
+   "tierN": 4,
+   "rating": null,
+   "region": "Islay",
+   "style": "Single cask"
+  },
+  {
+   "id": 9,
+   "name": "Copper Monument (Ardmore) 2010",
+   "age": "7 years",
+   "ageN": 7,
+   "cask": "Bourbon",
+   "abv": "",
+   "tierN": 4,
+   "rating": 4.2,
+   "region": "Highland",
+   "style": "Lightly peated"
+  },
+  {
+   "id": 10,
+   "name": "Tomatin",
+   "age": "18 years",
+   "ageN": 18,
+   "cask": "",
+   "abv": "",
+   "tierN": 4,
+   "rating": 4.3,
+   "region": "Highland",
+   "style": "Sherried"
+  },
+  {
+   "id": 11,
+   "name": "Edradour Natural Cask Strength (decanter)",
+   "age": "No age statement",
+   "ageN": null,
+   "cask": "",
+   "abv": "",
+   "tierN": 4,
+   "rating": null,
+   "region": "Highland",
+   "style": "Cask strength"
+  },
+  {
+   "id": 12,
+   "name": "Highland Park \"Rebus 30\"",
+   "age": "10 years",
+   "ageN": 10,
+   "cask": "",
+   "abv": "",
+   "tierN": 4,
+   "rating": 4.2,
+   "region": "Islands",
+   "style": "Honey & smoke"
+  },
+  {
+   "id": 13,
+   "name": "Glenfarclas 105",
+   "age": "No age statement",
+   "ageN": null,
+   "cask": "",
+   "abv": "60%",
+   "tierN": 4,
+   "rating": 4.2,
+   "region": "Speyside",
+   "style": "Cask strength"
+  },
+  {
+   "id": 14,
+   "name": "Glen Deveron Burgh of Macduff",
+   "age": "16 years",
+   "ageN": 16,
+   "cask": "",
+   "abv": "",
+   "tierN": 3,
+   "rating": null,
+   "region": "Highland",
+   "style": ""
+  },
+  {
+   "id": 15,
+   "name": "Glen Deveron (boxed)",
+   "age": "16 years",
+   "ageN": 16,
+   "cask": "",
+   "abv": "",
+   "tierN": 3,
+   "rating": null,
+   "region": "Highland",
+   "style": ""
+  },
+  {
+   "id": 16,
+   "name": "Glengoyne (Lang Brothers bottling)",
+   "age": "17 years",
+   "ageN": 17,
+   "cask": "",
+   "abv": "43%",
+   "tierN": 3,
+   "rating": null,
+   "region": "Highland",
+   "style": ""
+  },
+  {
+   "id": 17,
+   "name": "Macallan Fine Oak",
+   "age": "10 years",
+   "ageN": 10,
+   "cask": "Triple Cask",
+   "abv": "",
+   "tierN": 3,
+   "rating": 3.8,
+   "region": "Speyside",
+   "style": "Light & fruity"
+  },
+  {
+   "id": 18,
+   "name": "Ardnamurchan AD/02.22 Cask Strength",
+   "age": "No age statement",
+   "ageN": null,
+   "cask": "",
+   "abv": "58.7%",
+   "tierN": 3,
+   "rating": 4.3,
+   "region": "Highland",
+   "style": "Peated"
+  },
+  {
+   "id": 19,
+   "name": "Glenlivet Unblended All Malt (old, 75cl)",
+   "age": "12 years",
+   "ageN": 12,
+   "cask": "",
+   "abv": "40%",
+   "tierN": 3,
+   "rating": 4.3,
+   "region": "Speyside",
+   "style": "Light & fruity"
+  },
+  {
+   "id": 20,
+   "name": "Springbank",
+   "age": "10 years",
+   "ageN": 10,
+   "cask": "",
+   "abv": "46%",
+   "tierN": 3,
+   "rating": 4.4,
+   "region": "Campbeltown",
+   "style": "Lightly peated"
+  },
+  {
+   "id": 21,
+   "name": "Hazelburn",
+   "age": "10 years",
+   "ageN": 10,
+   "cask": "",
+   "abv": "",
+   "tierN": 3,
+   "rating": 4.2,
+   "region": "Campbeltown",
+   "style": "Light & fruity"
+  },
+  {
+   "id": 22,
+   "name": "Craigellachie Old Fashioned",
+   "age": "13 years",
+   "ageN": 13,
+   "cask": "",
+   "abv": "",
+   "tierN": 3,
+   "rating": 4.1,
+   "region": "Speyside",
+   "style": "Rich & meaty"
+  },
+  {
+   "id": 23,
+   "name": "Aberlour Casg Annamh",
+   "age": "No age statement",
+   "ageN": null,
+   "cask": "Oloroso",
+   "abv": "48%",
+   "tierN": 3,
+   "rating": 4.2,
+   "region": "Speyside",
+   "style": "Sherried"
+  },
+  {
+   "id": 24,
+   "name": "Aultmore Foggie Moss",
+   "age": "12 years",
+   "ageN": 12,
+   "cask": "",
+   "abv": "",
+   "tierN": 3,
+   "rating": null,
+   "region": "Speyside",
+   "style": "Light & fruity"
+  },
+  {
+   "id": 25,
+   "name": "Deanston",
+   "age": "10 years",
+   "ageN": 10,
+   "cask": "Bordeaux red wine",
+   "abv": "",
+   "tierN": 3,
+   "rating": 4.3,
+   "region": "Highland",
+   "style": "Wine cask"
+  },
+  {
+   "id": 26,
+   "name": "Glenfiddich IPA Experiment",
+   "age": "No age statement",
+   "ageN": null,
+   "cask": "IPA",
+   "abv": "",
+   "tierN": 3,
+   "rating": 4.0,
+   "region": "Speyside",
+   "style": "Beer cask"
+  },
+  {
+   "id": 27,
+   "name": "Allt-á-Bhainne",
+   "age": "No age statement",
+   "ageN": null,
+   "cask": "",
+   "abv": "",
+   "tierN": 3,
+   "rating": null,
+   "region": "Speyside",
+   "style": "Lightly peated"
+  },
+  {
+   "id": 28,
+   "name": "Mackmyra Skördetid",
+   "age": "No age statement",
+   "ageN": null,
+   "cask": "Amarone",
+   "abv": "",
+   "tierN": 2,
+   "rating": 4.2,
+   "region": "Sweden",
+   "style": "Wine cask"
+  },
+  {
+   "id": 29,
+   "name": "The Chita",
+   "age": "No age statement",
+   "ageN": null,
+   "cask": "",
+   "abv": "",
+   "tierN": 2,
+   "rating": 3.7,
+   "region": "Japan",
+   "style": "Light grain"
+  },
+  {
+   "id": 30,
+   "name": "Johnnie Walker Gold Label Reserve",
+   "age": "No age statement",
+   "ageN": null,
+   "cask": "",
+   "abv": "",
+   "tierN": 2,
+   "rating": 3.9,
+   "region": "Blend",
+   "style": "Rich & smooth"
+  },
+  {
+   "id": 31,
+   "name": "Dalwhinnie",
+   "age": "15 years",
+   "ageN": 15,
+   "cask": "",
+   "abv": "",
+   "tierN": 2,
+   "rating": 4.1,
+   "region": "Highland",
+   "style": "Honeyed"
+  },
+  {
+   "id": 32,
+   "name": "Dufftown-Glenlivet Pure Malt",
+   "age": "8 years",
+   "ageN": 8,
+   "cask": "",
+   "abv": "",
+   "tierN": 2,
+   "rating": null,
+   "region": "Speyside",
+   "style": ""
+  },
+  {
+   "id": 33,
+   "name": "Loch Lomond The Open Special Edition",
+   "age": "No age statement",
+   "ageN": null,
+   "cask": "",
+   "abv": "",
+   "tierN": 2,
+   "rating": 4.3,
+   "region": "Highland",
+   "style": ""
+  },
+  {
+   "id": 34,
+   "name": "Glengoyne",
+   "age": "10 years",
+   "ageN": 10,
+   "cask": "",
+   "abv": "40%",
+   "tierN": 2,
+   "rating": 4.0,
+   "region": "Highland",
+   "style": "Light & fruity"
+  },
+  {
+   "id": 35,
+   "name": "Crawford's Three Star Blended",
+   "age": "No age statement",
+   "ageN": null,
+   "cask": "",
+   "abv": "",
+   "tierN": 2,
+   "rating": null,
+   "region": "Blend",
+   "style": ""
+  },
+  {
+   "id": 36,
+   "name": "Glenfiddich",
+   "age": "12 years",
+   "ageN": 12,
+   "cask": "",
+   "abv": "",
+   "tierN": 2,
+   "rating": 3.8,
+   "region": "Speyside",
+   "style": "Light & fruity"
+  },
+  {
+   "id": 37,
+   "name": "Glenmorangie Millennium Malt",
+   "age": "12 years",
+   "ageN": 12,
+   "cask": "First fill",
+   "abv": "40%",
+   "tierN": 2,
+   "rating": 4.1,
+   "region": "Highland",
+   "style": "Light & fruity"
+  },
+  {
+   "id": 38,
+   "name": "Singleton of Dufftown",
+   "age": "12 years",
+   "ageN": 12,
+   "cask": "",
+   "abv": "",
+   "tierN": 2,
+   "rating": 4.0,
+   "region": "Speyside",
+   "style": "Light & fruity"
+  },
+  {
+   "id": 39,
+   "name": "Johnnie Walker Green Label",
+   "age": "15 years",
+   "ageN": 15,
+   "cask": "",
+   "abv": "",
+   "tierN": 2,
+   "rating": 4.2,
+   "region": "Blended malt",
+   "style": "Gently smoky"
+  },
+  {
+   "id": 40,
+   "name": "Douglas Laing Timorous Beastie Blended Malt",
+   "age": "No age statement",
+   "ageN": null,
+   "cask": "",
+   "abv": "46.8%",
+   "tierN": 2,
+   "rating": 4.1,
+   "region": "Blended malt",
+   "style": ""
+  },
+  {
+   "id": 41,
+   "name": "Aerstone Land Cask",
+   "age": "10 years",
+   "ageN": 10,
+   "cask": "",
+   "abv": "40%",
+   "tierN": 2,
+   "rating": null,
+   "region": "Lowland",
+   "style": "Lightly peated"
+  },
+  {
+   "id": 42,
+   "name": "Glenmorangie",
+   "age": "10 years",
+   "ageN": 10,
+   "cask": "",
+   "abv": "",
+   "tierN": 2,
+   "rating": 4.0,
+   "region": "Highland",
+   "style": "Light & fruity"
+  },
+  {
+   "id": 43,
+   "name": "The Feathery Blended Malt",
+   "age": "No age statement",
+   "ageN": null,
+   "cask": "",
+   "abv": "",
+   "tierN": 2,
+   "rating": 4.1,
+   "region": "Blended malt",
+   "style": ""
+  },
+  {
+   "id": 44,
+   "name": "Tomintoul",
+   "age": "10 years",
+   "ageN": 10,
+   "cask": "",
+   "abv": "",
+   "tierN": 2,
+   "rating": null,
+   "region": "Speyside",
+   "style": "Light & fruity"
+  },
+  {
+   "id": 45,
+   "name": "Penderyn Madeira",
+   "age": "No age statement",
+   "ageN": null,
+   "cask": "Madeira",
+   "abv": "",
+   "tierN": 2,
+   "rating": 4.3,
+   "region": "Wales",
+   "style": "Wine cask"
+  },
+  {
+   "id": 46,
+   "name": "Aerstone Sea Cask",
+   "age": "10 years",
+   "ageN": 10,
+   "cask": "",
+   "abv": "40%",
+   "tierN": 2,
+   "rating": 3.8,
+   "region": "Lowland",
+   "style": "Coastal"
+  },
+  {
+   "id": 47,
+   "name": "Benromach",
+   "age": "10 years",
+   "ageN": 10,
+   "cask": "",
+   "abv": "",
+   "tierN": 2,
+   "rating": 4.2,
+   "region": "Speyside",
+   "style": "Lightly peated"
+  },
+  {
+   "id": 48,
+   "name": "Glenlivet Founder's Reserve",
+   "age": "No age statement",
+   "ageN": null,
+   "cask": "",
+   "abv": "",
+   "tierN": 2,
+   "rating": null,
+   "region": "Speyside",
+   "style": "Light & fruity"
+  },
+  {
+   "id": 49,
+   "name": "Teeling Small Batch",
+   "age": "No age statement",
+   "ageN": null,
+   "cask": "Rum",
+   "abv": "",
+   "tierN": 1,
+   "rating": 4.2,
+   "region": "Ireland",
+   "style": "Rum cask"
+  },
+  {
+   "id": 50,
+   "name": "Tamnavulin Red Wine Cask Edition",
+   "age": "No age statement",
+   "ageN": null,
+   "cask": "Red wine",
+   "abv": "",
+   "tierN": 1,
+   "rating": 4.1,
+   "region": "Speyside",
+   "style": "Wine cask"
+  },
+  {
+   "id": 51,
+   "name": "Laphroaig",
+   "age": "10 years",
+   "ageN": 10,
+   "cask": "",
+   "abv": "40%",
+   "tierN": 1,
+   "rating": 4.2,
+   "region": "Islay",
+   "style": "Peated"
+  },
+  {
+   "id": 52,
+   "name": "808 Single Grain",
+   "age": "No age statement",
+   "ageN": null,
+   "cask": "",
+   "abv": "40%",
+   "tierN": 1,
+   "rating": null,
+   "region": "Grain",
+   "style": "Light grain"
+  },
+  {
+   "id": 53,
+   "name": "House of Commons No1 Scotch Whisky",
+   "age": "12 years",
+   "ageN": 12,
+   "cask": "",
+   "abv": "40%",
+   "tierN": 1,
+   "rating": 4.0,
+   "region": "Blend",
+   "style": ""
+  },
+  {
+   "id": 54,
+   "name": "Glenfiddich Fire & Cane",
+   "age": "No age statement",
+   "ageN": null,
+   "cask": "Rum",
+   "abv": "",
+   "tierN": 1,
+   "rating": 4.1,
+   "region": "Speyside",
+   "style": "Smoky, rum cask"
+  },
+  {
+   "id": 55,
+   "name": "Crabbie's Highland",
+   "age": "8 years",
+   "ageN": 8,
+   "cask": "",
+   "abv": "",
+   "tierN": 1,
+   "rating": null,
+   "region": "Blend",
+   "style": ""
+  },
+  {
+   "id": 56,
+   "name": "Famous Grouse Bill McLaren's Famous XV World Rugby Select",
+   "age": "15 years",
+   "ageN": 15,
+   "cask": "",
+   "abv": "40%",
+   "tierN": 1,
+   "rating": null,
+   "region": "Blend",
+   "style": ""
+  },
+  {
+   "id": 57,
+   "name": "Ben Bracken Islay",
+   "age": "No age statement",
+   "ageN": null,
+   "cask": "",
+   "abv": "",
+   "tierN": 1,
+   "rating": null,
+   "region": "Islay",
+   "style": "Peated"
+  },
+  {
+   "id": 58,
+   "name": "Glen Marnoch Speyside",
+   "age": "12 years",
+   "ageN": 12,
+   "cask": "",
+   "abv": "",
+   "tierN": 1,
+   "rating": null,
+   "region": "Speyside",
+   "style": ""
+  },
+  {
+   "id": 59,
+   "name": "Ardmore Traditional Peated, distilled 1995",
+   "age": "",
+   "ageN": null,
+   "cask": "Bourbon",
+   "abv": "",
+   "tierN": 2,
+   "rating": null,
+   "region": "Highland",
+   "style": "Peated"
+  },
+  {
+   "id": 60,
+   "name": "Robertsons of Pitlochry Highland",
+   "age": "12 years",
+   "ageN": 12,
+   "cask": "",
+   "abv": "",
+   "tierN": 3,
+   "rating": null,
+   "region": "Highland",
+   "style": ""
+  },
+  {
+   "id": 61,
+   "name": "Tory's Extra (Suntory)",
+   "age": "No age statement",
+   "ageN": null,
+   "cask": "",
+   "abv": "",
+   "tierN": 2,
+   "rating": 3.0,
+   "region": "Japan",
+   "style": ""
+  },
+  {
+   "id": 62,
+   "name": "Glen Ross Pure Malt",
+   "age": "12 years",
+   "ageN": 12,
+   "cask": "",
+   "abv": "",
+   "tierN": 2,
+   "rating": null,
+   "region": "Blended malt",
+   "style": ""
+  },
+  {
+   "id": 63,
+   "name": "Festival of Architecture Malt (RIAS bottling)",
+   "age": "12 years",
+   "ageN": 12,
+   "cask": "",
+   "abv": "43%",
+   "tierN": 2,
+   "rating": null,
+   "region": "Scotland",
+   "style": ""
+  },
+  {
+   "id": 64,
+   "name": "Tobermory",
+   "age": "10 years",
+   "ageN": 10,
+   "cask": "",
+   "abv": "",
+   "tierN": 2,
+   "rating": null,
+   "region": "Islands",
+   "style": ""
+  },
+  {
+   "id": 65,
+   "name": "Ben Bracken Speyside",
+   "age": "No age statement",
+   "ageN": null,
+   "cask": "",
+   "abv": "",
+   "tierN": 1,
+   "rating": null,
+   "region": "Speyside",
+   "style": ""
+  },
+  {
+   "id": 66,
+   "name": "Loch Lomond",
+   "age": "10 years",
+   "ageN": 10,
+   "cask": "",
+   "abv": "",
+   "tierN": 2,
+   "rating": 4.1,
+   "region": "Highland",
+   "style": ""
+  },
+  {
+   "id": 67,
+   "name": "A&G Blended Malt",
+   "age": "21 years",
+   "ageN": 21,
+   "cask": "",
+   "abv": "",
+   "tierN": 4,
+   "rating": null,
+   "region": "Blended malt",
+   "style": ""
+  }
+ ],
+ "regions": [
+  "Speyside",
+  "Highland",
+  "Islay",
+  "Islands",
+  "Campbeltown",
+  "Lowland",
+  "Scotland",
+  "Blended malt",
+  "Blend",
+  "Grain",
+  "Japan",
+  "Ireland",
+  "Wales",
+  "Sweden"
+ ],
+ "styles": [
+  "Beer cask",
+  "Cask strength",
+  "Coastal",
+  "Gently smoky",
+  "Honey & smoke",
+  "Honeyed",
+  "Light & fruity",
+  "Light grain",
+  "Lightly peated",
+  "Peated",
+  "Rich & meaty",
+  "Rich & smooth",
+  "Rum cask",
+  "Sherried",
+  "Single cask",
+  "Smoky, rum cask",
+  "Wine cask"
+ ]
+};
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const KEY='mh-whisky-choice';
+let mine=[];try{mine=JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(mine))}catch(e){};bar();render()};
+const F={tier:new Set(),region:new Set(),style:new Set()};
+const tierTxt=n=>'£'.repeat(n);
+const tierHtml=n=>n?'£'.repeat(n)+'<i>'+'£'.repeat(5-n)+'</i>':'';
+function stars(r){if(r==null)return '<span class="nr">Not rated</span>';const h=Math.round(r*2)/2;let s='';for(let i=1;i<=5;i++)s+=h>=i?'★':(h>=i-.5?'⯪':'☆');return `<span class="stars" aria-label="${r} out of 5">${s}<small>${r.toFixed(1)}</small></span>`}
+function chips(id,key,vals,lab){const el=$(id);el.innerHTML=vals.map(v=>`<button class="chip" aria-pressed="false" data-v="${esc(v)}">${esc(lab?lab(v):v)}</button>`).join('');
+ el.onclick=e=>{const b=e.target.closest('.chip');if(!b)return;const v=key==='tier'?+b.dataset.v:b.dataset.v;F[key].has(v)?F[key].delete(v):F[key].add(v);b.setAttribute('aria-pressed',F[key].has(v));render()}}
+chips('#f-tier','tier',[5,4,3,2,1],tierTxt);chips('#f-region','region',D.regions);chips('#f-style','style',D.styles);
+function meta(b){return [b.age,b.region,b.abv].filter(Boolean).map(esc).join(' · ')}
+function render(){
+ const q=$('#q').value.trim().toLowerCase(),s=$('#sort').value;
+ let L=D.bottles.filter(b=>(!F.tier.size||F.tier.has(b.tierN))&&(!F.region.size||F.region.has(b.region))&&(!F.style.size||F.style.has(b.style))&&(!q||[b.name,b.region,b.style,b.cask,b.age].join(' ').toLowerCase().includes(q)));
+ const nm=(a,b)=>a.name.localeCompare(b.name,'en-GB');
+ L.sort(s==='name'?nm:s==='rating'?(a,b)=>(b.rating??-1)-(a.rating??-1)||nm(a,b):s==='age'?(a,b)=>(b.ageN??-1)-(a.ageN??-1)||nm(a,b):(a,b)=>b.tierN-a.tierN||(b.rating??-1)-(a.rating??-1)||nm(a,b));
+ $('#count').textContent=L.length+' of '+D.bottles.length;
+ $('#list').innerHTML=L.length?L.map(b=>`<li class="item" data-id="${b.id}"><div class="name">${esc(b.name)}${mine.includes(b.id)?'<span class="mine-dot" title="In my choice">◆</span>':''}</div><div class="side"><div class="tier">${tierHtml(b.tierN)}</div>${stars(b.rating)}</div><div class="meta">${b.style?`<span class="tag">${esc(b.style)}</span>`:''}${meta(b)}</div></li>`).join(''):'<li class="empty">Nothing matches that. Try fewer filters.</li>';
+}
+function open(html){$('#card').innerHTML='<button class="close" aria-label="Close">×</button>'+html;$('#sheet').classList.add('open')}
+function shut(){$('#sheet').classList.remove('open')}
+function detail(id){const b=D.bottles.find(x=>x.id===id);const has=mine.includes(id);
+ const rows=[['Region',b.region],['Style',b.style],['Age',b.age],['Cask',b.cask],['Strength',b.abv]].filter(r=>r[1]);
+ open(`<div class="label">${esc(b.region)}</div><h2>${esc(b.name)}</h2><div class="tier" style="font-size:16px">${tierHtml(b.tierN)}</div><div style="margin-top:4px">${stars(b.rating)}</div>
+ <dl>${rows.map(r=>`<dt>${r[0]}</dt><dd>${esc(r[1])}</dd>`).join('')}</dl>
+ <button class="btn${has?' ghost':''}" id="pick" data-id="${id}">${has?'Remove from my choice':'I’ll have this'}</button>`)}
+function list(){open(`<div class="label">My choice</div><h2>Show this to your host</h2>${mine.length?`<ul class="mine">${mine.map(id=>{const b=D.bottles.find(x=>x.id===id);return b?`<li>${esc(b.name)}<button data-rm="${id}">Remove</button></li>`:''}).join('')}</ul><button class="btn ghost" id="clear">Clear all</button>`:'<p class="intro">Nothing chosen yet. Tap a bottle to have a look.</p>'}`)}
+function bar(){mine=mine.filter(id=>D.bottles.some(b=>b.id===id));$('#sel').textContent=mine.length?mine.map(id=>D.bottles.find(b=>b.id===id).name).join(' · '):'Nothing chosen yet'}
+$('#list').onclick=e=>{const li=e.target.closest('.item');if(li)detail(+li.dataset.id)};
+$('#sheet').onclick=e=>{if(e.target.id==='sheet'||e.target.closest('.close'))return shut();
+ const p=e.target.closest('#pick');if(p){const id=+p.dataset.id;mine.includes(id)?mine=mine.filter(x=>x!==id):mine.push(id);save();shut();return}
+ const rm=e.target.closest('[data-rm]');if(rm){mine=mine.filter(x=>x!==+rm.dataset.rm);save();list();return}
+ if(e.target.id==='clear'){mine=[];save();list()}};
+$('#bar').onclick=list;
+document.addEventListener('keydown',e=>{if(e.key==='Escape')shut()});
+$('#q').oninput=render;$('#sort').onchange=render;
+bar();render();
+if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('sw.js?v=18b8b1b7').catch(()=>{}));
+</script>
+</body>
+</html>
