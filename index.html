@@ -34,6 +34,16 @@ header .label{color:var(--brass)}
 .grp{flex:none;width:52px;color:var(--brass);font-size:10px}
 select{font:500 12px var(--sans);color:var(--slate);background:#fff;border:1px solid var(--sand);padding:7px 8px}
 .count{font-size:12px;color:#5d6a70;margin-left:auto}
+.sbox{position:relative}
+.sbox .search{position:relative;background:transparent;z-index:2}
+.ghost{position:absolute;inset:0;padding:12px 13px;font:400 16px var(--sans);color:transparent;white-space:pre;overflow:hidden;pointer-events:none;background:#fff;border:1px solid transparent;z-index:1}
+.ghost b{font-weight:400;color:#9aa5a9}
+.sugg{position:absolute;left:0;right:0;top:100%;margin:0;padding:0;list-style:none;background:#fff;border:1px solid var(--green);border-top:0;z-index:30;max-height:50vh;overflow:auto;display:none;box-shadow:0 8px 18px rgba(47,62,70,.12)}
+.sugg.open{display:block}
+.sugg li{display:flex;justify-content:space-between;gap:10px;align-items:baseline;padding:12px 13px;min-height:44px;border-top:1px solid rgba(143,111,62,.25);cursor:pointer;font-size:15px}
+.sugg li[aria-selected=true],.sugg li:active{background:var(--mist)}
+.sugg mark{background:none;color:var(--green);font-weight:600}
+.sugg .k{font:600 9.5px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--brass);flex:none}
 ul.list{list-style:none;margin:0;padding:0}
 .item{display:grid;grid-template-columns:1fr auto;gap:4px 14px;padding:16px 2px;border-bottom:1px solid rgba(143,111,62,.35);cursor:pointer}
 .item:active{background:#fff}
@@ -81,7 +91,7 @@ footer .label{color:var(--brass);font-size:10px}
 </header>
 <p class="intro wrap">A dram for every mood. Have a browse, pick what appeals, and show us your choice.</p>
 <div class="controls"><div class="wrap">
-  <input class="search" id="q" type="search" placeholder="Search bottles, regions, styles…" aria-label="Search">
+  <div class="sbox"><div class="ghost" id="ghost" aria-hidden="true"></div><input class="search" id="q" type="search" placeholder="Search bottles, regions, styles…" aria-label="Search" autocomplete="off" autocapitalize="off" spellcheck="false" role="combobox" aria-autocomplete="both" aria-controls="sugg" aria-expanded="false"><ul class="sugg" id="sugg" role="listbox"></ul></div>
   <div class="row"><span class="label grp">Tier</span><div class="chips" id="f-tier"></div></div>
   <div class="row"><span class="label grp">Region</span><div class="chips" id="f-region"></div></div>
   <div class="row"><span class="label grp">Style</span><div class="chips" id="f-style"></div></div>
@@ -1041,7 +1051,30 @@ $('#sheet').onclick=e=>{if(e.target.id==='sheet'||e.target.closest('.close'))ret
  if(e.target.id==='clear'){mine=[];save();list()}};
 $('#bar').onclick=list;
 document.addEventListener('keydown',e=>{if(e.key==='Escape')shut()});
-$('#q').oninput=render;
+
+// ---- autocomplete ----
+const AC=[...D.bottles.map(b=>({t:b.name,k:'Bottle'})).sort((a,b)=>a.t.localeCompare(b.t,'en-GB')),...D.regions.map(t=>({t,k:'Region'})),...D.styles.map(t=>({t,k:'Style'}))];
+const qi=$('#q'),gh=$('#ghost'),sg=$('#sugg');let hits=[],sel=-1;
+function wpos(t,q){const l=t.toLowerCase();if(l.startsWith(q))return 0;const re=/[\s\-&(\/.,']+/g;let m;while((m=re.exec(l))){if(l.startsWith(q,m.index+m[0].length))return m.index+m[0].length}return -1}
+function ac(){const raw=qi.value,q=raw.toLowerCase().trim();sel=-1;
+ if(!q){hits=[];sg.classList.remove('open');qi.setAttribute('aria-expanded','false');gh.innerHTML='';return}
+ hits=AC.map(o=>({...o,p:wpos(o.t,q)})).filter(o=>o.p>=0&&o.t.toLowerCase()!==q).slice(0,8);
+ sg.innerHTML=hits.map((o,i)=>`<li role="option" data-i="${i}">${esc(o.t.slice(0,o.p))}<mark>${esc(o.t.slice(o.p,o.p+q.length))}</mark>${esc(o.t.slice(o.p+q.length))}<span class="k">${o.k}</span></li>`).join('');
+ sg.classList.toggle('open',hits.length>0);qi.setAttribute('aria-expanded',hits.length>0);ghost()}
+function ghost(){const raw=qi.value,top=hits.find(o=>o.p===0);gh.innerHTML=top&&raw&&top.t.toLowerCase().startsWith(raw.toLowerCase())?esc(raw)+'<b>'+esc(top.t.slice(raw.length))+'</b>':''}
+function pick(t){qi.value=t;hits=[];sg.classList.remove('open');qi.setAttribute('aria-expanded','false');gh.innerHTML='';render()}
+qi.addEventListener('input',()=>{render();ac()});
+qi.addEventListener('keydown',e=>{const top=hits.find(o=>o.p===0);
+ if((e.key==='Tab'||(e.key==='ArrowRight'&&qi.selectionStart===qi.value.length))&&gh.textContent){e.preventDefault();pick(top.t)}
+ else if(e.key==='ArrowDown'&&hits.length){e.preventDefault();sel=(sel+1)%hits.length;mark_()}
+ else if(e.key==='ArrowUp'&&hits.length){e.preventDefault();sel=(sel-1+hits.length)%hits.length;mark_()}
+ else if(e.key==='Enter'){if(sel>=0)pick(hits[sel].t);else{sg.classList.remove('open');qi.blur()}}
+ else if(e.key==='Escape'){sg.classList.remove('open');gh.innerHTML=''}});
+function mark_(){[...sg.children].forEach((li,i)=>li.setAttribute('aria-selected',i===sel))}
+sg.addEventListener('pointerdown',e=>{const li=e.target.closest('li');if(li){e.preventDefault();pick(hits[+li.dataset.i].t)}});
+qi.addEventListener('blur',()=>setTimeout(()=>{sg.classList.remove('open');gh.innerHTML=''},150));
+qi.addEventListener('focus',ac);
+
 bar();render();
 if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('sw.js?v=fd9581ab').catch(()=>{}));
 </script>
