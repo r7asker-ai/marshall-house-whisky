@@ -345,6 +345,9 @@
    "owner": "Edrington",
    "founded": "1824",
    "status": "Operating",
+   "nose": "Citrus, vanilla, light sherry",
+   "palate": "Smooth, dried fruit, gentle oak spice",
+   "finish": "Medium, sweet and spicy",
    "about": "The Fine Oak range, introduced in 2004, added bourbon casks to Macallan's sherry-oak recipe for a lighter style. It was replaced in 2018 by the Triple Cask range.",
    "img": "img/macallan-fine-oak.webp"
   },
@@ -425,6 +428,9 @@
    "owner": "J. & A. Mitchell (family-owned)",
    "founded": "1828",
    "status": "Operating",
+   "nose": "Citrus, vanilla, toffee",
+   "palate": "Creamy malt, orange, light fruit",
+   "finish": "Medium, gently spicy",
    "about": "Hazelburn is Springbank's unpeated, triple-distilled malt, named after a lost Campbeltown distillery. It is the gentlest of the distillery's three styles.",
    "img": "img/hazelburn.webp"
   },
@@ -444,6 +450,9 @@
    "owner": "Bacardi (John Dewar & Sons)",
    "founded": "1891",
    "status": "Operating",
+   "nose": "Pineapple, struck match, malt",
+   "palate": "Waxy, meaty, toasted cereal",
+   "finish": "Medium, nutty and dry",
    "about": "Craigellachie still uses worm-tub condensers, which give a famously weighty, almost meaty spirit. The 13 year old leads its core range.",
    "img": "img/craigellachie-old-fashioned.webp"
   },
@@ -464,6 +473,9 @@
    "founded": "1879",
    "status": "Operating",
    "size": "70cl",
+   "nose": "Ginger, cinnamon, dark fruit",
+   "palate": "Dried fruit, chocolate, nutmeg",
+   "finish": "Long and spicy",
    "about": "Casg Annamh is Gaelic for 'rare cask'. Each small batch marries whisky from different cask types.",
    "img": "img/aberlour-casg-annamh.webp"
   },
@@ -483,6 +495,9 @@
    "owner": "Bacardi (John Dewar & Sons)",
    "founded": "1896",
    "status": "Operating",
+   "nose": "Fresh grass, citrus, light honey",
+   "palate": "Clean, fruity, gentle spice",
+   "finish": "Short and crisp",
    "about": "Aultmore takes its water from the Foggie Moss, a peat-covered area of the hills near Keith. For many years almost all of its whisky went into blends.",
    "img": "img/aultmore-foggie-moss.webp"
   },
@@ -502,6 +517,9 @@
    "owner": "CVH Spirits (Distell)",
    "founded": "1965",
    "status": "Operating",
+   "nose": "Red berries, honey, toffee",
+   "palate": "Plum, cherry, malt",
+   "finish": "Medium, fruity, lightly spiced",
    "about": "Deanston sits on the River Teith in a converted 18th-century cotton mill and runs on its own hydro-electric power. This 10 year old is finished in Bordeaux red wine casks.",
    "img": "img/deanston.webp"
   },
@@ -521,6 +539,9 @@
    "owner": "William Grant & Sons",
    "founded": "1887",
    "status": "Operating",
+   "nose": "Green apple, fresh hops, vanilla",
+   "palate": "Citrus, pear, light spice",
+   "finish": "Fresh and gently hoppy",
    "about": "The first of Glenfiddich's Experimental Series, made with a local craft brewer who seasoned the casks with IPA before they were filled with whisky.",
    "img": "img/glenfiddich-ipa-experiment.webp"
   },
@@ -540,6 +561,9 @@
    "owner": "Pernod Ricard",
    "founded": "1975",
    "status": "Operating",
+   "nose": "Light smoke, citrus, pear",
+   "palate": "Sweet malt, soft peat",
+   "finish": "Short, gently smoky",
    "about": "The name means 'burn of milk' in Gaelic. A modern Speyside distillery built mainly for blending, it released this lightly peated single malt under its own name.",
    "img": "img/allt-bhainne.webp"
   },
@@ -557,6 +581,9 @@
    "style": "Wine cask",
    "distillery": "Mackmyra",
    "founded": "1999",
+   "nose": "Red berries, raisin, oak",
+   "palate": "Dark fruit, spice, chocolate",
+   "finish": "Medium, dry and fruity",
    "about": "Mackmyra was Sweden's first single-malt distillery. Skördetid ('harvest time') was finished in casks that had held Amarone from the Veneto.",
    "img": "img/mackmyra-sk-rdetid.webp"
   },
@@ -576,6 +603,9 @@
    "owner": "Suntory",
    "founded": "1972",
    "status": "Operating",
+   "nose": "Honey, soft oak, crème brûlée",
+   "palate": "Mild, sweet, a hint of mint",
+   "finish": "Clean and light",
    "about": "A single grain whisky from Suntory's Chita grain distillery on Ise Bay, near Nagoya. It is light and clean, and much of Chita's grain whisky goes into Suntory's blends.",
    "img": "img/the-chita.webp"
   },
@@ -592,6 +622,9 @@
    "region": "Blend",
    "style": "Rich & smooth",
    "owner": "Diageo",
+   "nose": "Honey, vanilla, tropical fruit",
+   "palate": "Creamy, honeyed, light smoke",
+   "finish": "Medium and sweet",
    "about": "A smooth Johnnie Walker blend built around Clynelish single malt from the Highlands.",
    "img": "img/johnnie-walker-gold-label-reserve.webp"
   },
@@ -749,6 +782,9 @@
    "owner": "Diageo",
    "founded": "1896",
    "status": "Operating",
+   "nose": "Brown sugar, nuts, apple",
+   "palate": "Malty, toffee, light fruit",
+   "finish": "Medium and nutty",
    "about": "The Singleton is Diageo's name for the single malts of Dufftown, Glendullan and Glen Ord. This one comes from Dufftown in the heart of Speyside.",
    "img": "img/singleton-of-dufftown.webp"
   },
@@ -765,6 +801,9 @@
    "region": "Blended malt",
    "style": "Gently smoky",
    "owner": "Diageo",
+   "nose": "Fresh grass, pine, orchard fruit",
+   "palate": "Woody, spicy, light smoke",
+   "finish": "Long and smoky",
    "about": "A blended malt built around Talisker, Linkwood, Cragganmore and Caol Ila. It was withdrawn in 2012 and brought back by popular demand in 2016.",
    "img": "img/johnnie-walker-green-label.webp"
   },
@@ -781,6 +820,9 @@
    "region": "Blended malt",
    "style": "",
    "bottler": "Douglas Laing",
+   "nose": "Honey, heather, citrus",
+   "palate": "Sweet barley, spice, vanilla",
+   "finish": "Medium and warming",
    "about": "A Highland blended malt named after the 'wee, sleekit, cow'rin, tim'rous beastie' of Burns's poem To a Mouse. It is part of Douglas Laing's Remarkable Regional Malts.",
    "img": "img/timorous-beastie.webp"
   },
@@ -800,6 +842,9 @@
    "owner": "William Grant & Sons",
    "founded": "2007",
    "status": "Operating",
+   "nose": "Light smoke, apple, vanilla",
+   "palate": "Gentle peat, honey, spice",
+   "finish": "Medium, smoky",
    "about": "Aerstone comes from Ailsa Bay distillery on the Ayrshire coast. Land Cask is the smoky one, matured inland; its sister Sea Cask is matured near the sea.",
    "img": "img/aerstone-land-cask.webp"
   },
@@ -856,6 +901,9 @@
    "owner": "Angus Dundee",
    "founded": "1965",
    "status": "Operating",
+   "nose": "Fruity, light, malty",
+   "palate": "Sweet, nutty, vanilla",
+   "finish": "Soft, medium length",
    "about": "Tomintoul calls itself 'the gentle dram'. It is made at one of Speyside's highest distilleries, in the hills near the village of the same name.",
    "img": "img/tomintoul.webp"
   },
@@ -874,6 +922,9 @@
    "distillery": "Penderyn",
    "founded": "2000",
    "status": "Operating",
+   "nose": "Cream toffee, raisin, vanilla",
+   "palate": "Rich fruit, toffee, spice",
+   "finish": "Crisp and fruity",
    "about": "Penderyn, at the foot of the Brecon Beacons, revived Welsh whisky in 2000 with its Faraday copper still. Madeira-finished malt is its signature style.",
    "img": "img/penderyn-madeira.webp"
   },
@@ -893,6 +944,9 @@
    "owner": "William Grant & Sons",
    "founded": "2007",
    "status": "Operating",
+   "nose": "Fresh fruit, vanilla, sea air",
+   "palate": "Toffee, sweet spice",
+   "finish": "Smooth and light",
    "about": "Sea Cask is matured in warehouses on the Ayrshire coast for a smooth, gently coastal style. Its sister Land Cask is the smoky one.",
    "img": "img/aerstone-sea-cask.webp"
   },
@@ -912,6 +966,9 @@
    "owner": "Gordon & MacPhail",
    "founded": "1898",
    "status": "Operating",
+   "nose": "Sherry, light smoke, fruit",
+   "palate": "Malt, spice, gentle peat",
+   "finish": "Long, smoky, creamy",
    "about": "Benromach in Forres was revived by Gordon & MacPhail in 1998. It aims for the gently peated Speyside style of the 1950s.",
    "img": "img/benromach.webp"
   },
@@ -931,6 +988,9 @@
    "owner": "Pernod Ricard",
    "founded": "1824",
    "status": "Operating",
+   "nose": "Citrus, pear, toffee apple",
+   "palate": "Sweet orange, vanilla",
+   "finish": "Soft and creamy",
    "about": "A tribute to founder George Smith, who took out one of the first licences under the 1823 Excise Act.",
    "img": "img/glenlivet-founder-s-reserve.webp"
   },
@@ -950,6 +1010,9 @@
    "owner": "Teeling Whiskey Company",
    "founded": "2015",
    "status": "Operating",
+   "nose": "Vanilla, spice, sweet rum",
+   "palate": "Woody, dried fruit, toffee",
+   "finish": "Long and spicy",
    "about": "Teeling opened Dublin's first new distillery in over a century in 2015. The Small Batch is finished in ex-rum casks and bottled without chill filtration.",
    "img": "img/teeling-small-batch.webp"
   },
@@ -969,6 +1032,9 @@
    "owner": "Whyte & Mackay",
    "founded": "1966",
    "status": "Operating",
+   "nose": "Red berries, cherry, spice",
+   "palate": "Toffee, plum, oak",
+   "finish": "Medium and fruity",
    "about": "Tamnavulin ('mill on the hill') stands beside the River Livet. The Red Wine Cask Edition has been released in several versions with different wine finishes.",
    "img": "img/tamnavulin-red-wine-cask-edition.webp"
   },
@@ -1041,6 +1107,9 @@
    "owner": "William Grant & Sons",
    "founded": "1887",
    "status": "Operating",
+   "nose": "Campfire smoke, toffee, apple",
+   "palate": "Sweet, smoky, toffee",
+   "finish": "Lingering smoke",
    "about": "Number four in Glenfiddich's Experimental Series. It marries peated malt with unpeated malt and finishes it in rum casks for a sweet, smoky dram.",
    "img": "img/glenfiddich-fire-cane.webp"
   },
@@ -1203,6 +1272,9 @@
    "owner": "CVH Spirits (Distell)",
    "founded": "1798",
    "status": "Operating",
+   "nose": "Fresh, nutty, citrus",
+   "palate": "Malty, honey, sea salt",
+   "finish": "Medium and dry",
    "about": "The only distillery on Mull, in the island's brightly painted harbour town. Its unpeated whisky is bottled as Tobermory; the peated spirit becomes Ledaig.",
    "img": "img/tobermory.webp"
   },
