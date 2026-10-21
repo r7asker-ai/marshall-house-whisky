@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Marshall House - Wines</title>
+<meta name="application-name" content="Marshall House - Wines">
+<meta name="apple-mobile-web-app-title" content="Marshall House - Wines">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#F2F5EF">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--green:#5B7A5A;--brass:#8F6F3E;--slate:#2F3E46;--sand:#D8C3A5;--mist:#F2F5EF;--thistle:#9A4C9A;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Inter',system-ui,sans-serif}
+*{box-sizing:border-box;border-radius:0!important}
+html,body{margin:0;background:var(--mist);color:var(--slate);font:400 15px/1.5 var(--sans);-webkit-text-size-adjust:100%}
+body{padding-bottom:calc(84px + env(safe-area-inset-bottom))}
+a{color:var(--green)}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+header{text-align:center;padding:36px 20px 18px;position:relative}
+.back{position:absolute;left:14px;top:12px;font:600 11px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--green);text-decoration:none;padding:10px 6px}
+header img.logo{width:min(54vw,210px);height:auto;display:block;margin:0 auto}
+.rule{height:1px;background:var(--brass);border:0;margin:0}
+.rule.short{width:56px;margin:16px auto}
+.label{font:600 11px/1.2 var(--sans);letter-spacing:.18em;text-transform:uppercase}
+header .label{color:var(--brass)}
+.intro{font:italic 500 19px/1.4 var(--serif);text-align:center;margin:6px auto 22px;max-width:30em}
+.controls{position:sticky;top:0;z-index:5;background:var(--mist);padding:12px 0 10px;border-bottom:1px solid var(--brass)}
+.search{width:100%;padding:11px 12px;font:400 16px var(--sans);color:var(--slate);background:#fff;border:1px solid var(--sand);outline:none}
+.search:focus{border-color:var(--green)}
+.row{display:flex;gap:8px;align-items:center;margin-top:10px}
+.chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;flex:1}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;font:500 12px/1 var(--sans);letter-spacing:.06em;padding:8px 11px;background:transparent;color:var(--green);border:1px solid var(--green);cursor:pointer;white-space:nowrap}
+.chip[aria-pressed=true]{background:var(--green);color:#fff}
+.grp{flex:none;width:52px;color:var(--brass);font-size:10px}
+select{font:500 12px var(--sans);color:var(--slate);background:#fff;border:1px solid var(--sand);padding:7px 8px}
+.count{font-size:12px;color:#5d6b70;margin-left:auto}
+.sbox{position:relative}
+.sbox .search{position:relative;background:transparent;z-index:2}
+.ghost{position:absolute;inset:0;padding:12px 13px;font:400 16px var(--sans);color:transparent;white-space:pre;overflow:hidden;pointer-events:none;background:#fff;border:1px solid transparent;z-index:1}
+.ghost b{font-weight:400;color:#9aa5a9}
+.sugg{position:absolute;left:0;right:0;top:100%;margin:0;padding:0;list-style:none;background:#fff;border:1px solid var(--green);border-top:0;z-index:30;max-height:50vh;overflow:auto;display:none;box-shadow:0 8px 18px rgba(47,62,70,.12)}
+.sugg.open{display:block}
+.sugg li{display:flex;justify-content:space-between;gap:10px;align-items:baseline;padding:12px 13px;min-height:44px;border-top:1px solid rgba(143,111,62,.25);cursor:pointer;font-size:15px}
+.sugg li[aria-selected=true],.sugg li:active{background:var(--mist)}
+.sugg mark{background:none;color:var(--green);font-weight:600}
+.sugg .k{font:600 9.5px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--brass);flex:none}
+ul.list{list-style:none;margin:0;padding:0}
+.item{display:grid;grid-template-columns:1fr auto;gap:4px 14px;padding:16px 2px;border-bottom:1px solid rgba(143,111,62,.35);cursor:pointer}
+.item:active{background:#fff}
+.name{font:600 20px/1.2 var(--serif)}
+.meta{grid-column:1;font-size:12.5px;color:#56646b}
+.side{grid-row:1/3;grid-column:2;text-align:right;align-self:center}
+.tier{font:600 13px var(--sans);letter-spacing:.08em;color:var(--brass)}
+.tier i{font-style:normal;opacity:.25}
+.stars{display:inline-flex;align-items:center;white-space:nowrap;line-height:1}
+.stars .sr{position:relative;display:inline-block;width:74px;height:13px}
+.stars .sr svg{display:block}
+.stars .sf{position:absolute;left:0;top:0;height:13px;overflow:hidden}
+.stars small{color:var(--slate);font:500 12px var(--sans);letter-spacing:0;margin-left:4px}
+.nr{font-size:12px;color:#7a868b;font-style:italic}
+.tag{display:inline-block;font:600 10px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--green);border:1px solid var(--green);padding:4px 6px;margin-right:6px;vertical-align:1px}
+.mine-dot{color:var(--thistle);font-size:10px;margin-left:6px}
+.empty{text-align:center;padding:40px 0;font:italic 500 18px var(--serif)}
+/* detail */
+.sheet{position:fixed;inset:0;background:rgba(47,62,70,.55);display:none;align-items:flex-end;justify-content:center;z-index:20}
+.sheet.open{display:flex}
+.card{background:var(--mist);width:100%;max-width:560px;padding:26px 24px calc(24px + env(safe-area-inset-bottom));border-top:3px solid var(--brass);max-height:88vh;overflow:auto;position:relative}
+.card h2{font:600 28px/1.15 var(--serif);margin:8px 0 6px}
+.card{padding-top:0}
+.pic{margin:0 -24px 18px;height:300px;background:#fff;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--brass)}
+.pic img{max-height:280px;max-width:100%;width:auto;height:auto;display:block;opacity:0;transition:opacity .3s}
+.pic img.ok{opacity:1}
+.grid{grid-template-columns:96px 1fr}
+.taste{margin:0 0 18px}
+.taste h3,.about h3{font:600 10.5px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--brass);margin:0 0 10px}
+.taste p{margin:0 0 8px;font-size:14.5px}
+.taste p b{display:inline-block;width:62px;font:600 10.5px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:#5d6b70}
+.about{padding:16px 0 18px;border-top:1px solid var(--brass);margin-bottom:6px}
+.about p{margin:0;font:500 17px/1.45 var(--serif)}
+.card .label{color:var(--brass)}
+dl{display:grid;grid-template-columns:auto 1fr;gap:10px 18px;margin:20px 0;padding:16px 0;border-top:1px solid var(--brass);border-bottom:1px solid var(--brass)}
+dt{font:600 10.5px/1.6 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:#5d6b70}
+dd{margin:0;font-size:15px}
+.btn{display:block;width:100%;padding:15px;font:600 12px var(--sans);letter-spacing:.18em;text-transform:uppercase;background:var(--green);color:#fff;border:1px solid var(--green);cursor:pointer}
+.btn.ghost{background:transparent;color:var(--green)}
+.close{position:absolute;top:10px;right:12px;background:none;border:0;font:500 28px/1 var(--serif);color:var(--slate);cursor:pointer;padding:6px}
+/* my choice */
+.bar{position:fixed;left:0;right:0;bottom:0;background:var(--slate);color:var(--mist);z-index:10;border-top:2px solid var(--brass);padding:12px 20px calc(12px + env(safe-area-inset-bottom))}
+.bar .wrap{display:flex;align-items:center;gap:12px;padding:0}
+.bar .label{color:var(--sand)}
+.bar .sel{flex:1;font:italic 500 17px/1.25 var(--serif);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bar button{background:transparent;color:var(--mist);border:1px solid var(--sand);font:600 11px var(--sans);letter-spacing:.14em;text-transform:uppercase;padding:9px 12px;cursor:pointer}
+.choice-pic{display:flex;justify-content:center;align-items:center;height:min(52vh,420px);margin:14px 0 10px;background:#fff;border-top:1px solid var(--brass);border-bottom:1px solid var(--brass)}
+.choice-pic img{max-height:94%;max-width:100%;display:block}
+.choice-name{text-align:center;margin:14px 0 4px!important}
+.choice-act{text-align:center;margin:6px 0 4px}
+.link{background:none;border:0;padding:8px;font:500 12px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--green);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.mine{list-style:none;padding:0;margin:14px 0 20px}
+.mine li{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid rgba(143,111,62,.4);font:600 19px var(--serif)}
+.mine li button{background:none;border:0;color:var(--green);font:500 12px var(--sans);text-decoration:underline;cursor:pointer}
+footer{text-align:center;padding:34px 20px 20px;font-size:12px;color:#5d6b70}
+footer .label{color:var(--brass);font-size:10px}
+
+.thumb{grid-row:1/3;grid-column:2;width:64px;height:64px;align-self:center;background:#fff;border:1px solid var(--sand)}
+.thumb img{width:100%;height:100%;display:block}
+.desc{grid-column:1;font-size:13.5px;color:#3d4b52}
+.pic img{max-height:300px}
+.ing{list-style:none;margin:0 0 18px;padding:0}
+.ing li{padding:8px 0;border-bottom:1px solid rgba(143,111,62,.3);font-size:15px}
+.steps{margin:0 0 16px;padding-left:22px}.steps li{margin:0 0 8px;font-size:15px}
+.hold{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;touch-action:none;-webkit-tap-highlight-color:transparent}
+.hold[aria-pressed=true]{background:var(--slate);border-color:var(--slate)}
+.choice-pic.sq{height:auto;padding:10px 0}.choice-pic.sq img{width:min(56vw,230px);height:auto;max-height:none}
+.holdwrap{position:sticky;bottom:calc(-24px - env(safe-area-inset-bottom));background:var(--mist);padding:10px 0 calc(10px + env(safe-area-inset-bottom));margin:0 -2px;z-index:3}
+#stepsbox{display:none;position:fixed;left:0;right:0;top:0;z-index:40;background:var(--mist);border-bottom:3px solid var(--brass);padding:22px 24px 10px;max-height:calc(100% - 110px);overflow:auto;box-shadow:0 10px 24px rgba(47,62,70,.25)}
+#stepsbox.on{display:block}
+#stepsbox h3{font:600 10.5px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--brass);margin:0 0 6px}
+#stepsbox h4{font:600 24px/1.15 var(--serif);margin:0 0 12px}
+.hostmeta{text-align:center;font-size:13px;color:#56646b;margin:0 0 10px}
+</style>
+</head>
+<body>
+<header>
+  <a class="back" href="../" aria-label="Back to main menu">‹ Main menu</a>
+  <h1 style="margin:0"><img src="logo.svg" alt="Marshall House · Wines" class="logo" width="200" height="182"></h1>
+  <hr class="rule short">
+</header>
+<p class="intro wrap">A glass of something Italian. Pick one and show your host.</p>
+<div class="controls"><div class="wrap">
+  <div class="sbox"><div class="ghost" id="ghost" aria-hidden="true"></div><input class="search" id="q" type="search" placeholder="Search wines, grapes, regions…" aria-label="Search" autocomplete="off" autocapitalize="off" spellcheck="false" role="combobox" aria-autocomplete="both" aria-controls="sugg" aria-expanded="false"><ul class="sugg" id="sugg" role="listbox"></ul></div>
+  <div id="filters"></div>
+  <div class="row"><span class="count" id="count"></span></div>
+</div></div>
+<main class="wrap"><ul class="list" id="list"></ul></main>
+<footer><hr class="rule short"><div class="label">Please drink responsibly</div></footer>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true"><div class="card" id="card"></div></div>
+<div class="bar" id="bar"><div class="wrap"><div style="flex:1;min-width:0"><div class="label">My choice</div><div class="sel" id="sel">Nothing chosen yet</div></div><button id="show">View</button></div></div>
+<script>
+const D={
+ "items": [
+  {
+   "id": "pinot-grigio",
+   "name": "Pinot Grigio",
+   "desc": "Light and crisp, with notes of green apple, pear and lemon.",
+   "tags": [
+    "Dry white"
+   ],
+   "style": "Dry white",
+   "kicker": "Dry white",
+   "meta": "Pinot Grigio · Italy",
+   "rows": [
+    [
+     "Grape",
+     "Pinot Grigio"
+    ],
+    [
+     "Region",
+     "Italy (typically Veneto / delle Venezie)"
+    ],
+    [
+     "Style",
+     "Dry white"
+    ],
+    [
+     "Tasting",
+     "Light and crisp, with notes of green apple, pear and lemon."
+    ]
+   ],
+   "img": "img/pinot-grigio.svg"
+  },
+  {
+   "id": "montepulciano",
+   "name": "Montepulciano d’Abruzzo",
+   "desc": "Soft and juicy, with dark cherry, plum and a hint of spice.",
+   "tags": [
+    "Medium-bodied red"
+   ],
+   "style": "Medium-bodied red",
+   "kicker": "Medium-bodied red",
+   "meta": "Montepulciano · Italy",
+   "rows": [
+    [
+     "Grape",
+     "Montepulciano"
+    ],
+    [
+     "Region",
+     "Italy (Abruzzo)"
+    ],
+    [
+     "Style",
+     "Medium-bodied red"
+    ],
+    [
+     "Tasting",
+     "Soft and juicy, with dark cherry, plum and a hint of spice."
+    ]
+   ],
+   "img": "img/montepulciano.svg"
+  }
+ ],
+ "filters": [
+  {
+   "key": "style",
+   "label": "Style",
+   "values": [
+    "Dry white",
+    "Medium-bodied red"
+   ]
+  }
+ ],
+ "key": "mh-wines-choice",
+ "noun": "Wine",
+ "hostTitle": "Show this to your host"
+};
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const KEY=D.key;
+let mine=[];try{mine=JSON.parse(localStorage.getItem(KEY)||'[]').slice(-1)}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(mine))}catch(e){};bar();render()};
+const F={};
+$('#filters').innerHTML=D.filters.map(f=>`<div class="row"><span class="label grp">${esc(f.label)}</span><div class="chips" data-k="${f.key}"></div></div>`).join('');
+const val=(b,k)=>[].concat(b[k]||[]);
+D.filters.forEach(f=>{F[f.key]=new Set();const el=document.querySelector(`.chips[data-k="${f.key}"]`);
+ el.innerHTML=f.values.map(v=>`<button class="chip" aria-pressed="false" data-v="${esc(v)}">${esc(v)}</button>`).join('');
+ el.onclick=e=>{const b=e.target.closest('.chip');if(!b)return;const v=b.dataset.v,S=F[f.key];S.has(v)?S.delete(v):S.add(v);b.setAttribute('aria-pressed',S.has(v));render()}});
+const find=id=>D.items.find(x=>x.id===id);
+function render(){
+ const q=$('#q').value.trim().toLowerCase();
+ let L=D.items.filter(b=>D.filters.every(f=>!F[f.key].size||val(b,f.key).some(v=>F[f.key].has(v)))&&(!q||[b.name,b.desc,b.meta,(b.tags||[]).join(' '),(b.ingredients||[]).join(' '),b.rows.map(r=>r[1]).join(' ')].join(' ').toLowerCase().includes(q)));
+ $('#count').textContent=L.length+' of '+D.items.length;
+ $('#list').innerHTML=L.length?L.map(b=>`<li class="item" data-id="${b.id}"><div class="name">${esc(b.name)}${mine.includes(b.id)?'<span class="mine-dot" title="My choice">◆</span>':''}</div><div class="thumb"><img src="${b.img}" alt="" loading="lazy" decoding="async"></div><div class="desc">${esc(b.desc)}</div><div class="meta">${(b.tags||[]).slice(0,3).map(t=>`<span class="tag">${esc(t)}</span>`).join('')}${esc(b.meta)}</div></li>`).join(''):'<li class="empty">Nothing matches that. Try fewer filters.</li>';
+}
+function open(h){$('#card').innerHTML='<button class="close" aria-label="Close">×</button>'+h;$('#sheet').classList.add('open')}
+function shut(){hide();$('#sheet').classList.remove('open')}
+const ingH=b=>b.ingredients?`<div class="taste"><h3>Ingredients</h3><ul class="ing">${b.ingredients.map(i=>`<li>${esc(i)}</li>`).join('')}</ul></div>`:'';
+function detail(id){const b=find(id);const has=mine.includes(id);
+ open(`<div class="pic"><img src="${b.img}" alt="${esc(b.name)}" decoding="async" onload="this.classList.add('ok')"></div>
+ <div class="label">${esc(b.kicker)}</div><h2>${esc(b.name)}</h2><div class="about" style="border:0;padding-top:4px"><p>${esc(b.desc)}</p></div>
+ <dl class="grid">${b.rows.map(r=>`<dt>${r[0]}</dt><dd>${esc(r[1])}</dd>`).join('')}</dl>${ingH(b)}
+ ${has?'<p class="label" style="text-align:center;color:var(--green);margin:4px 0 10px">Your choice</p>':''}<button class="btn" id="pick" data-id="${id}">I’ll have this</button>`)}
+function list(){const b=mine.length&&find(mine[0]);const hd=`<div class="label" style="text-align:center;padding-top:22px">${esc(D.hostTitle)}</div>`;
+ if(!b)return open(hd+'<p class="intro">Nothing chosen yet. Tap a drink to have a look.</p>');
+ open(hd+`<div class="choice-pic sq"><img src="${b.img}" alt="${esc(b.name)}" decoding="async"></div><h2 class="choice-name">${esc(b.name)}</h2>`+
+ (b.steps?`<p class="hostmeta">${esc(b.glass)} · ${esc(b.garnish)}</p>${ingH(b)}<div id="stepsbox" aria-live="polite"><h3>Steps · ${esc(b.glass)}</h3><h4>${esc(b.name)}</h4><ol class="steps">${b.steps.map(s=>`<li>${esc(s)}</li>`).join('')}</ol></div><p class="choice-act"><button class="link" id="clear">Clear choice</button></p><div class="holdwrap"><button class="btn hold" id="hold" aria-pressed="false" aria-controls="stepsbox">Hold for steps</button></div>`:`<p class="hostmeta">${esc(b.meta)}</p><p class="choice-act"><button class="link" id="clear">Clear choice</button></p>`));wireHold()}
+function bar(){mine=mine.filter(id=>find(id));$('#sel').textContent=mine.length?find(mine[0]).name:'Nothing chosen yet'}
+// press-and-hold: steps visible only while held
+function show(){const s=$('#stepsbox'),h=$('#hold');if(s){s.classList.add('on');h.setAttribute('aria-pressed','true');h.textContent='Release to hide'}}
+function hide(){const s=$('#stepsbox'),h=$('#hold');if(s){s.classList.remove('on');h.setAttribute('aria-pressed','false');h.textContent='Hold for steps'}}
+function wireHold(){const h=$('#hold');if(!h)return;
+ h.addEventListener('pointerdown',e=>{e.preventDefault();try{h.setPointerCapture(e.pointerId)}catch(_){}show()});
+ ['pointerup','pointercancel','pointerleave','lostpointercapture'].forEach(t=>h.addEventListener(t,hide));
+ h.addEventListener('touchstart',e=>{e.preventDefault();show()},{passive:false});
+ ['touchend','touchcancel'].forEach(t=>h.addEventListener(t,hide));
+ h.addEventListener('contextmenu',e=>e.preventDefault());h.addEventListener('selectstart',e=>e.preventDefault());
+ h.addEventListener('keydown',e=>{if(e.key===' '||e.key==='Enter'){e.preventDefault();show()}});h.addEventListener('keyup',hide);h.addEventListener('blur',hide)}
+document.addEventListener('visibilitychange',hide);
+$('#list').onclick=e=>{const li=e.target.closest('.item');if(li)detail(li.dataset.id)};
+$('#sheet').onclick=e=>{if(e.target.id==='sheet'||e.target.closest('.close'))return shut();
+ const p=e.target.closest('#pick');if(p){mine=[p.dataset.id];save();list();return}
+ if(e.target.id==='clear'){mine=[];save();list()}};
+$('#bar').onclick=list;
+document.addEventListener('keydown',e=>{if(e.key==='Escape')shut()});
+const AC=[...D.items.map(b=>({t:b.name,k:D.noun})).sort((a,b)=>a.t.localeCompare(b.t,'en-GB')),...D.filters.flatMap(f=>f.values.map(t=>({t,k:f.label})))].filter((o,i,a)=>a.findIndex(x=>x.t===o.t)===i);
+const qi=$('#q'),gh=$('#ghost'),sg=$('#sugg');let hits=[],sel=-1;
+function wpos(t,q){const l=t.toLowerCase();if(l.startsWith(q))return 0;const re=/[\s\-&(\/.,'’]+/g;let m;while((m=re.exec(l))){if(l.startsWith(q,m.index+m[0].length))return m.index+m[0].length}return -1}
+function ac(){const raw=qi.value,q=raw.toLowerCase().trim();sel=-1;
+ if(!q){hits=[];sg.classList.remove('open');qi.setAttribute('aria-expanded','false');gh.innerHTML='';return}
+ hits=AC.map(o=>({...o,p:wpos(o.t,q)})).filter(o=>o.p>=0&&o.t.toLowerCase()!==q).sort((a,b)=>(a.k===D.noun?0:1)-(b.k===D.noun?0:1)||(a.p>0)-(b.p>0)).slice(0,8);
+ sg.innerHTML=hits.map((o,i)=>`<li role="option" data-i="${i}"><span>${esc(o.t.slice(0,o.p))}<mark>${esc(o.t.slice(o.p,o.p+q.length))}</mark>${esc(o.t.slice(o.p+q.length))}</span><span class="k">${esc(o.k)}</span></li>`).join('');
+ sg.classList.toggle('open',hits.length>0);qi.setAttribute('aria-expanded',hits.length>0);ghost()}
+function ghost(){const raw=qi.value,top=hits.find(o=>o.p===0);gh.innerHTML=top&&raw&&top.t.toLowerCase().startsWith(raw.toLowerCase())?esc(raw)+'<b>'+esc(top.t.slice(raw.length))+'</b>':''}
+function pick(t){qi.value=t;hits=[];sg.classList.remove('open');qi.setAttribute('aria-expanded','false');gh.innerHTML='';render()}
+qi.addEventListener('input',()=>{render();ac()});
+qi.addEventListener('keydown',e=>{const top=hits.find(o=>o.p===0);
+ if((e.key==='Tab'||(e.key==='ArrowRight'&&qi.selectionStart===qi.value.length))&&gh.textContent){e.preventDefault();pick(top.t)}
+ else if(e.key==='ArrowDown'&&hits.length){e.preventDefault();sel=(sel+1)%hits.length;mark_()}
+ else if(e.key==='ArrowUp'&&hits.length){e.preventDefault();sel=(sel-1+hits.length)%hits.length;mark_()}
+ else if(e.key==='Enter'){if(sel>=0)pick(hits[sel].t);else{sg.classList.remove('open');qi.blur()}}
+ else if(e.key==='Escape'){sg.classList.remove('open');gh.innerHTML=''}});
+function mark_(){[...sg.children].forEach((li,i)=>li.setAttribute('aria-selected',i===sel))}
+sg.addEventListener('pointerdown',e=>{const li=e.target.closest('li');if(li){e.preventDefault();pick(hits[+li.dataset.i].t)}});
+qi.addEventListener('blur',()=>setTimeout(()=>{sg.classList.remove('open');gh.innerHTML=''},150));
+qi.addEventListener('focus',ac);
+bar();render();
+if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('../sw.js?v=ee262646',{scope:'../'}).catch(()=>{}));
+</script>
+</body>
+</html>
