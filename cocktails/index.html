@@ -641,6 +641,146 @@ const D={
     ]
    ],
    "img": "img/dark-n-stormy.svg"
+  },
+  {
+   "id": "carajillo",
+   "name": "Carajillo",
+   "desc": "Spain’s after-dinner favourite: vanilla-citrus Licor 43 shaken with hot espresso into a frothy, iced coffee.",
+   "tags": [
+    "Coffee",
+    "Sweet",
+    "Rich"
+   ],
+   "spirit": "Liqueur",
+   "kicker": "Liqueur",
+   "meta": "Liqueur",
+   "glass": "Rocks glass, cubed ice",
+   "garnish": "Coffee beans or orange peel",
+   "ingredients": [
+    "50 ml Licor 43",
+    "50 ml fresh hot espresso (one double shot)"
+   ],
+   "steps": [
+    "Fill the rocks glass with ice to chill it.",
+    "Brew a fresh double espresso.",
+    "Add Licor 43 and the hot espresso to a shaker full of ice and shake hard for 10–15 seconds.",
+    "Discard the chilling ice, add fresh cubes and strain in.",
+    "Garnish with three coffee beans on the foam (or express an orange peel over the top)."
+   ],
+   "rows": [
+    [
+     "Spirit",
+     "Liqueur"
+    ],
+    [
+     "Glass",
+     "Rocks glass, cubed ice"
+    ],
+    [
+     "Garnish",
+     "Coffee beans or orange peel"
+    ],
+    [
+     "Flavour",
+     "Coffee, Sweet, Rich"
+    ]
+   ],
+   "img": "img/carajillo.svg"
+  },
+  {
+   "id": "pina-colada",
+   "name": "Piña Colada",
+   "desc": "Rum, coconut and pineapple blended into a creamy taste of the tropics.",
+   "tags": [
+    "Sweet",
+    "Fruity",
+    "Rich"
+   ],
+   "spirit": "Light rum",
+   "kicker": "Light rum",
+   "meta": "Light rum",
+   "glass": "Hurricane glass, crushed ice",
+   "garnish": "Pineapple wedge and a maraschino cherry",
+   "ingredients": [
+    "30 ml Malibu",
+    "30 ml light rum",
+    "90 ml pineapple juice",
+    "30 ml coconut cream",
+    "5 ml fresh lime juice (optional)"
+   ],
+   "steps": [
+    "Fill the hurricane glass with ice to chill it.",
+    "Add Malibu, light rum, pineapple juice, coconut cream and lime to a shaker with ice.",
+    "Shake hard for 15 seconds until creamy and well chilled.",
+    "Discard the chilling ice, add fresh ice and strain in.",
+    "Garnish with a pineapple wedge on the rim and a cherry."
+   ],
+   "rows": [
+    [
+     "Spirit",
+     "Light rum"
+    ],
+    [
+     "Glass",
+     "Hurricane glass, crushed ice"
+    ],
+    [
+     "Garnish",
+     "Pineapple wedge and a maraschino cherry"
+    ],
+    [
+     "Flavour",
+     "Sweet, Fruity, Rich"
+    ]
+   ],
+   "img": "img/pina-colada.svg"
+  },
+  {
+   "id": "sidecar",
+   "name": "Sidecar",
+   "desc": "A 1920s classic: brandy, orange liqueur and lemon in a sugar-rimmed coupe.",
+   "tags": [
+    "Citrus",
+    "Strong",
+    "Sour"
+   ],
+   "spirit": "Brandy",
+   "kicker": "Brandy",
+   "meta": "Brandy",
+   "glass": "Coupe glass, chilled, sugar rim",
+   "garnish": "Sugar rim and orange peel",
+   "ingredients": [
+    "50 ml brandy",
+    "25 ml triple sec",
+    "20 ml fresh lemon juice",
+    "Caster sugar (for the rim)"
+   ],
+   "steps": [
+    "Rub a lemon wedge around the rim of a chilled coupe and dip it in sugar.",
+    "Add brandy, triple sec and lemon juice to a shaker with ice.",
+    "Shake hard for 12–15 seconds.",
+    "Double strain into the sugar-rimmed coupe.",
+    "Express orange peel over the top and hang it on the rim."
+   ],
+   "rows": [
+    [
+     "Spirit",
+     "Brandy"
+    ],
+    [
+     "Glass",
+     "Coupe glass, chilled, sugar rim"
+    ],
+    [
+     "Garnish",
+     "Sugar rim and orange peel"
+    ],
+    [
+     "Flavour",
+     "Citrus, Strong, Sour"
+    ]
+   ],
+   "img": "img/sidecar.svg"
   }
  ],
  "filters": [
@@ -654,7 +794,9 @@ const D={
     "Campari",
     "Tequila",
     "Light rum",
-    "Dark rum"
+    "Dark rum",
+    "Liqueur",
+    "Brandy"
    ]
   },
   {
@@ -750,7 +892,7 @@ sg.addEventListener('pointerdown',e=>{const li=e.target.closest('li');if(li){e.p
 qi.addEventListener('blur',()=>setTimeout(()=>{sg.classList.remove('open');gh.innerHTML=''},150));
 qi.addEventListener('focus',ac);
 bar();render();
-if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('../sw.js?v=e2891e1f',{scope:'../'}).catch(()=>{}));
+if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('../sw.js?v=291b048d',{scope:'../'}).catch(()=>{}));
 </script>
 </body>
 </html>
