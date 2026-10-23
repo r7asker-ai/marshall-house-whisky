@@ -129,7 +129,7 @@ footer .label{color:var(--brass);font-size:10px}
   <h1 style="margin:0"><img src="logo.svg" alt="Marshall House · Wines" class="logo" width="200" height="182"></h1>
   <hr class="rule short">
 </header>
-<p class="intro wrap">A glass of something Italian. Pick one and show your host.</p>
+<p class="intro wrap">Red, white, rosé or fizz. Pick one and show your host.</p>
 <div class="controls"><div class="wrap">
   <div class="sbox"><div class="ghost" id="ghost" aria-hidden="true"></div><input class="search" id="q" type="search" placeholder="Search wines, grapes, regions…" aria-label="Search" autocomplete="off" autocapitalize="off" spellcheck="false" role="combobox" aria-autocomplete="both" aria-controls="sugg" aria-expanded="false"><ul class="sugg" id="sugg" role="listbox"></ul></div>
   <div id="filters"></div>
@@ -506,7 +506,7 @@ sg.addEventListener('pointerdown',e=>{const li=e.target.closest('li');if(li){e.p
 qi.addEventListener('blur',()=>setTimeout(()=>{sg.classList.remove('open');gh.innerHTML=''},150));
 qi.addEventListener('focus',ac);
 bar();render();
-if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('../sw.js?v=90226bd0',{scope:'../'}).catch(()=>{}));
+if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('../sw.js?v=6a504a48',{scope:'../'}).catch(()=>{}));
 </script>
 </body>
 </html>
