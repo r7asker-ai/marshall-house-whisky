@@ -325,6 +325,53 @@ const D={
    "img": "img/whisky-sour.svg"
   },
   {
+   "id": "pornstar-martini",
+   "name": "Pornstar Martini",
+   "desc": "London dry gin, Passoa and lime, with a shot of Prosecco on the side.",
+   "tags": [
+    "Fruity",
+    "Sweet",
+    "Fizzy"
+   ],
+   "spirit": "Gin",
+   "kicker": "Gin",
+   "meta": "Gin",
+   "glass": "Coupe, chilled, plus a shot glass",
+   "garnish": "Half a lime (half a passion fruit if you have one) and a shot of Prosecco",
+   "ingredients": [
+    "40 ml London dry gin",
+    "15 ml Passoa",
+    "15 ml fresh lime juice",
+    "15 ml sugar syrup with a few drops of vanilla",
+    "50 ml Prosecco (on the side)"
+   ],
+   "steps": [
+    "Shake gin, Passoa, lime and vanilla sugar syrup hard with ice.",
+    "Double strain into a chilled coupe.",
+    "Float half a lime on top.",
+    "Serve with a shot glass of Prosecco on the side."
+   ],
+   "rows": [
+    [
+     "Spirit",
+     "Gin"
+    ],
+    [
+     "Glass",
+     "Coupe, chilled, plus a shot glass"
+    ],
+    [
+     "Garnish",
+     "Half a lime (half a passion fruit if you have one) and a shot of Prosecco"
+    ],
+    [
+     "Flavour",
+     "Fruity, Sweet, Fizzy"
+    ]
+   ],
+   "img": "img/pornstar-martini.svg"
+  },
+  {
    "id": "aperol-spritz",
    "name": "Aperol Spritz",
    "desc": "Bright, bittersweet and bubbly: the classic Italian aperitivo.",
@@ -696,6 +743,7 @@ const D={
    "label": "Spirit",
    "values": [
     "Whisky",
+    "Gin",
     "Aperol",
     "Campari",
     "Tequila",
@@ -798,7 +846,7 @@ sg.addEventListener('pointerdown',e=>{const li=e.target.closest('li');if(li){e.p
 qi.addEventListener('blur',()=>setTimeout(()=>{sg.classList.remove('open');gh.innerHTML=''},150));
 qi.addEventListener('focus',ac);
 bar();render();
-if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('../sw.js?v=1287dae2',{scope:'../'}).catch(()=>{}));
+if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('../sw.js?v=41d34eb0',{scope:'../'}).catch(()=>{}));
 </script>
 </body>
 </html>
