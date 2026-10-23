@@ -131,7 +131,7 @@ footer .label{color:var(--brass);font-size:10px}
 </header>
 <p class="intro wrap">Something cold and easy. Pick one and show your host.</p>
 <div class="controls"><div class="wrap">
-  <div class="sbox"><div class="ghost" id="ghost" aria-hidden="true"></div><input class="search" id="q" type="search" placeholder="Search beers…" aria-label="Search" autocomplete="off" autocapitalize="off" spellcheck="false" role="combobox" aria-autocomplete="both" aria-controls="sugg" aria-expanded="false"><ul class="sugg" id="sugg" role="listbox"></ul></div>
+  <div class="sbox"><div class="ghost" id="ghost" aria-hidden="true"></div><input class="search" id="q" type="search" placeholder="Search beers, ciders…" aria-label="Search" autocomplete="off" autocapitalize="off" spellcheck="false" role="combobox" aria-autocomplete="both" aria-controls="sugg" aria-expanded="false"><ul class="sugg" id="sugg" role="listbox"></ul></div>
   <div id="filters"></div>
   <div class="row"><span class="count" id="count"></span></div>
 </div></div>
@@ -143,38 +143,131 @@ footer .label{color:var(--brass);font-size:10px}
 const D={
  "items": [
   {
-   "id": "tennents-light",
-   "name": "Tennent’s Light",
-   "desc": "Scotland’s lighter take on the classic pale lager: crisp, clean and easy-drinking.",
+   "id": "angry-orchard",
+   "name": "Angry Orchard Crisp Apple",
+   "desc": "Bright, crisp apple cider balancing sweet culinary apples with dry cider apples.",
+   "type": "Cider",
    "tags": [
-    "Light lager"
+    "Cider",
+    "Hard apple cider"
    ],
-   "style": "Light lager",
-   "kicker": "Light lager",
-   "meta": "Light lager · 3.5%",
+   "style": "Hard apple cider",
+   "kicker": "Hard apple cider",
+   "meta": "USA · 5.0%",
    "rows": [
     [
+     "Type",
+     "Cider"
+    ],
+    [
      "Style",
-     "Light lager"
+     "Hard apple cider"
     ],
     [
      "Strength",
-     "3.5%"
+     "5.0%"
+    ],
+    [
+     "Origin",
+     "USA"
+    ],
+    [
+     "Size",
+     "500ml bottle"
     ]
    ],
-   "img": "img/tennents-light.svg"
+   "img": "img/angry-orchard.svg"
+  },
+  {
+   "id": "asahi-super-dry",
+   "name": "Asahi Super Dry",
+   "desc": "Japan’s karakuchi dry lager: crisp, clean and with a quick, dry finish.",
+   "type": "Beer",
+   "tags": [
+    "Beer",
+    "Dry lager"
+   ],
+   "style": "Dry lager",
+   "kicker": "Dry lager",
+   "meta": "Japan · 5.0%",
+   "rows": [
+    [
+     "Type",
+     "Beer"
+    ],
+    [
+     "Style",
+     "Dry lager"
+    ],
+    [
+     "Strength",
+     "5.0%"
+    ],
+    [
+     "Origin",
+     "Japan"
+    ],
+    [
+     "Size",
+     "330ml can"
+    ]
+   ],
+   "img": "img/asahi-super-dry.svg"
+  },
+  {
+   "id": "bud-zero",
+   "name": "Bud 0.0",
+   "desc": "All the crisp Budweiser lager taste with none of the alcohol.",
+   "type": "Beer",
+   "tags": [
+    "Alcohol-free",
+    "Beer",
+    "Alcohol-free lager"
+   ],
+   "style": "Alcohol-free lager",
+   "kicker": "Alcohol-free lager",
+   "meta": "USA · 0.0% · Alcohol-free",
+   "rows": [
+    [
+     "Type",
+     "Beer"
+    ],
+    [
+     "Style",
+     "Alcohol-free lager"
+    ],
+    [
+     "Strength",
+     "0.0% (alcohol-free)"
+    ],
+    [
+     "Origin",
+     "USA"
+    ],
+    [
+     "Size",
+     "330ml can"
+    ]
+   ],
+   "img": "img/bud-zero.svg"
   },
   {
    "id": "bud-light",
    "name": "Bud Light",
    "desc": "A light American-style lager: very pale, gently malty and refreshing.",
+   "type": "Beer",
    "tags": [
+    "Beer",
     "Light lager"
    ],
    "style": "Light lager",
    "kicker": "Light lager",
-   "meta": "Light lager · 3.5%",
+   "meta": "USA · 3.5%",
    "rows": [
+    [
+     "Type",
+     "Beer"
+    ],
     [
      "Style",
      "Light lager"
@@ -182,17 +275,183 @@ const D={
     [
      "Strength",
      "3.5%"
+    ],
+    [
+     "Origin",
+     "USA"
+    ],
+    [
+     "Size",
+     "440ml can / bottle"
     ]
    ],
    "img": "img/bud-light.svg"
+  },
+  {
+   "id": "corona-extra",
+   "name": "Corona Extra",
+   "desc": "Light, crisp Mexican pale lager. Classic with a wedge of lime.",
+   "type": "Beer",
+   "tags": [
+    "Beer",
+    "Pale lager"
+   ],
+   "style": "Pale lager",
+   "kicker": "Pale lager",
+   "meta": "Mexico · 4.5%",
+   "rows": [
+    [
+     "Type",
+     "Beer"
+    ],
+    [
+     "Style",
+     "Pale lager"
+    ],
+    [
+     "Strength",
+     "4.5%"
+    ],
+    [
+     "Origin",
+     "Mexico"
+    ],
+    [
+     "Size",
+     "330ml can"
+    ]
+   ],
+   "img": "img/corona-extra.svg"
+  },
+  {
+   "id": "guinness-draught",
+   "name": "Guinness Draught",
+   "desc": "Smooth, creamy Irish stout with roasted barley, coffee and dark chocolate notes.",
+   "type": "Beer",
+   "tags": [
+    "Beer",
+    "Irish stout"
+   ],
+   "style": "Irish stout",
+   "kicker": "Irish stout",
+   "meta": "Ireland · 4.2%",
+   "rows": [
+    [
+     "Type",
+     "Beer"
+    ],
+    [
+     "Style",
+     "Irish stout"
+    ],
+    [
+     "Strength",
+     "4.2%"
+    ],
+    [
+     "Origin",
+     "Ireland"
+    ],
+    [
+     "Size",
+     "440ml can"
+    ]
+   ],
+   "img": "img/guinness-draught.svg"
+  },
+  {
+   "id": "kopparberg-raspberry",
+   "name": "Kopparberg Raspberry",
+   "desc": "Sweet Swedish cider bursting with juicy raspberry. Best over ice.",
+   "type": "Cider",
+   "tags": [
+    "Cider",
+    "Fruit cider"
+   ],
+   "style": "Fruit cider",
+   "kicker": "Fruit cider",
+   "meta": "Sweden · 3.4%",
+   "rows": [
+    [
+     "Type",
+     "Cider"
+    ],
+    [
+     "Style",
+     "Fruit cider"
+    ],
+    [
+     "Strength",
+     "3.4%"
+    ],
+    [
+     "Origin",
+     "Sweden"
+    ],
+    [
+     "Size",
+     "330ml can"
+    ]
+   ],
+   "img": "img/kopparberg-raspberry.svg"
+  },
+  {
+   "id": "tennents-light",
+   "name": "Tennent’s Light",
+   "desc": "Scotland’s lighter take on the classic pale lager: crisp, clean and easy-drinking.",
+   "type": "Beer",
+   "tags": [
+    "Beer",
+    "Light lager"
+   ],
+   "style": "Light lager",
+   "kicker": "Light lager",
+   "meta": "Scotland · 3.4%",
+   "rows": [
+    [
+     "Type",
+     "Beer"
+    ],
+    [
+     "Style",
+     "Light lager"
+    ],
+    [
+     "Strength",
+     "3.4%"
+    ],
+    [
+     "Origin",
+     "Scotland"
+    ],
+    [
+     "Size",
+     "330ml can"
+    ]
+   ],
+   "img": "img/tennents-light.svg"
   }
  ],
  "filters": [
   {
+   "key": "type",
+   "label": "Type",
+   "values": [
+    "Beer",
+    "Cider"
+   ]
+  },
+  {
    "key": "style",
    "label": "Style",
    "values": [
-    "Light lager"
+    "Alcohol-free lager",
+    "Dry lager",
+    "Fruit cider",
+    "Hard apple cider",
+    "Irish stout",
+    "Light lager",
+    "Pale lager"
    ]
   }
  ],
@@ -270,7 +529,7 @@ sg.addEventListener('pointerdown',e=>{const li=e.target.closest('li');if(li){e.p
 qi.addEventListener('blur',()=>setTimeout(()=>{sg.classList.remove('open');gh.innerHTML=''},150));
 qi.addEventListener('focus',ac);
 bar();render();
-if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('../sw.js?v=85d39b75',{scope:'../'}).catch(()=>{}));
+if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('../sw.js?v=90226bd0',{scope:'../'}).catch(()=>{}));
 </script>
 </body>
 </html>
