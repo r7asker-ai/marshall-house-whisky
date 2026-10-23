@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Marshall House - Beers</title>
-<meta name="application-name" content="Marshall House - Beers">
-<meta name="apple-mobile-web-app-title" content="Marshall House - Beers">
+<title>Marshall House - Beers & Ciders</title>
+<meta name="application-name" content="Marshall House - Beers & Ciders">
+<meta name="apple-mobile-web-app-title" content="Marshall House - Beers & Ciders">
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#F2F5EF">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -126,7 +126,7 @@ footer .label{color:var(--brass);font-size:10px}
 <body>
 <header>
   <a class="back" href="../" aria-label="Back to main menu">‹ Main menu</a>
-  <h1 style="margin:0"><img src="logo.svg" alt="Marshall House · Beers" class="logo" width="200" height="182"></h1>
+  <h1 style="margin:0"><img src="logo.svg" alt="Marshall House · Beers & Ciders" class="logo" width="200" height="182"></h1>
   <hr class="rule short">
 </header>
 <p class="intro wrap">Something cold and easy. Pick one and show your host.</p>
@@ -197,7 +197,7 @@ const D={
   }
  ],
  "key": "mh-beers-choice",
- "noun": "Beer",
+ "noun": "Drink",
  "hostTitle": "Show this to your host"
 };
 const $=s=>document.querySelector(s);
@@ -270,7 +270,7 @@ sg.addEventListener('pointerdown',e=>{const li=e.target.closest('li');if(li){e.p
 qi.addEventListener('blur',()=>setTimeout(()=>{sg.classList.remove('open');gh.innerHTML=''},150));
 qi.addEventListener('focus',ac);
 bar();render();
-if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('../sw.js?v=ee262646',{scope:'../'}).catch(()=>{}));
+if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('../sw.js?v=4b6b5ff7',{scope:'../'}).catch(()=>{}));
 </script>
 </body>
 </html>
