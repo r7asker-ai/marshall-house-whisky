@@ -325,99 +325,6 @@ const D={
    "img": "img/whisky-sour.svg"
   },
   {
-   "id": "espresso-martini",
-   "name": "Espresso Martini",
-   "desc": "Fresh espresso and vodka shaken hard to a velvety crema.",
-   "tags": [
-    "Coffee",
-    "Sweet",
-    "Strong"
-   ],
-   "spirit": "Vodka",
-   "kicker": "Vodka",
-   "meta": "Vodka",
-   "glass": "Coupe, chilled",
-   "garnish": "Three coffee beans",
-   "ingredients": [
-    "50 ml vodka",
-    "30 ml fresh espresso",
-    "15 ml sugar syrup",
-    "1 dash chocolate bitters"
-   ],
-   "steps": [
-    "Pull a fresh espresso and let it cool for a minute.",
-    "Shake all ingredients very hard with plenty of ice.",
-    "Double strain into a chilled coupe.",
-    "Float three coffee beans on the crema."
-   ],
-   "rows": [
-    [
-     "Spirit",
-     "Vodka"
-    ],
-    [
-     "Glass",
-     "Coupe, chilled"
-    ],
-    [
-     "Garnish",
-     "Three coffee beans"
-    ],
-    [
-     "Flavour",
-     "Coffee, Sweet, Strong"
-    ]
-   ],
-   "img": "img/espresso-martini.svg"
-  },
-  {
-   "id": "pornstar-martini",
-   "name": "Pornstar Martini",
-   "desc": "Vanilla vodka, Passoa and lime, with a shot of Prosecco on the side.",
-   "tags": [
-    "Fruity",
-    "Sweet",
-    "Fizzy"
-   ],
-   "spirit": "Vodka",
-   "kicker": "Vodka",
-   "meta": "Vodka",
-   "glass": "Coupe, chilled, plus a shot glass",
-   "garnish": "Half a lime (half a passion fruit if you have one) and a shot of Prosecco",
-   "ingredients": [
-    "40 ml vodka",
-    "15 ml Passoa",
-    "15 ml fresh lime juice",
-    "15 ml sugar syrup with a few drops of vanilla",
-    "50 ml Prosecco (on the side)"
-   ],
-   "steps": [
-    "Shake vodka, Passoa, lime and vanilla sugar syrup hard with ice.",
-    "Double strain into a chilled coupe.",
-    "Float half a lime on top.",
-    "Serve with a shot glass of Prosecco on the side."
-   ],
-   "rows": [
-    [
-     "Spirit",
-     "Vodka"
-    ],
-    [
-     "Glass",
-     "Coupe, chilled, plus a shot glass"
-    ],
-    [
-     "Garnish",
-     "Half a lime (half a passion fruit if you have one) and a shot of Prosecco"
-    ],
-    [
-     "Flavour",
-     "Fruity, Sweet, Fizzy"
-    ]
-   ],
-   "img": "img/pornstar-martini.svg"
-  },
-  {
    "id": "aperol-spritz",
    "name": "Aperol Spritz",
    "desc": "Bright, bittersweet and bubbly: the classic Italian aperitivo.",
@@ -789,7 +696,6 @@ const D={
    "label": "Spirit",
    "values": [
     "Whisky",
-    "Vodka",
     "Aperol",
     "Campari",
     "Tequila",
@@ -892,7 +798,7 @@ sg.addEventListener('pointerdown',e=>{const li=e.target.closest('li');if(li){e.p
 qi.addEventListener('blur',()=>setTimeout(()=>{sg.classList.remove('open');gh.innerHTML=''},150));
 qi.addEventListener('focus',ac);
 bar();render();
-if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('../sw.js?v=291b048d',{scope:'../'}).catch(()=>{}));
+if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('../sw.js?v=1287dae2',{scope:'../'}).catch(()=>{}));
 </script>
 </body>
 </html>
