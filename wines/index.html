@@ -107,6 +107,11 @@ footer .label{color:var(--brass);font-size:10px}
 
 .list .grph{list-style:none;font:600 22px/1.1 var(--serif);letter-spacing:.04em;color:var(--slate);padding:20px 0 8px;border-bottom:1px solid var(--brass);margin:0}
 .list .grph:first-child{padding-top:6px}
+.jump{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:0 auto 14px}
+.jump[hidden]{display:none}
+.jump .label{width:100%;font-size:10.5px;color:var(--brass);margin:0 0 2px}
+.jump .chip small{font:inherit;opacity:.65;margin-left:5px}
+.jump .chip[hidden]{display:none}
 .thumb{grid-row:1/3;grid-column:2;width:64px;height:64px;align-self:center;background:#fff;border:1px solid var(--sand)}
 .thumb img{width:100%;height:100%;display:block}
 .desc{grid-column:1;font-size:13.5px;color:#3d4b52}
@@ -132,6 +137,7 @@ footer .label{color:var(--brass);font-size:10px}
   <hr class="rule short">
 </header>
 <p class="intro wrap">Red, white, rosé or fizz. Pick one and show your host.</p>
+<nav class="jump wrap" id="jump" aria-label="Jump to a section" hidden></nav>
 <div class="controls"><div class="wrap">
   <div class="sbox"><div class="ghost" id="ghost" aria-hidden="true"></div><input class="search" id="q" type="search" placeholder="Search wines, grapes, regions…" aria-label="Search" autocomplete="off" autocapitalize="off" spellcheck="false" role="combobox" aria-autocomplete="both" aria-controls="sugg" aria-expanded="false"><ul class="sugg" id="sugg" role="listbox"></ul></div>
   <div id="filters"></div>
@@ -450,11 +456,14 @@ D.filters.forEach(f=>{F[f.key]=new Set();const el=document.querySelector(`.chips
  el.innerHTML=f.values.map(v=>`<button class="chip" aria-pressed="false" data-v="${esc(v)}">${esc(v)}</button>`).join('');
  el.onclick=e=>{const b=e.target.closest('.chip');if(!b)return;const v=b.dataset.v,S=F[f.key];S.has(v)?S.delete(v):S.add(v);b.setAttribute('aria-pressed',S.has(v));render()}});
 const find=id=>D.items.find(x=>x.id===id);
+if(D.group){const J=$('#jump');J.hidden=false;J.innerHTML='<div class="label">Jump to</div>'+D.group.order.map((g,i)=>`<button class="chip" data-g="${esc(g)}" data-i="${i}">${esc(g)}<small></small></button>`).join('');
+ J.onclick=e=>{const c=e.target.closest('.chip');if(!c)return;const h=document.getElementById('g-'+c.dataset.i);if(!h)return;const cs=$('.controls');window.scrollTo({top:h.getBoundingClientRect().top+scrollY-(cs?cs.offsetHeight:0)-4,behavior:'smooth'})}}
 function render(){
  const q=$('#q').value.trim().toLowerCase();
- let L=D.items.filter(b=>D.filters.every(f=>!F[f.key].size||val(b,f.key).some(v=>F[f.key].has(v)))&&(!q||[b.name,b.desc,b.meta,(b.tags||[]).join(' '),(b.ingredients||[]).join(' '),b.rows.map(r=>r[1]).join(' ')].join(' ').toLowerCase().includes(q)));
+ let L=D.items.filter(b=>D.filters.every(f=>!F[f.key].size||val(b,f.key).some(v=>F[f.key].has(v)))&&(!q||[b.name,b.desc,b.meta,b.group||'',(b.tags||[]).join(' '),(b.ingredients||[]).join(' '),b.rows.map(r=>r[1]).join(' ')].join(' ').toLowerCase().includes(q)));
  $('#count').textContent=L.length+' of '+D.items.length;
- let lastG=null;const gh=b=>{if(!D.group||b[D.group.key]===lastG)return '';lastG=b[D.group.key];return `<li class="grph" aria-hidden="true">${esc(D.group.labels[lastG]||lastG)}</li>`};
+ let lastG=null;const gh=b=>{if(!D.group||b[D.group.key]===lastG)return '';lastG=b[D.group.key];return `<li class="grph" id="g-${D.group.order.indexOf(lastG)}">${esc(lastG)}</li>`};
+ if(D.group){const n={};L.forEach(b=>{n[b[D.group.key]]=(n[b[D.group.key]]||0)+1});document.querySelectorAll('#jump .chip').forEach(c=>{const k=n[c.dataset.g]||0;c.hidden=!k;c.lastElementChild.textContent=k})}
  $('#list').innerHTML=L.length?L.map(b=>gh(b)+`<li class="item" data-id="${b.id}"><div class="name">${esc(b.name)}${mine.includes(b.id)?'<span class="mine-dot" title="My choice">◆</span>':''}</div><div class="thumb"><img src="${b.img}" alt="" loading="lazy" decoding="async"></div><div class="desc">${esc(b.desc)}</div><div class="meta">${(b.tags||[]).slice(0,3).map(t=>`<span class="tag">${esc(t)}</span>`).join('')}${esc(b.meta)}</div></li>`).join(''):'<li class="empty">Nothing matches that. Try fewer filters.</li>';
 }
 function open(h){$('#card').innerHTML='<button class="close" aria-label="Close">×</button>'+h;$('#sheet').classList.add('open')}
@@ -487,7 +496,7 @@ $('#sheet').onclick=e=>{if(e.target.id==='sheet'||e.target.closest('.close'))ret
  if(e.target.id==='clear'){mine=[];save();list()}};
 $('#bar').onclick=list;
 document.addEventListener('keydown',e=>{if(e.key==='Escape')shut()});
-const AC=[...D.items.map(b=>({t:b.name,k:D.noun})).sort((a,b)=>a.t.localeCompare(b.t,'en-GB')),...D.filters.flatMap(f=>f.values.map(t=>({t,k:f.label})))].filter((o,i,a)=>a.findIndex(x=>x.t===o.t)===i);
+const AC=[...D.items.map(b=>({t:b.name,k:D.noun})).sort((a,b)=>a.t.localeCompare(b.t,'en-GB')),...(D.group?D.group.order.map(t=>({t,k:'Section'})):[]),...D.filters.flatMap(f=>f.values.map(t=>({t,k:f.label})))].filter((o,i,a)=>a.findIndex(x=>x.t===o.t)===i);
 const qi=$('#q'),gh=$('#ghost'),sg=$('#sugg');let hits=[],sel=-1;
 function wpos(t,q){const l=t.toLowerCase();if(l.startsWith(q))return 0;const re=/[\s\-&(\/.,'’]+/g;let m;while((m=re.exec(l))){if(l.startsWith(q,m.index+m[0].length))return m.index+m[0].length}return -1}
 function ac(){const raw=qi.value,q=raw.toLowerCase().trim();sel=-1;
@@ -509,7 +518,7 @@ sg.addEventListener('pointerdown',e=>{const li=e.target.closest('li');if(li){e.p
 qi.addEventListener('blur',()=>setTimeout(()=>{sg.classList.remove('open');gh.innerHTML=''},150));
 qi.addEventListener('focus',ac);
 bar();render();
-if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('../sw.js?v=ea50f30b',{scope:'../'}).catch(()=>{}));
+if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('../sw.js?v=adb96df4',{scope:'../'}).catch(()=>{}));
 </script>
 </body>
 </html>

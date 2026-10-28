@@ -107,6 +107,11 @@ footer .label{color:var(--brass);font-size:10px}
 
 .list .grph{list-style:none;font:600 22px/1.1 var(--serif);letter-spacing:.04em;color:var(--slate);padding:20px 0 8px;border-bottom:1px solid var(--brass);margin:0}
 .list .grph:first-child{padding-top:6px}
+.jump{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:0 auto 14px}
+.jump[hidden]{display:none}
+.jump .label{width:100%;font-size:10.5px;color:var(--brass);margin:0 0 2px}
+.jump .chip small{font:inherit;opacity:.65;margin-left:5px}
+.jump .chip[hidden]{display:none}
 .thumb{grid-row:1/3;grid-column:2;width:64px;height:64px;align-self:center;background:#fff;border:1px solid var(--sand)}
 .thumb img{width:100%;height:100%;display:block}
 .desc{grid-column:1;font-size:13.5px;color:#3d4b52}
@@ -131,7 +136,8 @@ footer .label{color:var(--brass);font-size:10px}
   <h1 style="margin:0"><img src="logo.svg" alt="Marshall House · Cocktail Bar" class="logo" width="200" height="182"></h1>
   <hr class="rule short">
 </header>
-<p class="intro wrap">Classics made from the house cabinet. Pick one and show it to your bartender.</p>
+<p class="intro wrap">Old Fashioneds, Negronis and house classics. Pick one and show it to your bartender.</p>
+<nav class="jump wrap" id="jump" aria-label="Jump to a section" hidden></nav>
 <div class="controls"><div class="wrap">
   <div class="sbox"><div class="ghost" id="ghost" aria-hidden="true"></div><input class="search" id="q" type="search" placeholder="Search cocktails, spirits, flavours…" aria-label="Search" autocomplete="off" autocapitalize="off" spellcheck="false" role="combobox" aria-autocomplete="both" aria-controls="sugg" aria-expanded="false"><ul class="sugg" id="sugg" role="listbox"></ul></div>
   <div id="filters"></div>
@@ -145,21 +151,70 @@ footer .label{color:var(--brass);font-size:10px}
 const D={
  "items": [
   {
+   "id": "classic-old-fashioned",
+   "name": "Classic Old Fashioned",
+   "desc": "The original: whisky, a little sugar and bitters, stirred slowly over one big cube.",
+   "group": "Old Fashioneds",
+   "tags": [
+    "Strong",
+    "Bitter"
+   ],
+   "spirit": "Whisky",
+   "kicker": "Old Fashioned · Whisky",
+   "meta": "Whisky",
+   "glass": "Rocks glass, large ice cube",
+   "garnish": "Orange peel",
+   "ingredients": [
+    "60 ml whisky",
+    "7.5 ml sugar syrup (or 1:1 sugar syrup)",
+    "2 dashes Angostura bitters"
+   ],
+   "steps": [
+    "Add whisky, sugar syrup and bitters to a mixing glass with ice and stir for 30 seconds.",
+    "Strain over a large ice cube in a rocks glass.",
+    "Express orange peel over the top, rub it round the rim and drop it in."
+   ],
+   "rows": [
+    [
+     "Style",
+     "Old Fashioned"
+    ],
+    [
+     "Spirit",
+     "Whisky"
+    ],
+    [
+     "Glass",
+     "Rocks glass, large ice cube"
+    ],
+    [
+     "Garnish",
+     "Orange peel"
+    ],
+    [
+     "Flavour",
+     "Strong, Bitter"
+    ]
+   ],
+   "img": "img/classic-old-fashioned.svg"
+  },
+  {
    "id": "smoked-old-fashioned",
    "name": "Smoked Old Fashioned",
-   "desc": "Whisky, a touch of sugar and bitters, finished in a glass full of smoke.",
+   "desc": "The classic finished in a glass full of smoke.",
+   "group": "Old Fashioneds",
    "tags": [
     "Smoky",
     "Strong"
    ],
    "spirit": "Whisky",
-   "kicker": "Whisky",
+   "kicker": "Old Fashioned · Whisky",
    "meta": "Whisky",
    "glass": "Rocks glass, large ice cube",
    "garnish": "Orange peel and a maraschino cherry",
    "ingredients": [
     "60 ml whisky",
-    "7.5 ml sugar syrup",
+    "7.5 ml sugar syrup (or 1:1 sugar syrup)",
     "2 dashes Angostura bitters",
     "1 dash orange bitters"
    ],
@@ -170,6 +225,10 @@ const D={
     "Express orange peel over the top, drop it in and add the cherry."
    ],
    "rows": [
+    [
+     "Style",
+     "Old Fashioned"
+    ],
     [
      "Spirit",
      "Whisky"
@@ -190,76 +249,184 @@ const D={
    "img": "img/smoked-old-fashioned.svg"
   },
   {
-   "id": "smoked-chocolate-manhattan",
-   "name": "Smoked Chocolate Manhattan",
-   "desc": "A Manhattan deepened with chocolate bitters and a whisper of smoke.",
+   "id": "cherry-rum-old-fashioned",
+   "name": "Cherry Rum Old Fashioned",
+   "desc": "Cherry rum stirred down with bitters: dark-fruited, soft and a little festive.",
+   "group": "Old Fashioneds",
    "tags": [
-    "Smoky",
-    "Strong",
-    "Rich"
+    "Fruity",
+    "Sweet"
    ],
-   "spirit": "Whisky",
-   "kicker": "Whisky",
-   "meta": "Whisky",
-   "glass": "Nick & Nora glass, chilled",
-   "garnish": "Maraschino cherry",
+   "spirit": "Cherry rum",
+   "kicker": "Old Fashioned · Cherry rum",
+   "meta": "Cherry rum",
+   "glass": "Rocks glass, large ice cube",
+   "garnish": "Orange peel and a maraschino cherry",
    "ingredients": [
-    "50 ml whisky",
-    "25 ml Martini Rosso",
-    "2 dashes chocolate bitters",
-    "1 dash Angostura bitters"
+    "60 ml cherry rum",
+    "5 ml sugar syrup (or a spoon of syrup from the cherry jar)",
+    "2 dashes Angostura bitters",
+    "1 dash orange bitters"
    ],
    "steps": [
-    "Smoke the chilled Nick & Nora glass with the cocktail smoker and cover it.",
-    "Stir whisky, vermouth and bitters with ice for 30 seconds.",
-    "Strain into the smoked glass.",
-    "Garnish with a cherry on a pick."
+    "Stir cherry rum, syrup and both bitters with ice for 30 seconds.",
+    "Strain over a large ice cube in a rocks glass.",
+    "Express orange peel over the top and drop it in.",
+    "Add a maraschino cherry."
    ],
    "rows": [
     [
+     "Style",
+     "Old Fashioned"
+    ],
+    [
      "Spirit",
-     "Whisky"
+     "Cherry rum"
     ],
     [
      "Glass",
-     "Nick & Nora glass, chilled"
+     "Rocks glass, large ice cube"
     ],
     [
      "Garnish",
-     "Maraschino cherry"
+     "Orange peel and a maraschino cherry"
     ],
     [
      "Flavour",
-     "Smoky, Strong, Rich"
+     "Fruity, Sweet"
     ]
    ],
-   "img": "img/smoked-chocolate-manhattan.svg"
+   "img": "img/cherry-rum-old-fashioned.svg"
   },
   {
-   "id": "boulevardier",
-   "name": "Boulevardier",
-   "desc": "The whisky lover’s Negroni: bittersweet, rich and warming.",
+   "id": "dark-rum-old-fashioned",
+   "name": "Dark Rum Old Fashioned",
+   "desc": "Dark rum gives molasses and toffee depth; a favourite twist on the classic.",
+   "group": "Old Fashioneds",
    "tags": [
-    "Bitter",
-    "Strong",
-    "Rich"
+    "Rich",
+    "Sweet"
+   ],
+   "spirit": "Dark rum",
+   "kicker": "Old Fashioned · Dark rum",
+   "meta": "Dark rum",
+   "glass": "Rocks glass, large ice cube",
+   "garnish": "Orange peel",
+   "ingredients": [
+    "60 ml dark rum",
+    "7.5 ml sugar syrup (or 1:1 sugar syrup)",
+    "2 dashes Angostura bitters",
+    "1 dash orange bitters"
+   ],
+   "steps": [
+    "Stir all ingredients with ice for 30 seconds.",
+    "Strain over a large ice cube in a rocks glass.",
+    "Express orange peel over the top and drop it in."
+   ],
+   "rows": [
+    [
+     "Style",
+     "Old Fashioned"
+    ],
+    [
+     "Spirit",
+     "Dark rum"
+    ],
+    [
+     "Glass",
+     "Rocks glass, large ice cube"
+    ],
+    [
+     "Garnish",
+     "Orange peel"
+    ],
+    [
+     "Flavour",
+     "Rich, Sweet"
+    ]
+   ],
+   "img": "img/dark-rum-old-fashioned.svg"
+  },
+  {
+   "id": "brandy-old-fashioned",
+   "name": "Brandy Old Fashioned",
+   "desc": "Smooth, fruity and warming: brandy makes the gentlest Old Fashioned.",
+   "group": "Old Fashioneds",
+   "tags": [
+    "Fruity",
+    "Sweet"
+   ],
+   "spirit": "Brandy",
+   "kicker": "Old Fashioned · Brandy",
+   "meta": "Brandy",
+   "glass": "Rocks glass, large ice cube",
+   "garnish": "Orange peel and a maraschino cherry",
+   "ingredients": [
+    "60 ml brandy",
+    "7.5 ml sugar syrup (or 1:1 sugar syrup)",
+    "2 dashes Angostura bitters",
+    "1 dash orange bitters"
+   ],
+   "steps": [
+    "Stir all ingredients with ice for 30 seconds.",
+    "Strain over a large ice cube in a rocks glass.",
+    "Express orange peel over the top and drop it in.",
+    "Add a maraschino cherry."
+   ],
+   "rows": [
+    [
+     "Style",
+     "Old Fashioned"
+    ],
+    [
+     "Spirit",
+     "Brandy"
+    ],
+    [
+     "Glass",
+     "Rocks glass, large ice cube"
+    ],
+    [
+     "Garnish",
+     "Orange peel and a maraschino cherry"
+    ],
+    [
+     "Flavour",
+     "Fruity, Sweet"
+    ]
+   ],
+   "img": "img/brandy-old-fashioned.svg"
+  },
+  {
+   "id": "chocolate-old-fashioned",
+   "name": "Chocolate Old Fashioned",
+   "desc": "Whisky with chocolate bitters: dark, dry and quietly indulgent.",
+   "group": "Old Fashioneds",
+   "tags": [
+    "Rich",
+    "Strong"
    ],
    "spirit": "Whisky",
-   "kicker": "Whisky",
+   "kicker": "Old Fashioned · Whisky",
    "meta": "Whisky",
    "glass": "Rocks glass, large ice cube",
    "garnish": "Orange peel",
    "ingredients": [
-    "40 ml whisky",
-    "25 ml Campari",
-    "25 ml Martini Rosso"
+    "60 ml whisky",
+    "7.5 ml sugar syrup (or 1:1 sugar syrup)",
+    "3 dashes chocolate bitters",
+    "1 dash Angostura bitters"
    ],
    "steps": [
     "Stir all ingredients with ice for 30 seconds.",
-    "Strain over a large ice cube.",
+    "Strain over a large ice cube in a rocks glass.",
     "Express orange peel over the top and drop it in."
    ],
    "rows": [
+    [
+     "Style",
+     "Old Fashioned"
+    ],
     [
      "Spirit",
      "Whisky"
@@ -274,15 +441,605 @@ const D={
     ],
     [
      "Flavour",
-     "Bitter, Strong, Rich"
+     "Rich, Strong"
+    ]
+   ],
+   "img": "img/chocolate-old-fashioned.svg"
+  },
+  {
+   "id": "coffee-old-fashioned",
+   "name": "Coffee Old Fashioned",
+   "desc": "Whisky with a splash of strong cold coffee and a few beans on top.",
+   "group": "Old Fashioneds",
+   "tags": [
+    "Coffee",
+    "Rich"
+   ],
+   "spirit": "Whisky",
+   "kicker": "Old Fashioned · Whisky",
+   "meta": "Whisky",
+   "glass": "Rocks glass, large ice cube",
+   "garnish": "Coffee beans and orange peel",
+   "ingredients": [
+    "55 ml whisky",
+    "15 ml strong cold coffee",
+    "5 ml sugar syrup (or 1:1 sugar syrup)",
+    "2 dashes Angostura bitters"
+   ],
+   "steps": [
+    "Make a small strong coffee and let it cool.",
+    "Stir whisky, coffee, sugar syrup and bitters with ice for 30 seconds.",
+    "Strain over a large ice cube in a rocks glass.",
+    "Express orange peel over the top and finish with three coffee beans."
+   ],
+   "rows": [
+    [
+     "Style",
+     "Old Fashioned"
+    ],
+    [
+     "Spirit",
+     "Whisky"
+    ],
+    [
+     "Glass",
+     "Rocks glass, large ice cube"
+    ],
+    [
+     "Garnish",
+     "Coffee beans and orange peel"
+    ],
+    [
+     "Flavour",
+     "Coffee, Rich"
+    ]
+   ],
+   "img": "img/coffee-old-fashioned.svg"
+  },
+  {
+   "id": "spiced-old-fashioned",
+   "name": "Spiced Old Fashioned",
+   "desc": "Whisky sweetened with a warm spice syrup: cinnamon, clove and star anise.",
+   "group": "Old Fashioneds",
+   "tags": [
+    "Spicy",
+    "Strong"
+   ],
+   "spirit": "Whisky",
+   "kicker": "Old Fashioned · Whisky",
+   "meta": "Whisky",
+   "glass": "Rocks glass, large ice cube",
+   "garnish": "Cinnamon stick and orange peel",
+   "ingredients": [
+    "60 ml whisky",
+    "10 ml spice syrup (1:1 sugar syrup simmered with cinnamon, 2 cloves and a star anise)",
+    "2 dashes Angostura bitters"
+   ],
+   "steps": [
+    "Make the spice syrup in advance: simmer equal parts sugar and water with the spices for 5 minutes, then cool and strain.",
+    "Stir whisky, spice syrup and bitters with ice for 30 seconds.",
+    "Strain over a large ice cube in a rocks glass.",
+    "Express orange peel over the top and add a cinnamon stick."
+   ],
+   "rows": [
+    [
+     "Style",
+     "Old Fashioned"
+    ],
+    [
+     "Spirit",
+     "Whisky"
+    ],
+    [
+     "Glass",
+     "Rocks glass, large ice cube"
+    ],
+    [
+     "Garnish",
+     "Cinnamon stick and orange peel"
+    ],
+    [
+     "Flavour",
+     "Spicy, Strong"
+    ]
+   ],
+   "img": "img/spiced-old-fashioned.svg"
+  },
+  {
+   "id": "licor-43-old-fashioned",
+   "name": "Licor 43 Old Fashioned",
+   "desc": "Whisky softened with Licor 43: vanilla and citrus instead of sugar.",
+   "group": "Old Fashioneds",
+   "tags": [
+    "Sweet",
+    "Citrus"
+   ],
+   "spirit": "Whisky",
+   "kicker": "Old Fashioned · Whisky",
+   "meta": "Whisky",
+   "glass": "Rocks glass, large ice cube",
+   "garnish": "Orange peel",
+   "ingredients": [
+    "50 ml whisky",
+    "15 ml Licor 43",
+    "2 dashes Angostura bitters",
+    "1 dash orange bitters"
+   ],
+   "steps": [
+    "Stir all ingredients with ice for 30 seconds.",
+    "Strain over a large ice cube in a rocks glass.",
+    "Express orange peel over the top and drop it in."
+   ],
+   "rows": [
+    [
+     "Style",
+     "Old Fashioned"
+    ],
+    [
+     "Spirit",
+     "Whisky"
+    ],
+    [
+     "Glass",
+     "Rocks glass, large ice cube"
+    ],
+    [
+     "Garnish",
+     "Orange peel"
+    ],
+    [
+     "Flavour",
+     "Sweet, Citrus"
+    ]
+   ],
+   "img": "img/licor-43-old-fashioned.svg"
+  },
+  {
+   "id": "classic-negroni",
+   "name": "Classic Negroni",
+   "desc": "Equal parts gin, Campari and sweet vermouth: bitter, bold and beautifully simple.",
+   "group": "Negronis",
+   "tags": [
+    "Bitter",
+    "Strong"
+   ],
+   "spirit": "Gin",
+   "kicker": "Negroni · Gin",
+   "meta": "Gin",
+   "glass": "Rocks glass, large ice cube",
+   "garnish": "Orange peel",
+   "ingredients": [
+    "30 ml gin",
+    "30 ml Campari",
+    "30 ml Martini Rosso"
+   ],
+   "steps": [
+    "Stir all ingredients with ice for 30 seconds.",
+    "Strain over a large ice cube in a rocks glass.",
+    "Express orange peel over the top and drop it in."
+   ],
+   "rows": [
+    [
+     "Style",
+     "Negroni"
+    ],
+    [
+     "Spirit",
+     "Gin"
+    ],
+    [
+     "Glass",
+     "Rocks glass, large ice cube"
+    ],
+    [
+     "Garnish",
+     "Orange peel"
+    ],
+    [
+     "Flavour",
+     "Bitter, Strong"
+    ]
+   ],
+   "img": "img/classic-negroni.svg"
+  },
+  {
+   "id": "boulevardier",
+   "name": "Boulevardier",
+   "desc": "The whisky Negroni: richer, rounder and warming.",
+   "group": "Negronis",
+   "tags": [
+    "Bitter",
+    "Rich",
+    "Strong"
+   ],
+   "spirit": "Whisky",
+   "kicker": "Negroni · Whisky",
+   "meta": "Whisky",
+   "glass": "Rocks glass, large ice cube",
+   "garnish": "Orange peel",
+   "ingredients": [
+    "40 ml whisky",
+    "25 ml Campari",
+    "25 ml Martini Rosso"
+   ],
+   "steps": [
+    "Stir all ingredients with ice for 30 seconds.",
+    "Strain over a large ice cube in a rocks glass.",
+    "Express orange peel over the top and drop it in."
+   ],
+   "rows": [
+    [
+     "Style",
+     "Negroni"
+    ],
+    [
+     "Spirit",
+     "Whisky"
+    ],
+    [
+     "Glass",
+     "Rocks glass, large ice cube"
+    ],
+    [
+     "Garnish",
+     "Orange peel"
+    ],
+    [
+     "Flavour",
+     "Bitter, Rich, Strong"
     ]
    ],
    "img": "img/boulevardier.svg"
   },
   {
+   "id": "rum-negroni",
+   "name": "Rum Negroni",
+   "desc": "Dark rum in place of gin: bittersweet with a touch of molasses.",
+   "group": "Negronis",
+   "tags": [
+    "Bitter",
+    "Rich"
+   ],
+   "spirit": "Dark rum",
+   "kicker": "Negroni · Dark rum",
+   "meta": "Dark rum",
+   "glass": "Rocks glass, large ice cube",
+   "garnish": "Orange peel",
+   "ingredients": [
+    "30 ml dark rum",
+    "30 ml Campari",
+    "30 ml Martini Rosso"
+   ],
+   "steps": [
+    "Stir all ingredients with ice for 30 seconds.",
+    "Strain over a large ice cube in a rocks glass.",
+    "Express orange peel over the top and drop it in."
+   ],
+   "rows": [
+    [
+     "Style",
+     "Negroni"
+    ],
+    [
+     "Spirit",
+     "Dark rum"
+    ],
+    [
+     "Glass",
+     "Rocks glass, large ice cube"
+    ],
+    [
+     "Garnish",
+     "Orange peel"
+    ],
+    [
+     "Flavour",
+     "Bitter, Rich"
+    ]
+   ],
+   "img": "img/rum-negroni.svg"
+  },
+  {
+   "id": "cherry-rum-negroni",
+   "name": "Cherry Rum Negroni",
+   "desc": "Cherry rum softens the Campari: dark fruit up front, bitter orange behind.",
+   "group": "Negronis",
+   "tags": [
+    "Fruity",
+    "Bitter"
+   ],
+   "spirit": "Cherry rum",
+   "kicker": "Negroni · Cherry rum",
+   "meta": "Cherry rum",
+   "glass": "Rocks glass, large ice cube",
+   "garnish": "Orange peel and a maraschino cherry",
+   "ingredients": [
+    "30 ml cherry rum",
+    "30 ml Campari",
+    "30 ml Martini Rosso",
+    "1 dash chocolate bitters"
+   ],
+   "steps": [
+    "Stir all ingredients with ice for 30 seconds.",
+    "Strain over a large ice cube in a rocks glass.",
+    "Express orange peel over the top and drop it in.",
+    "Add a maraschino cherry."
+   ],
+   "rows": [
+    [
+     "Style",
+     "Negroni"
+    ],
+    [
+     "Spirit",
+     "Cherry rum"
+    ],
+    [
+     "Glass",
+     "Rocks glass, large ice cube"
+    ],
+    [
+     "Garnish",
+     "Orange peel and a maraschino cherry"
+    ],
+    [
+     "Flavour",
+     "Fruity, Bitter"
+    ]
+   ],
+   "img": "img/cherry-rum-negroni.svg"
+  },
+  {
+   "id": "smoked-negroni",
+   "name": "Smoked Negroni",
+   "desc": "The classic Negroni poured into a smoke-filled glass.",
+   "group": "Negronis",
+   "tags": [
+    "Smoky",
+    "Bitter"
+   ],
+   "spirit": "Gin",
+   "kicker": "Negroni · Gin",
+   "meta": "Gin",
+   "glass": "Rocks glass, large ice cube",
+   "garnish": "Orange peel",
+   "ingredients": [
+    "30 ml gin",
+    "30 ml Campari",
+    "30 ml Martini Rosso"
+   ],
+   "steps": [
+    "Smoke the empty rocks glass with the cocktail smoker and cover it.",
+    "Stir all ingredients with ice for 30 seconds.",
+    "Lift the cover, add a large ice cube and strain in.",
+    "Express orange peel over the top and drop it in."
+   ],
+   "rows": [
+    [
+     "Style",
+     "Negroni"
+    ],
+    [
+     "Spirit",
+     "Gin"
+    ],
+    [
+     "Glass",
+     "Rocks glass, large ice cube"
+    ],
+    [
+     "Garnish",
+     "Orange peel"
+    ],
+    [
+     "Flavour",
+     "Smoky, Bitter"
+    ]
+   ],
+   "img": "img/smoked-negroni.svg"
+  },
+  {
+   "id": "aperol-negroni",
+   "name": "Aperol Negroni",
+   "desc": "A lighter, sweeter Negroni made with Aperol and a little Campari.",
+   "group": "Negronis",
+   "tags": [
+    "Light",
+    "Citrus"
+   ],
+   "spirit": "Gin",
+   "kicker": "Negroni · Gin",
+   "meta": "Gin",
+   "glass": "Rocks glass, large ice cube",
+   "garnish": "Orange slice",
+   "ingredients": [
+    "30 ml gin",
+    "20 ml Aperol",
+    "10 ml Campari",
+    "30 ml Martini Rosso"
+   ],
+   "steps": [
+    "Stir all ingredients with ice for 30 seconds.",
+    "Strain over a large ice cube in a rocks glass.",
+    "Garnish with an orange slice."
+   ],
+   "rows": [
+    [
+     "Style",
+     "Negroni"
+    ],
+    [
+     "Spirit",
+     "Gin"
+    ],
+    [
+     "Glass",
+     "Rocks glass, large ice cube"
+    ],
+    [
+     "Garnish",
+     "Orange slice"
+    ],
+    [
+     "Flavour",
+     "Light, Citrus"
+    ]
+   ],
+   "img": "img/aperol-negroni.svg"
+  },
+  {
+   "id": "negroni-sbagliato",
+   "name": "Negroni Sbagliato",
+   "desc": "The “mistaken” Negroni: Prosecco instead of gin. Light, bubbly and easy.",
+   "group": "Negronis",
+   "tags": [
+    "Fizzy",
+    "Bitter",
+    "Light"
+   ],
+   "spirit": "Prosecco",
+   "kicker": "Negroni · Prosecco",
+   "meta": "Prosecco",
+   "glass": "Wine glass with ice",
+   "garnish": "Orange slice",
+   "ingredients": [
+    "30 ml Campari",
+    "30 ml Martini Rosso",
+    "60 ml Prosecco, chilled"
+   ],
+   "steps": [
+    "Add Campari and Martini Rosso to a wine glass full of ice and stir briefly.",
+    "Top with chilled Prosecco.",
+    "Garnish with an orange slice."
+   ],
+   "rows": [
+    [
+     "Style",
+     "Negroni"
+    ],
+    [
+     "Spirit",
+     "Prosecco"
+    ],
+    [
+     "Glass",
+     "Wine glass with ice"
+    ],
+    [
+     "Garnish",
+     "Orange slice"
+    ],
+    [
+     "Flavour",
+     "Fizzy, Bitter, Light"
+    ]
+   ],
+   "img": "img/negroni-sbagliato.svg"
+  },
+  {
+   "id": "coffee-negroni",
+   "name": "Coffee Negroni",
+   "desc": "A Negroni with a splash of strong cold coffee: bitter, roasted and smooth.",
+   "group": "Negronis",
+   "tags": [
+    "Coffee",
+    "Bitter"
+   ],
+   "spirit": "Gin",
+   "kicker": "Negroni · Gin",
+   "meta": "Gin",
+   "glass": "Rocks glass, large ice cube",
+   "garnish": "Coffee beans and orange peel",
+   "ingredients": [
+    "30 ml gin",
+    "25 ml Campari",
+    "25 ml Martini Rosso",
+    "20 ml strong cold coffee"
+   ],
+   "steps": [
+    "Make a small strong coffee and let it cool.",
+    "Stir all ingredients with ice for 30 seconds.",
+    "Strain over a large ice cube in a rocks glass.",
+    "Express orange peel over the top and finish with three coffee beans."
+   ],
+   "rows": [
+    [
+     "Style",
+     "Negroni"
+    ],
+    [
+     "Spirit",
+     "Gin"
+    ],
+    [
+     "Glass",
+     "Rocks glass, large ice cube"
+    ],
+    [
+     "Garnish",
+     "Coffee beans and orange peel"
+    ],
+    [
+     "Flavour",
+     "Coffee, Bitter"
+    ]
+   ],
+   "img": "img/coffee-negroni.svg"
+  },
+  {
+   "id": "americano",
+   "name": "Americano",
+   "desc": "The Negroni’s long, low-strength ancestor: Campari, vermouth and soda.",
+   "group": "Negronis",
+   "tags": [
+    "Light",
+    "Bitter",
+    "Fizzy"
+   ],
+   "spirit": "Campari",
+   "kicker": "Negroni · Campari",
+   "meta": "Campari",
+   "glass": "Highball glass with ice",
+   "garnish": "Orange slice",
+   "ingredients": [
+    "30 ml Campari",
+    "30 ml Martini Rosso",
+    "Soda water to top"
+   ],
+   "steps": [
+    "Add Campari and Martini Rosso to a highball glass full of ice.",
+    "Top with soda water and stir gently.",
+    "Garnish with an orange slice."
+   ],
+   "rows": [
+    [
+     "Style",
+     "Negroni"
+    ],
+    [
+     "Spirit",
+     "Campari"
+    ],
+    [
+     "Glass",
+     "Highball glass with ice"
+    ],
+    [
+     "Garnish",
+     "Orange slice"
+    ],
+    [
+     "Flavour",
+     "Light, Bitter, Fizzy"
+    ]
+   ],
+   "img": "img/americano.svg"
+  },
+  {
    "id": "whisky-sour",
    "name": "Whisky Sour",
    "desc": "Whisky, fresh lemon and a silky egg-white foam dotted with bitters.",
+   "group": "Sours",
    "tags": [
     "Citrus",
     "Sweet",
@@ -327,9 +1084,150 @@ const D={
    "img": "img/whisky-sour.svg"
   },
   {
+   "id": "margarita",
+   "name": "Margarita",
+   "desc": "Tequila, triple sec and fresh lime, with an optional salt rim.",
+   "group": "Sours",
+   "tags": [
+    "Citrus",
+    "Strong",
+    "Sour"
+   ],
+   "spirit": "Tequila",
+   "kicker": "Tequila",
+   "meta": "Tequila",
+   "glass": "Rocks glass, ice, half salt rim (optional)",
+   "garnish": "Lime wheel",
+   "ingredients": [
+    "50 ml tequila",
+    "20 ml triple sec",
+    "25 ml fresh lime juice",
+    "5 ml sugar syrup (optional)"
+   ],
+   "steps": [
+    "Optional: salt half the rim of the glass.",
+    "Shake all ingredients hard with ice.",
+    "Strain over fresh ice.",
+    "Garnish with a lime wheel."
+   ],
+   "rows": [
+    [
+     "Spirit",
+     "Tequila"
+    ],
+    [
+     "Glass",
+     "Rocks glass, ice, half salt rim (optional)"
+    ],
+    [
+     "Garnish",
+     "Lime wheel"
+    ],
+    [
+     "Flavour",
+     "Citrus, Strong, Sour"
+    ]
+   ],
+   "img": "img/margarita.svg"
+  },
+  {
+   "id": "daiquiri",
+   "name": "Daiquiri",
+   "desc": "The classic: light rum, fresh lime and sugar, shaken ice-cold.",
+   "group": "Sours",
+   "tags": [
+    "Citrus",
+    "Light",
+    "Sour"
+   ],
+   "spirit": "Light rum",
+   "kicker": "Light rum",
+   "meta": "Light rum",
+   "glass": "Coupe, chilled",
+   "garnish": "Lime wheel",
+   "ingredients": [
+    "50 ml light rum",
+    "25 ml fresh lime juice",
+    "15 ml sugar syrup"
+   ],
+   "steps": [
+    "Shake all ingredients hard with ice.",
+    "Double strain into a chilled coupe.",
+    "Garnish with a lime wheel on the rim."
+   ],
+   "rows": [
+    [
+     "Spirit",
+     "Light rum"
+    ],
+    [
+     "Glass",
+     "Coupe, chilled"
+    ],
+    [
+     "Garnish",
+     "Lime wheel"
+    ],
+    [
+     "Flavour",
+     "Citrus, Light, Sour"
+    ]
+   ],
+   "img": "img/daiquiri.svg"
+  },
+  {
+   "id": "sidecar",
+   "name": "Sidecar",
+   "desc": "A 1920s classic: brandy, orange liqueur and lemon in a sugar-rimmed coupe.",
+   "group": "Sours",
+   "tags": [
+    "Citrus",
+    "Strong",
+    "Sour"
+   ],
+   "spirit": "Brandy",
+   "kicker": "Brandy",
+   "meta": "Brandy",
+   "glass": "Coupe glass, chilled, sugar rim",
+   "garnish": "Sugar rim and orange peel",
+   "ingredients": [
+    "50 ml brandy",
+    "25 ml triple sec",
+    "20 ml fresh lemon juice",
+    "Caster sugar (for the rim)"
+   ],
+   "steps": [
+    "Rub a lemon wedge around the rim of a chilled coupe and dip it in sugar.",
+    "Add brandy, triple sec and lemon juice to a shaker with ice.",
+    "Shake hard for 12–15 seconds.",
+    "Double strain into the sugar-rimmed coupe.",
+    "Express orange peel over the top and hang it on the rim."
+   ],
+   "rows": [
+    [
+     "Spirit",
+     "Brandy"
+    ],
+    [
+     "Glass",
+     "Coupe glass, chilled, sugar rim"
+    ],
+    [
+     "Garnish",
+     "Sugar rim and orange peel"
+    ],
+    [
+     "Flavour",
+     "Citrus, Strong, Sour"
+    ]
+   ],
+   "img": "img/sidecar.svg"
+  },
+  {
    "id": "pornstar-martini",
    "name": "Pornstar Martini",
    "desc": "London dry gin, Passoa and lime, with a shot of Prosecco on the side.",
+   "group": "Long & Fruity",
    "tags": [
     "Fruity",
     "Sweet",
@@ -377,6 +1275,7 @@ const D={
    "id": "aperol-spritz",
    "name": "Aperol Spritz",
    "desc": "Bright, bittersweet and bubbly: the classic Italian aperitivo.",
+   "group": "Long & Fruity",
    "tags": [
     "Fizzy",
     "Light",
@@ -419,144 +1318,10 @@ const D={
    "img": "img/aperol-spritz.svg"
   },
   {
-   "id": "negroni-sbagliato",
-   "name": "Negroni Sbagliato",
-   "desc": "The ‘mistaken’ Negroni: Campari and vermouth topped with Prosecco.",
-   "tags": [
-    "Bitter",
-    "Fizzy",
-    "Light"
-   ],
-   "spirit": "Campari",
-   "kicker": "Campari",
-   "meta": "Campari",
-   "glass": "Wine glass, ice",
-   "garnish": "Orange slice",
-   "ingredients": [
-    "25 ml Campari",
-    "25 ml Martini Rosso",
-    "50 ml Prosecco (to top)"
-   ],
-   "steps": [
-    "Fill a wine glass with ice.",
-    "Add Campari and vermouth and stir briefly.",
-    "Top with Prosecco and stir once gently.",
-    "Add an orange slice."
-   ],
-   "rows": [
-    [
-     "Spirit",
-     "Campari"
-    ],
-    [
-     "Glass",
-     "Wine glass, ice"
-    ],
-    [
-     "Garnish",
-     "Orange slice"
-    ],
-    [
-     "Flavour",
-     "Bitter, Fizzy, Light"
-    ]
-   ],
-   "img": "img/negroni-sbagliato.svg"
-  },
-  {
-   "id": "margarita",
-   "name": "Margarita",
-   "desc": "Tequila, triple sec and fresh lime, with an optional salt rim.",
-   "tags": [
-    "Citrus",
-    "Strong",
-    "Sour"
-   ],
-   "spirit": "Tequila",
-   "kicker": "Tequila",
-   "meta": "Tequila",
-   "glass": "Rocks glass, ice, half salt rim (optional)",
-   "garnish": "Lime wheel",
-   "ingredients": [
-    "50 ml tequila",
-    "20 ml triple sec",
-    "25 ml fresh lime juice",
-    "5 ml sugar syrup (optional)"
-   ],
-   "steps": [
-    "Optional: salt half the rim of the glass.",
-    "Shake all ingredients hard with ice.",
-    "Strain over fresh ice.",
-    "Garnish with a lime wheel."
-   ],
-   "rows": [
-    [
-     "Spirit",
-     "Tequila"
-    ],
-    [
-     "Glass",
-     "Rocks glass, ice, half salt rim (optional)"
-    ],
-    [
-     "Garnish",
-     "Lime wheel"
-    ],
-    [
-     "Flavour",
-     "Citrus, Strong, Sour"
-    ]
-   ],
-   "img": "img/margarita.svg"
-  },
-  {
-   "id": "daiquiri",
-   "name": "Daiquiri",
-   "desc": "The classic: light rum, fresh lime and sugar, shaken ice-cold.",
-   "tags": [
-    "Citrus",
-    "Light",
-    "Sour"
-   ],
-   "spirit": "Light rum",
-   "kicker": "Light rum",
-   "meta": "Light rum",
-   "glass": "Coupe, chilled",
-   "garnish": "Lime wheel",
-   "ingredients": [
-    "50 ml light rum",
-    "25 ml fresh lime juice",
-    "15 ml sugar syrup"
-   ],
-   "steps": [
-    "Shake all ingredients hard with ice.",
-    "Double strain into a chilled coupe.",
-    "Garnish with a lime wheel on the rim."
-   ],
-   "rows": [
-    [
-     "Spirit",
-     "Light rum"
-    ],
-    [
-     "Glass",
-     "Coupe, chilled"
-    ],
-    [
-     "Garnish",
-     "Lime wheel"
-    ],
-    [
-     "Flavour",
-     "Citrus, Light, Sour"
-    ]
-   ],
-   "img": "img/daiquiri.svg"
-  },
-  {
    "id": "dark-n-stormy",
    "name": "Dark ’n’ Stormy",
    "desc": "Dark rum floated over spicy ginger beer with a squeeze of lime.",
+   "group": "Long & Fruity",
    "tags": [
     "Fizzy",
     "Spicy",
@@ -599,54 +1364,10 @@ const D={
    "img": "img/dark-n-stormy.svg"
   },
   {
-   "id": "carajillo",
-   "name": "Carajillo",
-   "desc": "Spain’s after-dinner favourite: vanilla-citrus Licor 43 shaken with hot espresso into a frothy, iced coffee.",
-   "tags": [
-    "Coffee",
-    "Sweet",
-    "Rich"
-   ],
-   "spirit": "Liqueur",
-   "kicker": "Liqueur",
-   "meta": "Liqueur",
-   "glass": "Rocks glass, cubed ice",
-   "garnish": "Coffee beans or orange peel",
-   "ingredients": [
-    "50 ml Licor 43",
-    "50 ml fresh hot espresso (one double shot)"
-   ],
-   "steps": [
-    "Fill the rocks glass with ice to chill it.",
-    "Brew a fresh double espresso.",
-    "Add Licor 43 and the hot espresso to a shaker full of ice and shake hard for 10–15 seconds.",
-    "Discard the chilling ice, add fresh cubes and strain in.",
-    "Garnish with three coffee beans on the foam (or express an orange peel over the top)."
-   ],
-   "rows": [
-    [
-     "Spirit",
-     "Liqueur"
-    ],
-    [
-     "Glass",
-     "Rocks glass, cubed ice"
-    ],
-    [
-     "Garnish",
-     "Coffee beans or orange peel"
-    ],
-    [
-     "Flavour",
-     "Coffee, Sweet, Rich"
-    ]
-   ],
-   "img": "img/carajillo.svg"
-  },
-  {
    "id": "pina-colada",
    "name": "Piña Colada",
    "desc": "Rum, coconut and pineapple blended into a creamy taste of the tropics.",
+   "group": "Long & Fruity",
    "tags": [
     "Sweet",
     "Fruity",
@@ -692,51 +1413,97 @@ const D={
    "img": "img/pina-colada.svg"
   },
   {
-   "id": "sidecar",
-   "name": "Sidecar",
-   "desc": "A 1920s classic: brandy, orange liqueur and lemon in a sugar-rimmed coupe.",
+   "id": "smoked-chocolate-manhattan",
+   "name": "Smoked Chocolate Manhattan",
+   "desc": "A Manhattan deepened with chocolate bitters and a whisper of smoke.",
+   "group": "After-Dinner",
    "tags": [
-    "Citrus",
+    "Smoky",
     "Strong",
-    "Sour"
+    "Rich"
    ],
-   "spirit": "Brandy",
-   "kicker": "Brandy",
-   "meta": "Brandy",
-   "glass": "Coupe glass, chilled, sugar rim",
-   "garnish": "Sugar rim and orange peel",
+   "spirit": "Whisky",
+   "kicker": "Whisky",
+   "meta": "Whisky",
+   "glass": "Nick & Nora glass, chilled",
+   "garnish": "Maraschino cherry",
    "ingredients": [
-    "50 ml brandy",
-    "25 ml triple sec",
-    "20 ml fresh lemon juice",
-    "Caster sugar (for the rim)"
+    "50 ml whisky",
+    "25 ml Martini Rosso",
+    "2 dashes chocolate bitters",
+    "1 dash Angostura bitters"
    ],
    "steps": [
-    "Rub a lemon wedge around the rim of a chilled coupe and dip it in sugar.",
-    "Add brandy, triple sec and lemon juice to a shaker with ice.",
-    "Shake hard for 12–15 seconds.",
-    "Double strain into the sugar-rimmed coupe.",
-    "Express orange peel over the top and hang it on the rim."
+    "Smoke the chilled Nick & Nora glass with the cocktail smoker and cover it.",
+    "Stir whisky, vermouth and bitters with ice for 30 seconds.",
+    "Strain into the smoked glass.",
+    "Garnish with a cherry on a pick."
    ],
    "rows": [
     [
      "Spirit",
-     "Brandy"
+     "Whisky"
     ],
     [
      "Glass",
-     "Coupe glass, chilled, sugar rim"
+     "Nick & Nora glass, chilled"
     ],
     [
      "Garnish",
-     "Sugar rim and orange peel"
+     "Maraschino cherry"
     ],
     [
      "Flavour",
-     "Citrus, Strong, Sour"
+     "Smoky, Strong, Rich"
     ]
    ],
-   "img": "img/sidecar.svg"
+   "img": "img/smoked-chocolate-manhattan.svg"
+  },
+  {
+   "id": "carajillo",
+   "name": "Carajillo",
+   "desc": "Spain’s after-dinner favourite: vanilla-citrus Licor 43 shaken with hot espresso into a frothy, iced coffee.",
+   "group": "After-Dinner",
+   "tags": [
+    "Coffee",
+    "Sweet",
+    "Rich"
+   ],
+   "spirit": "Liqueur",
+   "kicker": "Liqueur",
+   "meta": "Liqueur",
+   "glass": "Rocks glass, cubed ice",
+   "garnish": "Coffee beans or orange peel",
+   "ingredients": [
+    "50 ml Licor 43",
+    "50 ml fresh hot espresso (one double shot)"
+   ],
+   "steps": [
+    "Fill the rocks glass with ice to chill it.",
+    "Brew a fresh double espresso.",
+    "Add Licor 43 and the hot espresso to a shaker full of ice and shake hard for 10–15 seconds.",
+    "Discard the chilling ice, add fresh cubes and strain in.",
+    "Garnish with three coffee beans on the foam (or express an orange peel over the top)."
+   ],
+   "rows": [
+    [
+     "Spirit",
+     "Liqueur"
+    ],
+    [
+     "Glass",
+     "Rocks glass, cubed ice"
+    ],
+    [
+     "Garnish",
+     "Coffee beans or orange peel"
+    ],
+    [
+     "Flavour",
+     "Coffee, Sweet, Rich"
+    ]
+   ],
+   "img": "img/carajillo.svg"
   }
  ],
  "filters": [
@@ -745,14 +1512,16 @@ const D={
    "label": "Spirit",
    "values": [
     "Whisky",
+    "Cherry rum",
+    "Dark rum",
+    "Brandy",
     "Gin",
-    "Aperol",
+    "Prosecco",
     "Campari",
     "Tequila",
     "Light rum",
-    "Dark rum",
-    "Liqueur",
-    "Brandy"
+    "Aperol",
+    "Liqueur"
    ]
   },
   {
@@ -776,7 +1545,17 @@ const D={
  ],
  "key": "mh-cocktails-choice",
  "noun": "Cocktail",
- "hostTitle": "Show this to your bartender"
+ "hostTitle": "Show this to your bartender",
+ "group": {
+  "key": "group",
+  "order": [
+   "Old Fashioneds",
+   "Negronis",
+   "Sours",
+   "Long & Fruity",
+   "After-Dinner"
+  ]
+ }
 };
 const $=s=>document.querySelector(s);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -790,11 +1569,14 @@ D.filters.forEach(f=>{F[f.key]=new Set();const el=document.querySelector(`.chips
  el.innerHTML=f.values.map(v=>`<button class="chip" aria-pressed="false" data-v="${esc(v)}">${esc(v)}</button>`).join('');
  el.onclick=e=>{const b=e.target.closest('.chip');if(!b)return;const v=b.dataset.v,S=F[f.key];S.has(v)?S.delete(v):S.add(v);b.setAttribute('aria-pressed',S.has(v));render()}});
 const find=id=>D.items.find(x=>x.id===id);
+if(D.group){const J=$('#jump');J.hidden=false;J.innerHTML='<div class="label">Jump to</div>'+D.group.order.map((g,i)=>`<button class="chip" data-g="${esc(g)}" data-i="${i}">${esc(g)}<small></small></button>`).join('');
+ J.onclick=e=>{const c=e.target.closest('.chip');if(!c)return;const h=document.getElementById('g-'+c.dataset.i);if(!h)return;const cs=$('.controls');window.scrollTo({top:h.getBoundingClientRect().top+scrollY-(cs?cs.offsetHeight:0)-4,behavior:'smooth'})}}
 function render(){
  const q=$('#q').value.trim().toLowerCase();
- let L=D.items.filter(b=>D.filters.every(f=>!F[f.key].size||val(b,f.key).some(v=>F[f.key].has(v)))&&(!q||[b.name,b.desc,b.meta,(b.tags||[]).join(' '),(b.ingredients||[]).join(' '),b.rows.map(r=>r[1]).join(' ')].join(' ').toLowerCase().includes(q)));
+ let L=D.items.filter(b=>D.filters.every(f=>!F[f.key].size||val(b,f.key).some(v=>F[f.key].has(v)))&&(!q||[b.name,b.desc,b.meta,b.group||'',(b.tags||[]).join(' '),(b.ingredients||[]).join(' '),b.rows.map(r=>r[1]).join(' ')].join(' ').toLowerCase().includes(q)));
  $('#count').textContent=L.length+' of '+D.items.length;
- let lastG=null;const gh=b=>{if(!D.group||b[D.group.key]===lastG)return '';lastG=b[D.group.key];return `<li class="grph" aria-hidden="true">${esc(D.group.labels[lastG]||lastG)}</li>`};
+ let lastG=null;const gh=b=>{if(!D.group||b[D.group.key]===lastG)return '';lastG=b[D.group.key];return `<li class="grph" id="g-${D.group.order.indexOf(lastG)}">${esc(lastG)}</li>`};
+ if(D.group){const n={};L.forEach(b=>{n[b[D.group.key]]=(n[b[D.group.key]]||0)+1});document.querySelectorAll('#jump .chip').forEach(c=>{const k=n[c.dataset.g]||0;c.hidden=!k;c.lastElementChild.textContent=k})}
  $('#list').innerHTML=L.length?L.map(b=>gh(b)+`<li class="item" data-id="${b.id}"><div class="name">${esc(b.name)}${mine.includes(b.id)?'<span class="mine-dot" title="My choice">◆</span>':''}</div><div class="thumb"><img src="${b.img}" alt="" loading="lazy" decoding="async"></div><div class="desc">${esc(b.desc)}</div><div class="meta">${(b.tags||[]).slice(0,3).map(t=>`<span class="tag">${esc(t)}</span>`).join('')}${esc(b.meta)}</div></li>`).join(''):'<li class="empty">Nothing matches that. Try fewer filters.</li>';
 }
 function open(h){$('#card').innerHTML='<button class="close" aria-label="Close">×</button>'+h;$('#sheet').classList.add('open')}
@@ -827,7 +1609,7 @@ $('#sheet').onclick=e=>{if(e.target.id==='sheet'||e.target.closest('.close'))ret
  if(e.target.id==='clear'){mine=[];save();list()}};
 $('#bar').onclick=list;
 document.addEventListener('keydown',e=>{if(e.key==='Escape')shut()});
-const AC=[...D.items.map(b=>({t:b.name,k:D.noun})).sort((a,b)=>a.t.localeCompare(b.t,'en-GB')),...D.filters.flatMap(f=>f.values.map(t=>({t,k:f.label})))].filter((o,i,a)=>a.findIndex(x=>x.t===o.t)===i);
+const AC=[...D.items.map(b=>({t:b.name,k:D.noun})).sort((a,b)=>a.t.localeCompare(b.t,'en-GB')),...(D.group?D.group.order.map(t=>({t,k:'Section'})):[]),...D.filters.flatMap(f=>f.values.map(t=>({t,k:f.label})))].filter((o,i,a)=>a.findIndex(x=>x.t===o.t)===i);
 const qi=$('#q'),gh=$('#ghost'),sg=$('#sugg');let hits=[],sel=-1;
 function wpos(t,q){const l=t.toLowerCase();if(l.startsWith(q))return 0;const re=/[\s\-&(\/.,'’]+/g;let m;while((m=re.exec(l))){if(l.startsWith(q,m.index+m[0].length))return m.index+m[0].length}return -1}
 function ac(){const raw=qi.value,q=raw.toLowerCase().trim();sel=-1;
@@ -849,7 +1631,7 @@ sg.addEventListener('pointerdown',e=>{const li=e.target.closest('li');if(li){e.p
 qi.addEventListener('blur',()=>setTimeout(()=>{sg.classList.remove('open');gh.innerHTML=''},150));
 qi.addEventListener('focus',ac);
 bar();render();
-if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('../sw.js?v=ea50f30b',{scope:'../'}).catch(()=>{}));
+if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('../sw.js?v=adb96df4',{scope:'../'}).catch(()=>{}));
 </script>
 </body>
 </html>
