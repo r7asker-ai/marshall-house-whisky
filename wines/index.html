@@ -105,6 +105,8 @@ dd{margin:0;font-size:15px}
 footer{text-align:center;padding:34px 20px 20px;font-size:12px;color:#5d6b70}
 footer .label{color:var(--brass);font-size:10px}
 
+.list .grph{list-style:none;font:600 22px/1.1 var(--serif);letter-spacing:.04em;color:var(--slate);padding:20px 0 8px;border-bottom:1px solid var(--brass);margin:0}
+.list .grph:first-child{padding-top:6px}
 .thumb{grid-row:1/3;grid-column:2;width:64px;height:64px;align-self:center;background:#fff;border:1px solid var(--sand)}
 .thumb img{width:100%;height:100%;display:block}
 .desc{grid-column:1;font-size:13.5px;color:#3d4b52}
@@ -452,7 +454,8 @@ function render(){
  const q=$('#q').value.trim().toLowerCase();
  let L=D.items.filter(b=>D.filters.every(f=>!F[f.key].size||val(b,f.key).some(v=>F[f.key].has(v)))&&(!q||[b.name,b.desc,b.meta,(b.tags||[]).join(' '),(b.ingredients||[]).join(' '),b.rows.map(r=>r[1]).join(' ')].join(' ').toLowerCase().includes(q)));
  $('#count').textContent=L.length+' of '+D.items.length;
- $('#list').innerHTML=L.length?L.map(b=>`<li class="item" data-id="${b.id}"><div class="name">${esc(b.name)}${mine.includes(b.id)?'<span class="mine-dot" title="My choice">◆</span>':''}</div><div class="thumb"><img src="${b.img}" alt="" loading="lazy" decoding="async"></div><div class="desc">${esc(b.desc)}</div><div class="meta">${(b.tags||[]).slice(0,3).map(t=>`<span class="tag">${esc(t)}</span>`).join('')}${esc(b.meta)}</div></li>`).join(''):'<li class="empty">Nothing matches that. Try fewer filters.</li>';
+ let lastG=null;const gh=b=>{if(!D.group||b[D.group.key]===lastG)return '';lastG=b[D.group.key];return `<li class="grph" aria-hidden="true">${esc(D.group.labels[lastG]||lastG)}</li>`};
+ $('#list').innerHTML=L.length?L.map(b=>gh(b)+`<li class="item" data-id="${b.id}"><div class="name">${esc(b.name)}${mine.includes(b.id)?'<span class="mine-dot" title="My choice">◆</span>':''}</div><div class="thumb"><img src="${b.img}" alt="" loading="lazy" decoding="async"></div><div class="desc">${esc(b.desc)}</div><div class="meta">${(b.tags||[]).slice(0,3).map(t=>`<span class="tag">${esc(t)}</span>`).join('')}${esc(b.meta)}</div></li>`).join(''):'<li class="empty">Nothing matches that. Try fewer filters.</li>';
 }
 function open(h){$('#card').innerHTML='<button class="close" aria-label="Close">×</button>'+h;$('#sheet').classList.add('open')}
 function shut(){hide();$('#sheet').classList.remove('open')}
@@ -506,7 +509,7 @@ sg.addEventListener('pointerdown',e=>{const li=e.target.closest('li');if(li){e.p
 qi.addEventListener('blur',()=>setTimeout(()=>{sg.classList.remove('open');gh.innerHTML=''},150));
 qi.addEventListener('focus',ac);
 bar();render();
-if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('../sw.js?v=41d34eb0',{scope:'../'}).catch(()=>{}));
+if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('../sw.js?v=ea50f30b',{scope:'../'}).catch(()=>{}));
 </script>
 </body>
 </html>
