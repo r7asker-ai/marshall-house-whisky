@@ -1084,53 +1084,6 @@ const D={
    "img": "img/whisky-sour.svg"
   },
   {
-   "id": "margarita",
-   "name": "Margarita",
-   "desc": "Tequila, triple sec and fresh lime, with an optional salt rim.",
-   "group": "Sours",
-   "tags": [
-    "Citrus",
-    "Strong",
-    "Sour"
-   ],
-   "spirit": "Tequila",
-   "kicker": "Tequila",
-   "meta": "Tequila",
-   "glass": "Rocks glass, ice, half salt rim (optional)",
-   "garnish": "Lime wheel",
-   "ingredients": [
-    "50 ml tequila",
-    "20 ml triple sec",
-    "25 ml fresh lime juice",
-    "5 ml sugar syrup (optional)"
-   ],
-   "steps": [
-    "Optional: salt half the rim of the glass.",
-    "Shake all ingredients hard with ice.",
-    "Strain over fresh ice.",
-    "Garnish with a lime wheel."
-   ],
-   "rows": [
-    [
-     "Spirit",
-     "Tequila"
-    ],
-    [
-     "Glass",
-     "Rocks glass, ice, half salt rim (optional)"
-    ],
-    [
-     "Garnish",
-     "Lime wheel"
-    ],
-    [
-     "Flavour",
-     "Citrus, Strong, Sour"
-    ]
-   ],
-   "img": "img/margarita.svg"
-  },
-  {
    "id": "daiquiri",
    "name": "Daiquiri",
    "desc": "The classic: light rum, fresh lime and sugar, shaken ice-cold.",
@@ -1174,54 +1127,6 @@ const D={
     ]
    ],
    "img": "img/daiquiri.svg"
-  },
-  {
-   "id": "sidecar",
-   "name": "Sidecar",
-   "desc": "A 1920s classic: brandy, orange liqueur and lemon in a sugar-rimmed coupe.",
-   "group": "Sours",
-   "tags": [
-    "Citrus",
-    "Strong",
-    "Sour"
-   ],
-   "spirit": "Brandy",
-   "kicker": "Brandy",
-   "meta": "Brandy",
-   "glass": "Coupe glass, chilled, sugar rim",
-   "garnish": "Sugar rim and orange peel",
-   "ingredients": [
-    "50 ml brandy",
-    "25 ml triple sec",
-    "20 ml fresh lemon juice",
-    "Caster sugar (for the rim)"
-   ],
-   "steps": [
-    "Rub a lemon wedge around the rim of a chilled coupe and dip it in sugar.",
-    "Add brandy, triple sec and lemon juice to a shaker with ice.",
-    "Shake hard for 12–15 seconds.",
-    "Double strain into the sugar-rimmed coupe.",
-    "Express orange peel over the top and hang it on the rim."
-   ],
-   "rows": [
-    [
-     "Spirit",
-     "Brandy"
-    ],
-    [
-     "Glass",
-     "Coupe glass, chilled, sugar rim"
-    ],
-    [
-     "Garnish",
-     "Sugar rim and orange peel"
-    ],
-    [
-     "Flavour",
-     "Citrus, Strong, Sour"
-    ]
-   ],
-   "img": "img/sidecar.svg"
   },
   {
    "id": "pornstar-martini",
@@ -1518,7 +1423,6 @@ const D={
     "Gin",
     "Prosecco",
     "Campari",
-    "Tequila",
     "Light rum",
     "Aperol",
     "Liqueur"
@@ -1631,7 +1535,7 @@ sg.addEventListener('pointerdown',e=>{const li=e.target.closest('li');if(li){e.p
 qi.addEventListener('blur',()=>setTimeout(()=>{sg.classList.remove('open');gh.innerHTML=''},150));
 qi.addEventListener('focus',ac);
 bar();render();
-if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('../sw.js?v=adb96df4',{scope:'../'}).catch(()=>{}));
+if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('../sw.js?v=74c633c1',{scope:'../'}).catch(()=>{}));
 </script>
 </body>
 </html>
