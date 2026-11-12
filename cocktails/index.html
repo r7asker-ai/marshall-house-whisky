@@ -1267,6 +1267,53 @@ const D={
    "img": "img/limoncello-spritz.svg"
   },
   {
+   "id": "hugo-spritz",
+   "name": "Hugo Spritz",
+   "desc": "A light Alpine spritz: elderflower, Prosecco and soda, with lime.",
+   "group": "Long & Fruity",
+   "tags": [
+    "Fizzy",
+    "Light",
+    "Citrus"
+   ],
+   "spirit": "Elderflower",
+   "kicker": "Elderflower",
+   "meta": "Elderflower",
+   "glass": "Wine glass, lots of ice",
+   "garnish": "Lime wheel, and a mint sprig if you have one",
+   "ingredients": [
+    "75 ml Prosecco",
+    "25 ml elderflower cordial",
+    "25 ml soda water",
+    "Mint sprig (optional)"
+   ],
+   "steps": [
+    "Fill a wine glass with ice.",
+    "Pour in the Prosecco, then the elderflower cordial.",
+    "Top with soda water and stir once gently.",
+    "Add a lime wheel, and a mint sprig if you have one."
+   ],
+   "rows": [
+    [
+     "Spirit",
+     "Elderflower"
+    ],
+    [
+     "Glass",
+     "Wine glass, lots of ice"
+    ],
+    [
+     "Garnish",
+     "Lime wheel, and a mint sprig if you have one"
+    ],
+    [
+     "Flavour",
+     "Fizzy, Light, Citrus"
+    ]
+   ],
+   "img": "img/hugo-spritz.svg"
+  },
+  {
    "id": "dark-n-stormy",
    "name": "Dark ’n’ Stormy",
    "desc": "Dark rum floated over spicy ginger beer with a squeeze of lime.",
@@ -1470,6 +1517,7 @@ const D={
     "Light rum",
     "Aperol",
     "Limoncello",
+    "Elderflower",
     "Liqueur"
    ]
   },
@@ -1580,7 +1628,7 @@ sg.addEventListener('pointerdown',e=>{const li=e.target.closest('li');if(li){e.p
 qi.addEventListener('blur',()=>setTimeout(()=>{sg.classList.remove('open');gh.innerHTML=''},150));
 qi.addEventListener('focus',ac);
 bar();render();
-if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('../sw.js?v=b798b5ac',{scope:'../'}).catch(()=>{}));
+if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('../sw.js?v=8c1ab7c8',{scope:'../'}).catch(()=>{}));
 </script>
 </body>
 </html>
