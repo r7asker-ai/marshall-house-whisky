@@ -1082,6 +1082,55 @@ const D={
    "img": "img/whisky-sour.svg"
   },
   {
+   "id": "amaretto-sour",
+   "name": "Amaretto Sour",
+   "desc": "The modern version: amaretto lifted with whisky and lemon under a bitters-dotted foam.",
+   "group": "Sours",
+   "tags": [
+    "Sweet",
+    "Citrus",
+    "Nutty"
+   ],
+   "spirit": "Amaretto",
+   "kicker": "Amaretto",
+   "meta": "Amaretto",
+   "glass": "Rocks glass, cubed ice",
+   "garnish": "Angostura dots on the foam, lemon peel and a cherry",
+   "ingredients": [
+    "45 ml amaretto",
+    "20 ml whisky",
+    "30 ml fresh lemon juice",
+    "5 ml sugar syrup",
+    "15 ml egg white",
+    "3 dashes Angostura bitters (on top)"
+   ],
+   "steps": [
+    "Dry shake everything except the bitters without ice.",
+    "Add ice and shake again until well chilled.",
+    "Strain over fresh ice.",
+    "Dot Angostura on the foam; garnish with lemon peel and a cherry."
+   ],
+   "rows": [
+    [
+     "Spirit",
+     "Amaretto"
+    ],
+    [
+     "Glass",
+     "Rocks glass, cubed ice"
+    ],
+    [
+     "Garnish",
+     "Angostura dots on the foam, lemon peel and a cherry"
+    ],
+    [
+     "Flavour",
+     "Sweet, Citrus, Nutty"
+    ]
+   ],
+   "img": "img/amaretto-sour.svg"
+  },
+  {
    "id": "daiquiri",
    "name": "Daiquiri",
    "desc": "The classic: light rum, fresh lime and sugar, shaken ice-cold.",
@@ -1456,6 +1505,97 @@ const D={
    "img": "img/smoked-chocolate-manhattan.svg"
   },
   {
+   "id": "godfather",
+   "name": "Godfather",
+   "desc": "Just whisky and amaretto over ice: smooth, nutty and strong.",
+   "group": "After-Dinner",
+   "tags": [
+    "Strong",
+    "Sweet",
+    "Nutty"
+   ],
+   "spirit": "Whisky",
+   "kicker": "Whisky",
+   "meta": "Whisky",
+   "glass": "Rocks glass, large ice cube",
+   "garnish": "Orange peel (optional)",
+   "ingredients": [
+    "50 ml whisky",
+    "20 ml amaretto"
+   ],
+   "steps": [
+    "Add a large ice cube to a rocks glass.",
+    "Pour in whisky and amaretto and stir gently for 20 seconds.",
+    "Optional: express an orange peel over the top."
+   ],
+   "rows": [
+    [
+     "Spirit",
+     "Whisky"
+    ],
+    [
+     "Glass",
+     "Rocks glass, large ice cube"
+    ],
+    [
+     "Garnish",
+     "Orange peel (optional)"
+    ],
+    [
+     "Flavour",
+     "Strong, Sweet, Nutty"
+    ]
+   ],
+   "img": "img/godfather.svg"
+  },
+  {
+   "id": "espresso-martini",
+   "name": "Espresso Martini",
+   "desc": "Fresh espresso and vodka shaken hard to a velvety crema.",
+   "group": "After-Dinner",
+   "tags": [
+    "Coffee",
+    "Sweet",
+    "Strong"
+   ],
+   "spirit": "Vodka",
+   "kicker": "Vodka",
+   "meta": "Vodka",
+   "glass": "Coupe, chilled",
+   "garnish": "Three coffee beans",
+   "ingredients": [
+    "50 ml vodka",
+    "30 ml fresh espresso",
+    "15 ml sugar syrup",
+    "1 dash chocolate bitters"
+   ],
+   "steps": [
+    "Pull a fresh espresso and let it cool for a minute.",
+    "Shake all ingredients very hard with plenty of ice.",
+    "Double strain into a chilled coupe.",
+    "Float three coffee beans on the crema."
+   ],
+   "rows": [
+    [
+     "Spirit",
+     "Vodka"
+    ],
+    [
+     "Glass",
+     "Coupe, chilled"
+    ],
+    [
+     "Garnish",
+     "Three coffee beans"
+    ],
+    [
+     "Flavour",
+     "Coffee, Sweet, Strong"
+    ]
+   ],
+   "img": "img/espresso-martini.svg"
+  },
+  {
    "id": "carajillo",
    "name": "Carajillo",
    "desc": "Spain’s after-dinner favourite: vanilla-citrus Licor 43 shaken with hot espresso into a frothy, iced coffee.",
@@ -1514,10 +1654,12 @@ const D={
     "Gin",
     "Prosecco",
     "Campari",
+    "Amaretto",
     "Light rum",
     "Aperol",
     "Limoncello",
     "Elderflower",
+    "Vodka",
     "Liqueur"
    ]
   },
@@ -1533,6 +1675,7 @@ const D={
     "Sour",
     "Citrus",
     "Fruity",
+    "Nutty",
     "Coffee",
     "Spicy",
     "Fizzy",
@@ -1628,7 +1771,7 @@ sg.addEventListener('pointerdown',e=>{const li=e.target.closest('li');if(li){e.p
 qi.addEventListener('blur',()=>setTimeout(()=>{sg.classList.remove('open');gh.innerHTML=''},150));
 qi.addEventListener('focus',ac);
 bar();render();
-if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('../sw.js?v=8c1ab7c8',{scope:'../'}).catch(()=>{}));
+if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('../sw.js?v=eaa6ce88',{scope:'../'}).catch(()=>{}));
 </script>
 </body>
 </html>
